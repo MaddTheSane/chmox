@@ -37,6 +37,7 @@
 		44F984FB065774580076336E /* CHMTableOfContents.m in Sources */ = {isa = PBXBuildFile; fileRef = 44F984F9065774580076336E /* CHMTableOfContents.m */; };
 		55B23B811E54325E009C456D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55B23B831E54325E009C456D /* InfoPlist.strings */; };
 		55B23B851E543B2C009C456D /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55B23B841E543B2C009C456D /* Media.xcassets */; };
+		55D973F31E54B36300355BE3 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 55D973F21E54B36300355BE3 /* libxml2.tbd */; };
 		8D15AC2C0486D014006FF6A4 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2A37F4B9FDCFA73011CA2CEA /* Credits.rtf */; };
 		8D15AC2D0486D014006FF6A4 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 2A37F4B6FDCFA73011CA2CEA /* MainMenu.nib */; };
 		8D15AC320486D014006FF6A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A37F4B0FDCFA73011CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
@@ -113,6 +114,7 @@
 		557859061E54B14B0043CC15 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 		55B23B821E54325E009C456D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		55B23B841E543B2C009C456D /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		55D973F21E54B36300355BE3 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		8D15AC360486D014006FF6A4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D15AC370486D014006FF6A4 /* Chmox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chmox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -124,6 +126,7 @@
 			files = (
 				8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */,
 				442BBB310653F73E0041C2A9 /* WebKit.framework in Frameworks */,
+				55D973F31E54B36300355BE3 /* libxml2.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,6 +226,7 @@
 		2A37F4C3FDCFA73011CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				55D973F21E54B36300355BE3 /* libxml2.tbd */,
 				442BBB300653F73E0041C2A9 /* WebKit.framework */,
 				1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */,
 				1058C7A8FEA54F5311CA2CBB /* Other Frameworks */,
@@ -350,12 +354,13 @@
 			files = (
 			);
 			inputPaths = (
+				"$(SRCROOT)/Resources/LGPL.r",
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
-			shellScript = "# Create DMG for delivery\n\n#DELIVERABLE_SIZE=2 # megabytes\n\nDELIVERABLE_SIZE=`du -kcL \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME\" | tail -1 | cut -f1`\nDELIVERABLE_SIZE=`expr \\( $DELIVERABLE_SIZE + 1500 \\) / 1024`\n\nDELIVERABLE_INTERMEDIATE_FILENAME=\"$TEMP_FILES_DIR/$PRODUCT_NAME.dmg\"\nDELIVERABLE_VERSION=`defaults read \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME/Contents/Info\" CFBundleVersion`\nDELIVERABLE_FILENAME=\"$HOME/Desktop/$PRODUCT_NAME-$DELIVERABLE_VERSION.dmg\"\nDELIVERABLE_VOLUME_NAME=\"$PRODUCT_NAME $DELIVERABLE_VERSION\"\n\nrm -f $DELIVERABLE_INTERMEDIATE_FILENAME\nhdiutil create \"$DELIVERABLE_INTERMEDIATE_FILENAME\" -ov -megabytes $DELIVERABLE_SIZE -fs HFS+ -volname \"$DELIVERABLE_VOLUME_NAME\"\n\nDELIVERABLE_DEVICE=`hdiutil attach -private \"$DELIVERABLE_INTERMEDIATE_FILENAME\" | grep Apple_partition_scheme | cut -f1`\n\n\"$SYSTEM_DEVELOPER_TOOLS/CpMac\" -r $BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME \"/Volumes/$DELIVERABLE_VOLUME_NAME\"\n\nhdiutil detach $DELIVERABLE_DEVICE\n\nrm -f $DELIVERABLE_FILENAME\nhdiutil convert \"$DELIVERABLE_INTERMEDIATE_FILENAME\" -format UDZO -imagekey zlib-level=9 -o \"$DELIVERABLE_FILENAME\"\nrm -f $DELIVERABLE_INTERMEDIATE_FILENAME\n\nhdiutil unflatten \"$DELIVERABLE_FILENAME\"\n\"$SYSTEM_DEVELOPER_TOOLS/Rez\" $SYSTEM_DEVELOPER_DIR/Headers/FlatCarbon/*.r \"$SOURCE_ROOT/LGPL.r\" -a -o \"$DELIVERABLE_FILENAME\"\nhdiutil flatten \"$DELIVERABLE_FILENAME\"\n\n\n\n";
+			shellScript = "# Create DMG for delivery\n\n#DELIVERABLE_SIZE=2 # megabytes\n\nDELIVERABLE_SIZE=`du -kcL \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME\" | tail -1 | cut -f1`\nDELIVERABLE_SIZE=`expr \\( $DELIVERABLE_SIZE + 1500 \\) / 1024`\n\nDELIVERABLE_INTERMEDIATE_FILENAME=\"$TEMP_FILES_DIR/$PRODUCT_NAME.dmg\"\nDELIVERABLE_VERSION=`defaults read \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME/Contents/Info\" CFBundleVersion`\nDELIVERABLE_FILENAME=\"$HOME/Desktop/$PRODUCT_NAME-$DELIVERABLE_VERSION.dmg\"\nDELIVERABLE_VOLUME_NAME=\"$PRODUCT_NAME $DELIVERABLE_VERSION\"\n\nrm -f $DELIVERABLE_INTERMEDIATE_FILENAME\nhdiutil create \"$DELIVERABLE_INTERMEDIATE_FILENAME\" -ov -megabytes $DELIVERABLE_SIZE -fs HFS+ -volname \"$DELIVERABLE_VOLUME_NAME\"\n\nDELIVERABLE_DEVICE=`hdiutil attach -private \"$DELIVERABLE_INTERMEDIATE_FILENAME\" | grep Apple_partition_scheme | cut -f1`\n\n\"$SYSTEM_DEVELOPER_TOOLS/CpMac\" -r $BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME \"/Volumes/$DELIVERABLE_VOLUME_NAME\"\n\nhdiutil detach $DELIVERABLE_DEVICE\n\nrm -f $DELIVERABLE_FILENAME\nhdiutil convert \"$DELIVERABLE_INTERMEDIATE_FILENAME\" -format UDZO -imagekey zlib-level=9 -o \"$DELIVERABLE_FILENAME\"\nrm -f $DELIVERABLE_INTERMEDIATE_FILENAME\n\nhdiutil unflatten \"$DELIVERABLE_FILENAME\"\n\"$SYSTEM_DEVELOPER_TOOLS/Rez\" \"$SOURCE_ROOT/Resources/LGPL.r\" -a -o \"$DELIVERABLE_FILENAME\"\nhdiutil flatten \"$DELIVERABLE_FILENAME\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -479,7 +484,6 @@
 				HEADER_SEARCH_PATHS = "$(SDK_DIR)/usr/include/libxml2";
 				INFOPLIST_FILE = Resources/Info.plist;
 				OTHER_CFLAGS = "-DDEBUG_MODE";
-				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_BUNDLE_IDENTIFIER = net.sourceforge.Chmox;
 				PRODUCT_NAME = Chmox;
 				SKIP_INSTALL = NO;
@@ -507,7 +511,6 @@
 				GCC_WARN_SHADOW = YES;
 				HEADER_SEARCH_PATHS = "$(SDK_DIR)/usr/include/libxml2";
 				INFOPLIST_FILE = Resources/Info.plist;
-				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_BUNDLE_IDENTIFIER = net.sourceforge.Chmox;
 				PRODUCT_NAME = Chmox;
 				SKIP_INSTALL = NO;
