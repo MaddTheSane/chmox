@@ -53,16 +53,18 @@
 - (CHMContainer *)container;
 - (void)search:(NSString *)searchString;
 
-- (int) searchResultsCount;
-- (id) searchResultAtIndex: (int) index;
-- (NSURL *)urlForSelectedSearchResult: (int)selectedIndex;
+@property (readonly) NSUInteger searchResultsCount;
+- (id) searchResultAtIndex: (NSUInteger) index;
+- (NSURL *)urlForSelectedSearchResult: (NSUInteger)selectedIndex;
 
 - (void)addBookmark;
-- (void)removeBookmark: (int)bookmarkIndex;
-- (int) bookmarkCount;
-- (NSString *) bookmarkURLAtIndex: (int) index;
-- (NSString *) bookmarkTitleAtIndex: (int) index;
+- (void)removeBookmark: (NSUInteger)bookmarkIndex;
+@property (readonly) NSUInteger bookmarkCount;
+- (NSString *) bookmarkURLAtIndex: (NSUInteger) index;
+- (NSString *) bookmarkTitleAtIndex: (NSUInteger) index;
 
+@property (copy) NSString *lastLoadedPage;
+@property (copy) NSString *lastLoadedPageName;
 - (NSString *)lastLoadedPage;
 - (void)setLastLoadedPage:(NSString *)aLastLoadedPage;
 

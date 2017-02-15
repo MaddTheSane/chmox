@@ -199,22 +199,24 @@ static NSString *const HISTORY_TOOL_ID = @"chmox.history";
 }
 
 #pragma mark NSTableDataSource
-- (int)numberOfRowsInTableView:(NSTableView *)tableView
+- (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
 {
 	if(tableView == searchResultsView){
 		return [[self document] searchResultsCount];
 	}else if (tableView == favoritesView){
 		return [[self document] bookmarkCount];
 	}
+    return 0;
 }
 
-- (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(int)row
+- (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
 	if(tableView == searchResultsView){
 		return [[self document] searchResultAtIndex: row];
 	}else if (tableView == favoritesView){
 		return [[self document] bookmarkTitleAtIndex: row];
 	}
+    return nil;
 }
 
 #pragma mark NSResponder
@@ -288,7 +290,7 @@ static NSString *const HISTORY_TOOL_ID = @"chmox.history";
 
 - (IBAction)searchResultSelected:(id)sender
 {
-	int selectedRow = [sender selectedRow];
+	NSInteger selectedRow = [sender selectedRow];
 	NSURLRequest *request = [NSURLRequest requestWithURL: [[self document] urlForSelectedSearchResult:selectedRow]];
 	[[_contentsView mainFrame] loadRequest: request];
 	[_contentsView searchFor:[searchField stringValue] direction:TRUE caseSensitive:FALSE wrap:FALSE ];

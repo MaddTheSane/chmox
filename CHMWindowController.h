@@ -26,7 +26,7 @@
 
 @class WebView;
 
-@interface CHMWindowController : NSWindowController <NSToolbarDelegate, NSOutlineViewDelegate, WebUIDelegate, WebPolicyDelegate>
+@interface CHMWindowController : NSWindowController <NSToolbarDelegate, NSOutlineViewDelegate, WebUIDelegate, WebPolicyDelegate, NSTableViewDataSource>
 {
     IBOutlet WebView		*_contentsView;
     IBOutlet NSDrawer		*_drawer;

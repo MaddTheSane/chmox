@@ -102,18 +102,18 @@
 
 
 #pragma mark CHM operations
-- (NSURL *)urlForSelectedSearchResult: (int)selectedIndex
+- (NSURL *)urlForSelectedSearchResult: (NSUInteger)selectedIndex
 {
 	id target = [searchResults objectForKey:[[searchResults allKeys] objectAtIndex:selectedIndex]];
 	return [NSURL URLWithString:target];
 }
 
-- (int) searchResultsCount
+- (NSUInteger) searchResultsCount
 {
 	return [searchResults count];
 }
 
-- (id) searchResultAtIndex: (int) requestedIndex
+- (id) searchResultAtIndex: (NSUInteger) requestedIndex
 {
 	return [[searchResults allKeys] objectAtIndex:requestedIndex];
 }
@@ -128,23 +128,23 @@
 	}
 }
 
-- (void)removeBookmark: (int)bookmarkIndex
+- (void)removeBookmark: (NSUInteger)bookmarkIndex
 {
 	[bookmarks removeObjectForKey:[[bookmarks allKeys] objectAtIndex:bookmarkIndex]];
 	[[NSUserDefaults standardUserDefaults] setObject:bookmarks forKey:KEY_savedBookmarks];
 }
 
-- (int) bookmarkCount
+- (NSUInteger) bookmarkCount
 {
 	return [bookmarks count];
 }
 
-- (NSString *) bookmarkURLAtIndex: (int) selectedIndex;
+- (NSString *) bookmarkURLAtIndex: (NSUInteger) selectedIndex;
 {
 	return [bookmarks objectForKey: [[bookmarks allKeys] objectAtIndex:selectedIndex]];
 }
 
-- (NSString *) bookmarkTitleAtIndex: (int) selectedIndex;
+- (NSString *) bookmarkTitleAtIndex: (NSUInteger) selectedIndex;
 {
 	return [[bookmarks allKeys] objectAtIndex:selectedIndex];
 }
@@ -264,7 +264,7 @@
 {
 	NSString* parentDirectory = [path stringByDeletingLastPathComponent];
 	if(! [[NSFileManager defaultManager] fileExistsAtPath:parentDirectory]){
-		[[NSFileManager defaultManager] createDirectoryAtPath:parentDirectory attributes:nil];
+        [[NSFileManager defaultManager] createDirectoryAtPath:parentDirectory attributes:@{}];
 	}
 	[[NSFileManager defaultManager] createFileAtPath:path contents:nil attributes:nil];
     NSURL* url = [NSURL fileURLWithPath: path];
