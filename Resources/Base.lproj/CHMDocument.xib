@@ -58,18 +58,18 @@
                     <tabViewItems>
                         <tabViewItem label="Content" identifier="tocTab" id="36">
                             <view key="view" id="37">
-                                <rect key="frame" x="10" y="29" width="250" height="164"/>
+                                <rect key="frame" x="10" y="25" width="250" height="168"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <scrollView autohidesScrollers="YES" horizontalLineScroll="16" horizontalPageScroll="10" verticalLineScroll="16" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="42">
-                                        <rect key="frame" x="0.0" y="0.0" width="250" height="164"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="250" height="168"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <clipView key="contentView" id="MQ5-of-ImY">
-                                            <rect key="frame" x="1" y="1" width="248" height="162"/>
+                                            <rect key="frame" x="1" y="1" width="248" height="166"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <outlineView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnReordering="NO" multipleSelection="NO" emptySelection="NO" autosaveName="contentsOutline" rowHeight="14" indentationPerLevel="16" autoresizesOutlineColumn="YES" outlineTableColumn="44" id="45">
-                                                    <rect key="frame" x="0.0" y="0.0" width="248" height="162"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="248" height="166"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <size key="intercellSpacing" width="3" height="2"/>
                                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -111,9 +111,9 @@
                         <tabViewItem label="Search" identifier="searchTab" id="35">
                             <view key="view" id="39">
                                 <rect key="frame" x="10" y="25" width="250" height="168"/>
-                                <autoresizingMask key="autoresizingMask"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <searchField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" textCompletion="NO" id="48">
+                                    <searchField wantsLayer="YES" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" textCompletion="NO" id="48">
                                         <rect key="frame" x="20" y="146" width="170" height="19"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                         <searchFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" alignment="left" title="Word to search" bezelStyle="round" recentsAutosaveName="searchQuery" id="119">
@@ -126,11 +126,11 @@
                                         <rect key="frame" x="0.0" y="62" width="280" height="76"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <clipView key="contentView" id="ZdX-V2-BVb">
-                                            <rect key="frame" x="0.0" y="0.0" width="269" height="62"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="280" height="76"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveName="searchResults" headerView="129" id="49">
-                                                    <rect key="frame" x="0.0" y="0.0" width="269" height="39"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="280" height="53"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <size key="intercellSpacing" width="3" height="2"/>
                                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -163,7 +163,7 @@
                                                             </textFieldCell>
                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                         </tableColumn>
-                                                        <tableColumn width="192.5" minWidth="40" maxWidth="1000" id="50">
+                                                        <tableColumn width="203.5" minWidth="40" maxWidth="1000" id="50">
                                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Rank">
                                                                 <font key="font" metaFont="smallSystem"/>
                                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -181,15 +181,15 @@
                                             </subviews>
                                         </clipView>
                                         <scroller key="horizontalScroller" verticalHuggingPriority="750" controlSize="small" horizontal="YES" id="128">
-                                            <rect key="frame" x="0.0" y="62" width="269" height="14"/>
+                                            <rect key="frame" x="0.0" y="62" width="280" height="14"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                         <scroller key="verticalScroller" verticalHuggingPriority="750" controlSize="small" horizontal="NO" id="130">
-                                            <rect key="frame" x="269" y="23" width="11" height="39"/>
+                                            <rect key="frame" x="266" y="23" width="14" height="53"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                         <tableHeaderView key="headerView" id="129">
-                                            <rect key="frame" x="0.0" y="0.0" width="269" height="23"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="280" height="23"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableHeaderView>
                                     </scrollView>
