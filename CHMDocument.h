@@ -44,11 +44,11 @@
 	NSMutableDictionary*	docTitles;
 }
 
-@property (readonly) NSString *title;
-@property (readonly) NSURL *currentLocation;
-@property (readonly, retain) CHMTableOfContents *tableOfContents;
-@property (readonly) NSString *uniqueId;
-@property (readonly, retain) CHMContainer *container;
+@property (weak, readonly) NSString *title;
+@property (weak, readonly) NSURL *currentLocation;
+@property (readonly, strong) CHMTableOfContents *tableOfContents;
+@property (weak, readonly) NSString *uniqueId;
+@property (readonly, strong) CHMContainer *container;
 
 - (CHMContainer *)container;
 - (void)search:(NSString *)searchString;

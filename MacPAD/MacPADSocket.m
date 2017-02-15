@@ -56,10 +56,10 @@ typedef NS_ENUM(int, MacPADCharType) {
 
 - (void)initiateCheck:(id)sender;
 {
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    NSDictionary *dict = [NSDictionary dictionaryWithContentsOfURL:_fileURL];
-    [self processDictionary:dict];
-    [pool release];
+    @autoreleasepool {
+        NSDictionary *dict = [NSDictionary dictionaryWithContentsOfURL:_fileURL];
+        [self processDictionary:dict];
+    }
 }
 
 - (void)performCheck:(NSURL *)url withVersion:(NSString *)version
@@ -72,9 +72,7 @@ typedef NS_ENUM(int, MacPADCharType) {
     }
     
     // Save the current version and URL
-    [_currentVersion release];
     _currentVersion = [version copy];
-    [_fileURL release];
     _fileURL = [url copy];
     
     [NSThread detachNewThreadSelector:@selector(initiateCheck:) toTarget:self withObject:nil];
@@ -206,9 +204,8 @@ typedef NS_ENUM(int, MacPADCharType) {
         // Unregister with the notification center
         [nc removeObserver:_delegate name:MacPADErrorOccurredNotification object:self];
         [nc removeObserver:_delegate name:MacPADCheckFinishedNotification object:self];
-        [_delegate autorelease];
     }
-    _delegate = [delegate retain];
+    _delegate = delegate;
     // Register the new MacPADSocketNotification methods for the delegate
     // Only register if the delegate implements it, though
     if ([_delegate respondsToSelector:@selector(macPADErrorOccurred:)]) {
@@ -226,12 +223,12 @@ typedef NS_ENUM(int, MacPADCharType) {
     if (_releaseNotes == nil) {
         return @"";
     } else {
-        return [[_releaseNotes copy] autorelease];
+        return [_releaseNotes copy];
     }
 }
 
 - (NSString *)currentVersion {
-    return [[_currentVersion copy] autorelease];
+    return [_currentVersion copy];
 }
 
 - (NSString *)newVersion
@@ -239,7 +236,7 @@ typedef NS_ENUM(int, MacPADCharType) {
     if (_newVersion == nil) {
         return @"";
     } else {
-        return [[_newVersion copy] autorelease];
+        return [_newVersion copy];
     }
 }
 
@@ -248,7 +245,7 @@ typedef NS_ENUM(int, MacPADCharType) {
     if (_productPageURL == nil) {
         return @"";
     } else {
-        return [[_productPageURL copy] autorelease];
+        return [_productPageURL copy];
     }
 }
 
@@ -256,7 +253,7 @@ typedef NS_ENUM(int, MacPADCharType) {
     if (_releaseDate == nil) {
         return [NSDate date];
     } else {
-        return [[_releaseDate copy] autorelease];
+        return [_releaseDate copy];
     }
 }
 
@@ -274,7 +271,7 @@ typedef NS_ENUM(int, MacPADCharType) {
     if (_productDownloadURLs == nil) {
         return [NSArray array];
     } else {
-        return [[_productDownloadURLs copy] autorelease];
+        return [_productDownloadURLs copy];
     }
 }
 
@@ -342,7 +339,6 @@ typedef NS_ENUM(int, MacPADCharType) {
 	[dict objectForKey:@"fileReleaseDateM"],
 	[dict objectForKey:@"fileReleaseDateD"]];
     _releaseDate = [[NSDate alloc] initWithString:dateText];
-    [dateText release];
     
     // We're done
 }
@@ -356,16 +352,6 @@ typedef NS_ENUM(int, MacPADCharType) {
     [nc removeObserver:self];
     
     // Release objects
-    [_delegate release];
-    [_fileHandle release];
-    [_currentVersion release];
-    [_buffer release];
-    [_newVersion release];
-    [_releaseNotes release];
-    [_productPageURL release];
-    [_productDownloadURLs release];
-    
-    [super dealloc];
 }
 
 - (NSComparisonResult)compareVersion:(NSString *)versionA toVersion:(NSString *)versionB
@@ -463,7 +449,7 @@ typedef NS_ENUM(int, MacPADCharType) {
         // Nothing to do here
         return parts;
     }
-    s = [[[version substringToIndex:1] mutableCopy] autorelease];
+    s = [[version substringToIndex:1] mutableCopy];
     oldType = [self getCharType:s];
     NSInteger n = [version length] - 1;
     for (NSInteger i = 1; i <= n; ++i) {
@@ -471,7 +457,7 @@ typedef NS_ENUM(int, MacPADCharType) {
         newType = [self getCharType:character];
         if (oldType != newType || oldType == kPeriodType) {
             // We've reached a new segment
-            [parts addObject:[[s copy] autorelease]];
+            [parts addObject:[s copy]];
             [s setString:character];
         } else {
             // Add character to string and continue
@@ -481,7 +467,7 @@ typedef NS_ENUM(int, MacPADCharType) {
     }
     
     // Add the last part onto the array
-    [parts addObject:[[s copy] autorelease]];
+    [parts addObject:[s copy]];
     return parts;
 }
 

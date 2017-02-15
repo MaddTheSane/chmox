@@ -357,7 +357,7 @@ static NSString *const HISTORY_TOOL_ID = @"chmox.history";
 
 - (void)setupToolbar
 {
-    NSToolbar *toolbar = [[[NSToolbar alloc] initWithIdentifier:@"mainToolbar"] autorelease];
+    NSToolbar *toolbar = [[NSToolbar alloc] initWithIdentifier:@"mainToolbar"];
 
     [toolbar setDelegate:self];
     [toolbar setAllowsUserCustomization:YES];
@@ -431,7 +431,7 @@ static NSString *const HISTORY_TOOL_ID = @"chmox.history";
     }
     
     
-    return [item autorelease];
+    return item;
 }
 
 -(BOOL)validateToolbarItem:(NSToolbarItem*)toolbarItem

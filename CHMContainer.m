@@ -29,7 +29,7 @@
 
 + (id)containerWithContentsOfFile:(NSString *)chmFilePath
 {
-    return [[[CHMContainer alloc] initWithContentsOfFile:chmFilePath] autorelease];
+    return [[CHMContainer alloc] initWithContentsOfFile:chmFilePath];
 }
 
 
@@ -40,11 +40,10 @@
     if( self = [super init] ) {
         _handle = chm_open( [chmFilePath fileSystemRepresentation] );
         if( !_handle ) {
-            [self autorelease];
             return nil;
         }
         
-        _path = [chmFilePath retain];
+        _path = chmFilePath;
         
         _uniqueId = nil;
         _title = nil;
@@ -62,18 +61,11 @@
 - (void) dealloc
 {
     //NSLog(@"deallocating %@",self);
-    [_path release];
 
     if( _handle ) {
         chm_close( _handle );
     }
 
-    [_uniqueId release];
-    [_title release];
-    [_homePath release];
-    [_tocPath release];
-    [_indexPath release];
-	[super dealloc];
 }
 
 
@@ -171,7 +163,7 @@ static inline NSString * readTrimmedString( NSData *data, unsigned long offset )
     NSData *data = [self dataWithContentsOfObject:objectPath];
     if( data ) {
 		// NSUTF8StringEncoding / NSISOLatin1StringEncoding / NSUnicodeStringEncoding
-		return [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
+		return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     }
     
     return nil;
@@ -205,7 +197,6 @@ static inline NSString * readTrimmedString( NSData *data, unsigned long offset )
 		if( [_title length] == 0 )  {
 			_title = nil;
 		}else {
-			[_title retain];
 		}
 		
 		// Check for lack of index page
@@ -213,10 +204,6 @@ static inline NSString * readTrimmedString( NSData *data, unsigned long offset )
 			_homePath = [self findHomeForPath:@"/"];
 			//NSLog( @"Implicit home: %@", _homePath );
 		}
-		
-		[_homePath retain];
-		[_tocPath retain];
-		[_indexPath retain];
 		
 		success = YES;
     }

@@ -41,7 +41,7 @@ typedef NS_ENUM(NSInteger, MacPADResultCode) {
 - (void)performCheckWithVersion:(NSString *)version;
 - (void)performCheckWithURL:(NSURL *)url;
 - (void)performCheck;
-@property (nonatomic, retain) id<MacPADSocketNotifications> delegate;
+@property (nonatomic, strong) id<MacPADSocketNotifications> delegate;
 - (NSString *)currentVersion;
 - (NSString *)newVersion NS_RETURNS_NOT_RETAINED;
 - (NSString *)releaseNotes;

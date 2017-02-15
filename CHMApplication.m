@@ -26,11 +26,6 @@
 
 @implementation CHMApplication
 
--(void) dealloc {
-    [_versionChecker release];
-    [super dealloc];
-}
-
 -(void) awakeFromNib {
 }
 

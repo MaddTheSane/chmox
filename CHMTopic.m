@@ -32,7 +32,7 @@
 {
     if( self = [super init] ) {
         _name = [topicName copy];
-        _location = [topicLocation retain];
+        _location = topicLocation;
 		_subTopics = nil;
     }
     
@@ -47,18 +47,6 @@
     }
     
     return other;
-}
-
-- (void) dealloc
-{
-    [_name release];
-    [_location release];
-    
-    if( _subTopics ) {
-	[_subTopics release];
-    }
-
-    [super dealloc];
 }
 
 

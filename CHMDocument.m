@@ -50,14 +50,6 @@
     if( _container ) {
 		[CHMURLProtocol unregisterContainer:_container];
     }
-    [_tableOfContents release];
-    [_container release];
-    [__bookKeys release];
-    [__searchKeys release];
-	[self setLastLoadedPage:nil];
-    [self setLastLoadedPageName:nil];
-    
-    [super dealloc];
 }
 
 #pragma mark Preferences
@@ -84,7 +76,6 @@
     _windowController = [[CHMWindowController alloc] initWithWindowNibName:@"CHMDocument"];
     [self addWindowController:_windowController];
 	[_windowController setDocument: self];
-    [_windowController release];
 }
 
 
@@ -181,8 +172,6 @@
  */
 - (void) search:(NSString *)query
 {
-	[searchResults release];
-    [__searchKeys release];
 	searchResults = [[NSMutableDictionary alloc] init];
     __searchKeys = [[NSMutableOrderedSet alloc] init];
 	//..........................................................................
@@ -194,7 +183,7 @@
 	
 	//..........................................................................
 	// create an asynchronous search object 
-    SKSearchRef search = SKSearchCreate (skIndex, (CFStringRef) query, options);
+    SKSearchRef search = SKSearchCreate (skIndex, (__bridge CFStringRef) query, options);
 	
 	//..........................................................................
 	// get matches from a search object
@@ -229,7 +218,7 @@
 		
         for (pos = 0; pos < foundCount; pos++) {
             SKDocumentRef doc = (SKDocumentRef) foundDocRefs [pos];
-            NSURL* url = [(NSURL*) SKDocumentCopyURL(doc) autorelease];
+            NSURL* url = (NSURL*) CFBridgingRelease(SKDocumentCopyURL(doc));
             NSString* urlStr = [url absoluteString];
             NSString* desc;
             CFRelease(doc);
@@ -253,11 +242,11 @@
 
 - (void) addDocWithTextForURL: (NSURL *) aURL
 {
-    SKDocumentRef doc = SKDocumentCreateWithURL ( (CFURLRef) aURL );
+    SKDocumentRef doc = SKDocumentCreateWithURL ( (__bridge CFURLRef) aURL );
 	
 	NSString* path = [aURL relativePath];
     NSString * contents = [_container stringWithContentsOfObject: path ];
-    SKIndexAddDocumentWithText(skIndex, doc, (CFStringRef) contents, (Boolean) true );
+    SKIndexAddDocumentWithText(skIndex, doc, (__bridge CFStringRef) contents, (Boolean) true );
     CFRelease(doc);
 }
 
@@ -291,7 +280,7 @@
 	[[NSFileManager defaultManager] createFileAtPath:path contents:nil attributes:nil];
     NSURL* url = [NSURL fileURLWithPath: path];
     SKIndexType type = kSKIndexInverted;
-    skIndex = SKIndexCreateWithURL( (CFURLRef) url, (CFStringRef) @"PrimaryIndex", (SKIndexType) type, (CFDictionaryRef) NULL );
+    skIndex = SKIndexCreateWithURL( (__bridge CFURLRef) url, CFSTR("PrimaryIndex"), (SKIndexType) type, (CFDictionaryRef) NULL );
 	NSLog(@"New index: %@", skIndex);
 	[self populateIndex];
 }
@@ -306,8 +295,8 @@
 	if ([[NSFileManager defaultManager] fileExistsAtPath: path]) {
 		NSURL* url = [NSURL fileURLWithPath:path];
 		// open the specified index
-		skIndex = SKIndexOpenWithURL( (CFURLRef) url, CFSTR("PrimaryIndex"), true );
-		docTitles = [[NSMutableDictionary dictionaryWithContentsOfFile: tocPath] retain];
+		skIndex = SKIndexOpenWithURL( (__bridge CFURLRef) url, CFSTR("PrimaryIndex"), true );
+		docTitles = [NSMutableDictionary dictionaryWithContentsOfFile: tocPath];
 	} else {
 		docTitles = [[NSMutableDictionary alloc] init];
 		[self createNewIndexAtPath: path];

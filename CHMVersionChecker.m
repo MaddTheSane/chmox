@@ -77,11 +77,6 @@ static NSString *FIRST_TIME_PREF = @"VersionChecker:firstTime";
     [_preferenceButton3 setState:preferenceState];
 }
 
--(void) dealloc {
-    [_macPAD release];
-    [super dealloc];
-}
-
 #pragma mark Activation
 
 - (void)checkForNewVersion {

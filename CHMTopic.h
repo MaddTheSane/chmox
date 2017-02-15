@@ -31,7 +31,7 @@
 - (id)initWithName:(NSString *)topicName location:(NSURL *)topicLocation;
 
 @property (copy) NSString *name;
-@property (retain) NSURL *location;
+@property (strong) NSURL *location;
 @property (readonly) NSUInteger countOfSubTopics;
 - (CHMTopic *)objectInSubTopicsAtIndex:(NSUInteger)index;
 

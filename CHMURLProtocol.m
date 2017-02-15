@@ -82,7 +82,7 @@ static NSMutableDictionary *_baseURLs = nil;
 	    kCFStringEncodingWindowsLatin1      //<#CFStringEncoding encoding#>
         );
         
-        url = [NSURL URLWithString:(NSString*)str relativeToURL:baseURL];
+        url = [NSURL URLWithString:(__bridge NSString*)str relativeToURL:baseURL];
 		CFRelease(str);
     }
     
@@ -148,8 +148,6 @@ static NSMutableDictionary *_baseURLs = nil;
     
     [[self client] URLProtocol:self didLoadData:data];
     [[self client] URLProtocolDidFinishLoading:self];
-
-    [response release];
 }
 
 
