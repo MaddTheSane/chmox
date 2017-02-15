@@ -11,20 +11,8 @@
 /* Class = "NSTabViewItem"; label = "Signets"; ObjectID = "40"; */
 "40.label" = "Signets";
 
-/* Class = "NSTableColumn"; headerCell.title = "Rank"; ObjectID = "50"; */
-"50.headerCell.title" = "Rank";
-
-/* Class = "NSTableColumn"; headerCell.title = "Location"; ObjectID = "51"; */
-"51.headerCell.title" = "Location";
-
-/* Class = "NSTableColumn"; headerCell.title = "Title"; ObjectID = "53"; */
-"53.headerCell.title" = "Title";
-
-/* Class = "NSButtonCell"; title = "+"; ObjectID = "75"; */
-"75.title" = "+";
-
-/* Class = "NSButtonCell"; title = "-"; ObjectID = "76"; */
-"76.title" = "-";
+/* Class = "NSTableColumn"; headerCell.title = "Emplacement"; ObjectID = "53"; */
+"53.headerCell.title" = "Emplacement";
 
 /* Class = "NSButtonCell"; title = "Rechercher les résultats précédents."; ObjectID = "80"; */
 "80.title" = "Rechercher les résultats précédents.";
@@ -35,11 +23,14 @@
 /* Class = "NSButtonCell"; title = "Rechercher uniquement dans les titres."; ObjectID = "82"; */
 "82.title" = "Rechercher uniquement dans les titres.";
 
-/* Class = "NSSearchFieldCell"; title = "Word to search"; ObjectID = "119"; */
-"119.title" = "Word to search";
+/* Class = "NSSearchFieldCell"; placeholderString = "Mots à chercher"; ObjectID = "131"; */
+"131.placeholderString" = "Mots à chercher";
 
-/* Class = "NSButtonCell"; title = "Rechercher les résultats précédents."; ObjectID = "121"; */
-"121.title" = "Rechercher les résultats précédents.";
+/* Class = "NSButtonCell"; title = "+"; ObjectID = "132"; */
+"132.title" = "+";
 
-/* Class = "NSButtonCell"; title = "+"; ObjectID = "122"; */
-"122.title" = "+";
+/* Class = "NSButtonCell"; title = "-"; ObjectID = "133"; */
+"133.title" = "-";
+
+/* Class = "NSButtonCell"; title = "Rechercher les résultats précédents."; ObjectID = "135"; */
+"135.title" = "Rechercher les résultats précédents.";
