@@ -42,8 +42,8 @@
 - (id)copyWithZone:(NSZone *)zone {
     CHMTopic *other = [[CHMTopic allocWithZone: zone] initWithName:_name location:_location];
 
-    if( _subTopics ) {
-	other->_subTopics = [_subTopics mutableCopy];
+    if (_subTopics) {
+        other->_subTopics = [_subTopics mutableCopy];
     }
     
     return other;
@@ -73,7 +73,7 @@
 
 - (void)addObject:(CHMTopic *)topic
 {
-    if( !_subTopics ) {
+    if (!_subTopics) {
         _subTopics = [[NSMutableArray alloc] init];
     }
     
@@ -82,7 +82,7 @@
 
 - (void)insertObject:(CHMTopic *)topic inSubTopicsAtIndex:(NSUInteger)theIndex
 {
-    if( !_subTopics ) {
+    if (!_subTopics) {
         _subTopics = [[NSMutableArray alloc] init];
     }
     
@@ -91,8 +91,8 @@
 
 - (void)removeObjectFromSubTopicsAtIndex:(NSUInteger)theIndex
 {
-    if( _subTopics ) {
-	[_subTopics removeObjectAtIndex:theIndex];
+    if (_subTopics) {
+        [_subTopics removeObjectAtIndex:theIndex];
     }
 }
 

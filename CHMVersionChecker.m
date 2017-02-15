@@ -92,11 +92,10 @@ static NSString *FIRST_TIME_PREF = @"VersionChecker:firstTime";
     //NSLog(@"CHMVersionChecker :: automaticallyCheckForNewVersion");
 
     @synchronized( self ) {
-
-	if( [self shouldAutomaticallyCheckForNewVersion] ) {
-	    _isAutomaticCheck = TRUE;
-	    [_macPAD performCheck];
-	}
+        if( [self shouldAutomaticallyCheckForNewVersion] ) {
+            _isAutomaticCheck = TRUE;
+            [_macPAD performCheck];
+        }
     }
 }
 
@@ -147,7 +146,7 @@ static NSString *FIRST_TIME_PREF = @"VersionChecker:firstTime";
 
 - (void)macPADCheckFinished:(NSNotification *)notification
 {
-    if( [[[notification userInfo] objectForKey:MacPADNewVersionAvailable] boolValue] ) {
+    if ([[[notification userInfo] objectForKey:MacPADNewVersionAvailable] boolValue]) {
         // New version available
         [self updateNewVersionAvailability:YES];
         
@@ -179,8 +178,7 @@ static NSString *FIRST_TIME_PREF = @"VersionChecker:firstTime";
     if (isNewVersionAvailable) {
         [prefs setInteger:[prefs integerForKey:DAYS_BETWEEN_AUTOMATIC_ALERT_CHECKS_PREF]
                    forKey:DAYS_BETWEEN_AUTOMATIC_CHECKS_PREF];
-    }
-    else {
+    } else {
         [prefs setInteger:[prefs integerForKey:DAYS_BETWEEN_AUTOMATIC_NORMAL_CHECKS_PREF]
                    forKey:DAYS_BETWEEN_AUTOMATIC_CHECKS_PREF];
     }
@@ -191,18 +189,18 @@ static NSString *FIRST_TIME_PREF = @"VersionChecker:firstTime";
 - (BOOL)shouldAutomaticallyCheckForNewVersion {
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     
-    if( [prefs boolForKey:AUTOMATIC_CHECK_PREF] ) {
-        int daysSinceLastCheck = -[[prefs objectForKey:LAST_CHECK_DATE_PREF] timeIntervalSinceNow] / ( 60 * 60 * 24 );
+    if ([prefs boolForKey:AUTOMATIC_CHECK_PREF]) {
+        NSInteger daysSinceLastCheck = -[[prefs objectForKey:LAST_CHECK_DATE_PREF] timeIntervalSinceNow] / ( 60 * 60 * 24 );
         NSLog( @"CHMVersionChecker: %d days since last time", daysSinceLastCheck );
         
-        return ( daysSinceLastCheck >= [prefs integerForKey:DAYS_BETWEEN_AUTOMATIC_CHECKS_PREF] );
+        return (daysSinceLastCheck >= [prefs integerForKey:DAYS_BETWEEN_AUTOMATIC_CHECKS_PREF]);
     }
     
     return NO;
 }
 
 - (BOOL)shouldNotifyLackOfNewVersion {
-    if( _isAutomaticCheck ) {
+    if (_isAutomaticCheck) {
         return [[NSUserDefaults standardUserDefaults] boolForKey:FIRST_TIME_PREF];
     }
     

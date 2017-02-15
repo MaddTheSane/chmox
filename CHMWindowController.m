@@ -97,7 +97,7 @@ static NSString *const HISTORY_TOOL_ID = @"chmox.history";
 {
     //NSLog( @"WebPolicyDelegate: decidePolicyForNewWindowAction called %@", [request URL]);
 
-    if( [CHMURLProtocol canHandleURL:[request URL]] ) {
+    if ([CHMURLProtocol canHandleURL:[request URL]] ) {
 		// Need testing
 		[listener use];
     } else {
@@ -128,7 +128,7 @@ static NSString *const HISTORY_TOOL_ID = @"chmox.history";
 } 
 
 - (NSArray *)webView:(WebView *)sender 
-    contextMenuItemsForElement:(NSDictionary *)element
+contextMenuItemsForElement:(NSDictionary *)element
     defaultMenuItems:(NSArray *)defaultMenuItems
 {
     //NSLog( @"contextMenuItemsForElement: %@", element );
@@ -151,8 +151,8 @@ static NSString *const HISTORY_TOOL_ID = @"chmox.history";
 
 - (NSString *)view:(NSView *)view
   stringForToolTip:(NSToolTipTag)tag
-	     point:(NSPoint)point
-	  userData:(void *)userData
+             point:(NSPoint)point
+          userData:(void *)userData
 {
     if( view == _tocView ) {
         NSInteger row = [_tocView rowAtPoint:point];
@@ -224,24 +224,24 @@ static NSString *const HISTORY_TOOL_ID = @"chmox.history";
 - (void)keyDown:(NSEvent *)theEvent
 {
     if( [theEvent modifierFlags] & NSCommandKeyMask ) {
-	NSString *keyString = [theEvent charactersIgnoringModifiers];
-//	NSLog( @"CHMWindowController:keyDown %@", [keyString description] );
-	
-	switch( [keyString characterAtIndex:0] ) {
-	    case NSLeftArrowFunctionKey:
-			if( [_contentsView canGoBack] ) {
-				[_contentsView goBack];
-                return;
-			}
-            break;
-		
-	    case NSRightArrowFunctionKey:
-            if( [_contentsView canGoForward] ) {
-                [_contentsView goForward];
-                return;
-            }
-            break;
-		}
+        NSString *keyString = [theEvent charactersIgnoringModifiers];
+        //	NSLog( @"CHMWindowController:keyDown %@", [keyString description] );
+        
+        switch( [keyString characterAtIndex:0] ) {
+            case NSLeftArrowFunctionKey:
+                if( [_contentsView canGoBack] ) {
+                    [_contentsView goBack];
+                    return;
+                }
+                break;
+                
+            case NSRightArrowFunctionKey:
+                if( [_contentsView canGoForward] ) {
+                    [_contentsView goForward];
+                    return;
+                }
+                break;
+        }
     }
 
     [super keyDown:theEvent];
@@ -260,7 +260,7 @@ static NSString *const HISTORY_TOOL_ID = @"chmox.history";
 {
     NSInteger selectedRow = [_tocView selectedRow];
     
-    if( selectedRow >= 0 ) {
+    if (selectedRow >= 0) {
 		CHMTopic *topic = [_tocView itemAtRow:selectedRow];
 		NSURL *location = [topic location];
 	

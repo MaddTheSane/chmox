@@ -25,7 +25,7 @@
 @interface CHMTopic : NSObject <NSCopying> {
     NSString *_name;
     NSURL *_location;
-    NSMutableArray *_subTopics;
+    NSMutableArray<CHMTopic*> *_subTopics;
 }
 
 - (id)initWithName:(NSString *)topicName location:(NSURL *)topicLocation;

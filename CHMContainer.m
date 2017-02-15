@@ -95,13 +95,13 @@ static inline unsigned int readLong( NSData *data, off_t offset ) {
 }
 
 static inline NSString * readString( NSData *data, unsigned long offset ) {
-    const char *stringData = (char *)[data bytes] + offset;
-    return [NSString stringWithUTF8String:stringData];
+    const char *stringData = (const char *)[data bytes] + offset;
+    return @(stringData);
 }
 
 static inline NSString * readTrimmedString( NSData *data, unsigned long offset ) {
-    const char *stringData = (char *)[data bytes] + offset;
-    return [[NSMutableString stringWithUTF8String:stringData] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    const char *stringData = (const char *)[data bytes] + offset;
+    return [@(stringData) stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }
 
 #pragma mark CHM Object loading
@@ -227,8 +227,8 @@ static inline NSString * readTrimmedString( NSData *data, unsigned long offset )
 //This is a helper method for loadMetadata
 - (void)readWindowsDataFrom:(NSData *)windowsData readStringsDataFrom:(NSData *)stringsData
 {
-	const unsigned long entryCount = readLong( windowsData, 0 );
-	const unsigned long entrySize = readLong( windowsData, 4 );
+	const unsigned int entryCount = readLong( windowsData, 0 );
+	const unsigned int entrySize = readLong( windowsData, 4 );
 	//NSLog( @"Entries: %u x %u bytes", entryCount, entrySize );
 	
 	for( int entryIndex = 0; entryIndex < entryCount; ++entryIndex ) {

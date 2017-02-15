@@ -22,9 +22,7 @@
 #import <Foundation/Foundation.h>
 @class CHMContainer;
 
-@interface CHMURLProtocol : NSURLProtocol {
-
-}
+@interface CHMURLProtocol : NSURLProtocol
 
 + (void)registerContainer:(CHMContainer *)container;
 + (void)unregisterContainer:(CHMContainer *)container;

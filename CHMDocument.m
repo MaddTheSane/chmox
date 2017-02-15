@@ -36,7 +36,7 @@
 #pragma mark NSObject
 - (id) init
 {
-    if( self = [super init] ) {
+    if (self = [super init]) {
         _container = nil;
         KEY_savedBookmarks = @"Chmox:savedBookmarks";
         __bookKeys = [[NSMutableOrderedSet alloc] init];
@@ -47,7 +47,7 @@
 
 - (void) dealloc
 {
-    if( _container ) {
+    if (_container) {
 		[CHMURLProtocol unregisterContainer:_container];
     }
 }
@@ -213,8 +213,8 @@
 		// get document locations for matches and display results.
 		//     alternatively, you can collect results over iterations of this loop
 		//     for display later.
-        SKIndexCopyDocumentRefsForDocumentIDs ( (SKIndexRef) skIndex, (CFIndex) foundCount, (SKDocumentID *) foundDocIDs,
-											   (SKDocumentRef *) foundDocRefs);
+        SKIndexCopyDocumentRefsForDocumentIDs((SKIndexRef)skIndex, (CFIndex)foundCount, (SKDocumentID*)foundDocIDs,
+                                              (SKDocumentRef*)foundDocRefs);
 		
         for (pos = 0; pos < foundCount; pos++) {
             SKDocumentRef doc = (SKDocumentRef) foundDocRefs [pos];
