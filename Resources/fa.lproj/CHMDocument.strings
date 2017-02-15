@@ -35,11 +35,11 @@
 /* Class = "NSButtonCell"; title = "جستجو فقط در عناوین"; ObjectID = "82"; */
 "82.title" = "جستجو فقط در عناوین";
 
-/* Class = "NSSearchFieldCell"; title = "کلمه برای جستجو"; ObjectID = "112"; */
-"112.title" = "کلمه برای جستجو";
+/* Class = "NSSearchFieldCell"; title = "کلمه برای جستجو"; ObjectID = "119"; */
+"119.title" = "کلمه برای جستجو";
 
-/* Class = "NSButtonCell"; title = "Rechercher les résultats précédents."; ObjectID = "113"; */
-"113.title" = "Rechercher les résultats précédents.";
+/* Class = "NSButtonCell"; title = "Rechercher les résultats précédents."; ObjectID = "121"; */
+"121.title" = "Rechercher les résultats précédents.";
 
-/* Class = "NSButtonCell"; title = "+"; ObjectID = "114"; */
-"114.title" = "+";
+/* Class = "NSButtonCell"; title = "+"; ObjectID = "122"; */
+"122.title" = "+";

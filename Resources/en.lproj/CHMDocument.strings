@@ -38,8 +38,8 @@
 /* Class = "NSSearchFieldCell"; title = "Word to search"; ObjectID = "119"; */
 "119.title" = "Word to search";
 
-/* Class = "NSButtonCell"; title = "Rechercher les résultats précédents."; ObjectID = "121"; */
-"121.title" = "Rechercher les résultats précédents.";
+/* Class = "NSButtonCell"; title = "Search previous results"; ObjectID = "121"; */
+"121.title" = "Search previous results";
 
 /* Class = "NSButtonCell"; title = "+"; ObjectID = "122"; */
 "122.title" = "+";

@@ -35,11 +35,11 @@
 /* Class = "NSButtonCell"; title = "Suche nur in den Titeln."; ObjectID = "82"; */
 "82.title" = "Suche nur in den Titeln.";
 
-/* Class = "NSSearchFieldCell"; title = "Gesuchtes Word"; ObjectID = "112"; */
-"112.title" = "Gesuchtes Word";
+/* Class = "NSSearchFieldCell"; title = "Gesuchtes Word"; ObjectID = "119"; */
+"119.title" = "Gesuchtes Word";
 
-/* Class = "NSButtonCell"; title = "Rechercher les résultats précédents."; ObjectID = "113"; */
-"113.title" = "Rechercher les résultats précédents.";
+/* Class = "NSButtonCell"; title = "Rechercher les résultats précédents."; ObjectID = "121"; */
+"121.title" = "Rechercher les résultats précédents.";
 
-/* Class = "NSButtonCell"; title = "+"; ObjectID = "114"; */
-"114.title" = "+";
+/* Class = "NSButtonCell"; title = "+"; ObjectID = "122"; */
+"122.title" = "+";
