@@ -34,9 +34,9 @@ struct chmFile;
     NSString *_indexPath;
 }
 
-+ (id)containerWithContentsOfFile:(NSString *)path;
++ (instancetype)containerWithContentsOfFile:(NSString *)path;
 
-- (id)initWithContentsOfFile:(NSString *)path;
+- (instancetype)initWithContentsOfFile:(NSString *)path;
 
 - (BOOL)hasObjectWithPath: (NSString *)path;
 - (NSData *)dataWithContentsOfObject: (NSString *)objectPath;
@@ -46,9 +46,9 @@ struct chmFile;
 - (BOOL)loadMetadata;
 - (NSString *)findHomeForPath: (NSString *)basePath;
 
-- (NSString *)title;
-- (NSString *)uniqueId;
-- (NSString *)tocPath;
-- (NSString *)homePath;
+@property (readonly, copy) NSString *title;
+@property (readonly, copy) NSString *uniqueId;
+@property (readonly, copy) NSString *tocPath;
+@property (readonly, copy) NSString *homePath;
 
 @end

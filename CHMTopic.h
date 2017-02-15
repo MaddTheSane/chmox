@@ -1,6 +1,6 @@
 //
 // Chmox a CHM file viewer for Mac OS X
-// Copyright (c) 2004 Stéphane Boisson.
+// Copyright (c) 2004 St√©phane Boisson.
 //
 // Chmox is free software; you can redistribute it and/or modify it
 // under the terms of the GNU Lesser General Public License as published
@@ -32,13 +32,8 @@
 
 @property (copy) NSString *name;
 @property (retain) NSURL *location;
-- (NSString *)name;
-- (NSURL *)location;
-- (NSUInteger)countOfSubTopics;
+@property (readonly) NSUInteger countOfSubTopics;
 - (CHMTopic *)objectInSubTopicsAtIndex:(NSUInteger)index;
-
-- (void)setName:(NSString *)text;
-- (void)setLocation:(NSURL *)URL;
 
 - (void)addObject:(CHMTopic *)topic;
 - (void)insertObject:(CHMTopic *)topic inSubTopicsAtIndex:(NSUInteger)index;

@@ -75,26 +75,10 @@
 
 
 #pragma mark Accessors
-
-- (NSString *)homePath
-{
-    return _homePath;
-}
-
-- (NSString *)title
-{
-    return _title;
-}
-
-- (NSString *)uniqueId 
-{
-    return _uniqueId;
-}
-
-- (NSString *)tocPath
-{
-    return _tocPath;
-}
+@synthesize homePath = _homePath;
+@synthesize title = _title;
+@synthesize uniqueId = _uniqueId;
+@synthesize tocPath = _tocPath;
 
 #pragma mark Basic CHM reading operations
 
@@ -103,7 +87,7 @@ static inline unsigned short readShort( NSData *data, unsigned int offset ) {
     unsigned short value;
     
     [data getBytes:(void *)&value range:valueRange];
-    return NSSwapLittleShortToHost( value );
+    return CFSwapInt16LittleToHost( value );
 }
 
 static inline unsigned int readLong( NSData *data, off_t offset ) {
@@ -111,7 +95,7 @@ static inline unsigned int readLong( NSData *data, off_t offset ) {
     unsigned int value;
     
     [data getBytes:(void *)&value range:valueRange];
-    return CFSwapInt32( value );
+    return CFSwapInt32LittleToHost( value );
 }
 
 static inline NSString * readString( NSData *data, unsigned long offset ) {

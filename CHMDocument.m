@@ -1,6 +1,6 @@
 //
 // Chmox a CHM file viewer for Mac OS X
-// Copyright (c) 2004 Stéphane Boisson.
+// Copyright (c) 2004 St√©phane Boisson.
 //
 // Chmox is free software; you can redistribute it and/or modify it
 // under the terms of the GNU Lesser General Public License as published
@@ -90,10 +90,7 @@
     return [CHMURLProtocol URLWithPath:[_container homePath] inContainer:_container];
 }
 
-- (CHMTableOfContents *)tableOfContents
-{
-    return _tableOfContents;
-}
+@synthesize tableOfContents = _tableOfContents;
 
 - (NSString *)uniqueId
 {

@@ -1,6 +1,6 @@
 //
 // Chmox a CHM file viewer for Mac OS X
-// Copyright (c) 2004 Stéphane Boisson.
+// Copyright (c) 2004 St√©phane Boisson.
 //
 // Chmox is free software; you can redistribute it and/or modify it
 // under the terms of the GNU Lesser General Public License as published
@@ -25,7 +25,7 @@
 
 @implementation CHMVersionChecker
 
-NSString *AUTOMATIC_CHECK_PREF = @"VersionChecker:automaticCheck";
+NSString *const AUTOMATIC_CHECK_PREF = @"VersionChecker:automaticCheck";
 static NSString *DAYS_BETWEEN_AUTOMATIC_CHECKS_PREF = @"VersionChecker:daysBetweenAutomaticChecks";
 static NSString *DAYS_BETWEEN_AUTOMATIC_NORMAL_CHECKS_PREF = @"VersionChecker:daysBetweenAutomaticNormalChecks";
 static NSString *DAYS_BETWEEN_AUTOMATIC_ALERT_CHECKS_PREF = @"VersionChecker:daysBetweenAutomaticAlertChecks";
@@ -37,11 +37,11 @@ static NSString *FIRST_TIME_PREF = @"VersionChecker:firstTime";
 
 + (void)initialize {
     [[NSUserDefaults standardUserDefaults] registerDefaults: [NSDictionary dictionaryWithObjectsAndKeys:
-	@"yes",  FIRST_TIME_PREF,
-	@"yes",  AUTOMATIC_CHECK_PREF,
-	@"0",  DAYS_BETWEEN_AUTOMATIC_CHECKS_PREF,
-	@"7",  DAYS_BETWEEN_AUTOMATIC_NORMAL_CHECKS_PREF,
-	@"1",  DAYS_BETWEEN_AUTOMATIC_ALERT_CHECKS_PREF,
+	@YES,  FIRST_TIME_PREF,
+	@YES,  AUTOMATIC_CHECK_PREF,
+	@0,  DAYS_BETWEEN_AUTOMATIC_CHECKS_PREF,
+	@7,  DAYS_BETWEEN_AUTOMATIC_NORMAL_CHECKS_PREF,
+	@1,  DAYS_BETWEEN_AUTOMATIC_ALERT_CHECKS_PREF,
 	[NSDate distantPast],  LAST_CHECK_DATE_PREF,
         nil]
     ];
