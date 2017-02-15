@@ -36,15 +36,16 @@ static NSString *FIRST_TIME_PREF = @"VersionChecker:firstTime";
 #pragma mark Lifecycle
 
 + (void)initialize {
-    [[NSUserDefaults standardUserDefaults] registerDefaults: [NSDictionary dictionaryWithObjectsAndKeys:
-	@YES,  FIRST_TIME_PREF,
-	@YES,  AUTOMATIC_CHECK_PREF,
-	@0,  DAYS_BETWEEN_AUTOMATIC_CHECKS_PREF,
-	@7,  DAYS_BETWEEN_AUTOMATIC_NORMAL_CHECKS_PREF,
-	@1,  DAYS_BETWEEN_AUTOMATIC_ALERT_CHECKS_PREF,
-	[NSDate distantPast],  LAST_CHECK_DATE_PREF,
-        nil]
-    ];
+    [[NSUserDefaults standardUserDefaults]
+     registerDefaults:
+     @{FIRST_TIME_PREF: @YES,
+       AUTOMATIC_CHECK_PREF: @YES,
+       DAYS_BETWEEN_AUTOMATIC_CHECKS_PREF: @0,
+       DAYS_BETWEEN_AUTOMATIC_NORMAL_CHECKS_PREF: @7,
+       DAYS_BETWEEN_AUTOMATIC_ALERT_CHECKS_PREF: @1,
+       LAST_CHECK_DATE_PREF: [NSDate distantPast],
+       }
+     ];
 }
 
 

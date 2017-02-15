@@ -43,9 +43,9 @@
 {
     if( _container ) {
 	[CHMURLProtocol unregisterContainer:_container];
+    }
 	[_tableOfContents release];
 	[_container release];
-    }
     
     [super dealloc];
 }
@@ -63,7 +63,7 @@
 - (BOOL)readFromFile:(NSString *)fileName ofType:(NSString *)docType {
     NSLog( @"CHMDocument:readFromFile:%@", fileName );
     
-    _container = [CHMContainer containerWithContentsOfFile:fileName];
+    _container = [[CHMContainer alloc] initWithContentsOfFile:fileName];
     if( !_container ) return NO;
 
     [CHMURLProtocol registerContainer:_container];

@@ -764,7 +764,7 @@ struct chmFile *chm_open(const char *filename)
     struct chmUnitInfo          uiSpan;
 #endif
     struct chmUnitInfo          uiLzxc;
-    struct chmLzxcControlData   ctlData;
+	struct chmLzxcControlData   ctlData = {0};
 
     /* allocate handle */
     newHandle = (struct chmFile *)malloc(sizeof(struct chmFile));
@@ -953,6 +953,9 @@ struct chmFile *chm_open(const char *filename)
         newHandle->reset_blkcount = newHandle->reset_interval /
                     (newHandle->window_size / 2);
 #else
+		if ((newHandle->window_size / 2) == 0) {
+			newHandle->reset_blkcount = 0;
+		} else
         newHandle->reset_blkcount = newHandle->reset_interval    /
                                     (newHandle->window_size / 2) *
                                     ctlData.windowsPerReset;
@@ -1509,10 +1512,10 @@ static Int64 _chm_decompress_region(struct chmFile *h,
                                     UInt64 start,
                                     Int64 len)
 {
-    UInt64 nBlock, nOffset;
+    UInt64 nBlock, nOffset = 0;
     UInt64 nLen;
     UInt64 gotLen;
-    UChar *ubuffer;
+    UChar *ubuffer = NULL;
 
     if (len <= 0)
         return (Int64)0;

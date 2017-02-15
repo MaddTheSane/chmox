@@ -146,7 +146,7 @@ enum {
         [self returnError:kMacPADResultMissingValues message:@"MacPAD.url file was not found"];
         return;
     }
-    NSString *contents = [NSString stringWithContentsOfFile:path];
+    NSString *contents = [NSString stringWithContentsOfFile:path usedEncoding:NULL error:NULL];
     if (contents == nil) {
         // The file can't be opened
         [self returnError:kMacPADResultMissingValues message:@"The MacPAD.url file can't be opened"];
@@ -455,7 +455,7 @@ enum {
         newType = [self getCharType:character];
         if (oldType != newType || oldType == kPeriodType) {
             // We've reached a new segment
-            [parts addObject:[s copy]];
+            [parts addObject:[[s copy] autorelease]];
             [s setString:character];
         } else {
             // Add character to string and continue
@@ -465,7 +465,7 @@ enum {
     }
     
     // Add the last part onto the array
-    [parts addObject:[s copy]];
+    [parts addObject:[[s copy] autorelease]];
     return parts;
 }
 

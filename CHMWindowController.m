@@ -30,15 +30,15 @@
 @implementation CHMWindowController
 
 // Tab items
-static NSString *TOC_TAB_ID = @"tocTab";
-static NSString *SEARCH_TAB_ID = @"searchTab";
-static NSString *FAVORITES_TAB_ID = @"favoritesTab";
+static NSString *const TOC_TAB_ID = @"tocTab";
+static NSString *const SEARCH_TAB_ID = @"searchTab";
+static NSString *const FAVORITES_TAB_ID = @"favoritesTab";
 
 // Toolbar items
-static NSString *DRAWER_TOGGLE_TOOL_ID = @"chmox.drawerToggle";
-static NSString *SMALLER_TEXT_TOOL_ID = @"chmox.smallerText";
-static NSString *BIGGER_TEXT_TOOL_ID = @"chmox.biggerText";
-static NSString *HISTORY_TOOL_ID = @"chmox.history";
+static NSString *const DRAWER_TOGGLE_TOOL_ID = @"chmox.drawerToggle";
+static NSString *const SMALLER_TEXT_TOOL_ID = @"chmox.smallerText";
+static NSString *const BIGGER_TEXT_TOOL_ID = @"chmox.biggerText";
+static NSString *const HISTORY_TOOL_ID = @"chmox.history";
 
 
 #pragma mark NSWindowController overridden method
@@ -137,7 +137,7 @@ static NSString *HISTORY_TOOL_ID = @"chmox.history";
 }
 
 - (void)webView:(WebView *)sender mouseDidMoveOverElement:(NSDictionary *)elementInformation
-  modifierFlags:(unsigned int)modifierFlags
+  modifierFlags:(NSUInteger)modifierFlags
 {
     //NSLog( @"mouseDidMoveOverElement: %@", elementInformation );
 }
@@ -157,7 +157,7 @@ static NSString *HISTORY_TOOL_ID = @"chmox.history";
 	}
     }
     
-    return nil;
+    return @"";
 }
 
 - (void)updateToolTipRects
@@ -277,7 +277,7 @@ static NSString *HISTORY_TOOL_ID = @"chmox.history";
     NSPrintOperation *op = [NSPrintOperation printOperationWithView:docView
                                                           printInfo:[[self document] printInfo]];
 				
-    [op setShowPanels:YES];
+    [op setShowsPrintPanel:YES];
 
     // Run operation, which shows the Print panel if showPanels was YES
     [[self document] runModalPrintOperation:op
@@ -300,8 +300,7 @@ static NSString *HISTORY_TOOL_ID = @"chmox.history";
 
 - (NSArray *)toolbarAllowedItemIdentifiers:(NSToolbar*)toolbar
 {
-    return [NSArray arrayWithObjects:
-        DRAWER_TOGGLE_TOOL_ID,
+    return @[DRAWER_TOGGLE_TOOL_ID,
         SMALLER_TEXT_TOOL_ID,
         BIGGER_TEXT_TOOL_ID,
 //        HISTORY_TOOL_ID,
@@ -310,18 +309,15 @@ static NSString *HISTORY_TOOL_ID = @"chmox.history";
         NSToolbarSpaceItemIdentifier,
         NSToolbarFlexibleSpaceItemIdentifier,
         NSToolbarCustomizeToolbarItemIdentifier,
-        nil
         ];
 }
 
 - (NSArray *)toolbarDefaultItemIdentifiers:(NSToolbar*)toolbar
 {
-    return [NSArray arrayWithObjects:
-        DRAWER_TOGGLE_TOOL_ID,
+    return @[DRAWER_TOGGLE_TOOL_ID,
         SMALLER_TEXT_TOOL_ID,
         BIGGER_TEXT_TOOL_ID,
         NSToolbarFlexibleSpaceItemIdentifier,
-        nil
         ];
 }
 

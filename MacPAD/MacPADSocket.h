@@ -41,7 +41,7 @@ typedef enum MacPADResultCode {
 - (void)performCheck;
 - (void)setDelegate:(id)delegate;
 - (NSString *)currentVersion;
-- (NSString *)newVersion;
+- (NSString *)newVersion NS_RETURNS_NOT_RETAINED;
 - (NSString *)releaseNotes;
 - (NSDate *)releaseDate;
 - (NSString *)productPageURL;

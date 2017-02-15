@@ -77,12 +77,13 @@ static NSMutableDictionary *_baseURLs = nil;
 	CFStringRef str = CFURLCreateStringByAddingPercentEscapes(
             nil,                                // allocator
             (CFStringRef)path,                  // <#CFStringRef originalString#>
-	    (CFStringRef)@"%#",                 // <#CFStringRef charactersToLeaveUnescaped#>
+	    CFSTR("%#"),                 // <#CFStringRef charactersToLeaveUnescaped#>
 	    nil,                                // <#CFStringRef legalURLCharactersToBeEscaped#>,
 	    kCFStringEncodingWindowsLatin1      //<#CFStringEncoding encoding#>
         );
         
         url = [NSURL URLWithString:(NSString*)str relativeToURL:baseURL];
+		CFRelease(str);
     }
     
     return url;

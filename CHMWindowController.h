@@ -20,10 +20,12 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <WebKit/WebUIDelegate.h>
+#import <WebKit/WebPolicyDelegate.h>
 
 @class WebView;
 
-@interface CHMWindowController : NSWindowController <NSToolbarDelegate>
+@interface CHMWindowController : NSWindowController <NSToolbarDelegate, NSOutlineViewDelegate, WebUIDelegate, WebPolicyDelegate>
 {
     IBOutlet WebView *_contentsView;
     IBOutlet NSDrawer *_drawer;

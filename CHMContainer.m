@@ -1,6 +1,6 @@
 //
 // Chmox a CHM file viewer for Mac OS X
-// Copyright (c) 2004 Stéphane Boisson.
+// Copyright (c) 2004 St√©phane Boisson.
 //
 // Chmox is free software; you can redistribute it and/or modify it
 // under the terms of the GNU Lesser General Public License as published
@@ -29,7 +29,7 @@
 
 + (id)containerWithContentsOfFile:(NSString *)chmFilePath
 {
-    return [[CHMContainer alloc] initWithContentsOfFile:chmFilePath];
+    return [[[CHMContainer alloc] initWithContentsOfFile:chmFilePath] autorelease];
 }
 
 
@@ -39,7 +39,10 @@
 {
     if( self = [super init] ) {
 	_handle = chm_open( [chmFilePath fileSystemRepresentation] );
-	if( !_handle ) return nil;
+		if( !_handle ) {
+			[self autorelease];
+			return nil;
+		}
 	
 	_path = [chmFilePath retain];
 	
