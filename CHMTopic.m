@@ -1,6 +1,6 @@
 //
 // Chmox a CHM file viewer for Mac OS X
-// Copyright (c) 2004 Stphane Boisson.
+// Copyright (c) 2004 Stéphane Boisson.
 //
 // Chmox is free software; you can redistribute it and/or modify it
 // under the terms of the GNU Lesser General Public License as published
@@ -23,13 +23,15 @@
 
 
 @implementation CHMTopic
+@synthesize name = _name;
+@synthesize location = _location;
 
 #pragma mark Lifecycle
 
 - (id)initWithName:(NSString *)topicName location:(NSURL *)topicLocation
 {
     if( self = [super init] ) {
-        _name = [topicName retain];
+        _name = [topicName copy];
         _location = [topicLocation retain];
 		_subTopics = nil;
     }
@@ -37,11 +39,11 @@
     return self;
 }
 
-- copyWithZone:(NSZone *)zone {
+- (id)copyWithZone:(NSZone *)zone {
     CHMTopic *other = [[CHMTopic allocWithZone: zone] initWithName:_name location:_location];
 
     if( _subTopics ) {
-	other->_subTopics = [_subTopics retain];
+	other->_subTopics = [_subTopics mutableCopy];
     }
     
     return other;
@@ -68,44 +70,18 @@
 }
 
 
-- (NSString *)name
-{
-    return _name;
-}
-
-- (NSURL *)location
-{
-    return _location;
-}
-
-- (unsigned int)countOfSubTopics
+- (NSUInteger)countOfSubTopics
 {
     return _subTopics? [_subTopics count] : 0;
 }
 
 
-- (CHMTopic *)objectInSubTopicsAtIndex:(unsigned int)theIndex
+- (CHMTopic *)objectInSubTopicsAtIndex:(NSUInteger)theIndex
 {
     return _subTopics? [_subTopics objectAtIndex:theIndex] : nil;
 }
 
 #pragma mark Mutators
-
-- (void)setName:(NSString *)text
-{
-    if( _name != text ) {
-	[_name release];
-	_name = [text retain];
-    }
-}
-
-- (void)setLocation:(NSURL *)URL
-{
-    if( _location != URL ) {
-	[_location release];
-	_location = [URL retain];
-    }
-}
 
 - (void)addObject:(CHMTopic *)topic
 {
@@ -116,7 +92,7 @@
     [_subTopics addObject:topic];
 }
 
-- (void)insertObject:(CHMTopic *)topic inSubTopicsAtIndex:(unsigned int)theIndex
+- (void)insertObject:(CHMTopic *)topic inSubTopicsAtIndex:(NSUInteger)theIndex
 {
     if( !_subTopics ) {
         _subTopics = [[NSMutableArray alloc] init];
@@ -125,7 +101,7 @@
     [_subTopics insertObject:topic atIndex:theIndex];
 }
 
-- (void)removeObjectFromSubTopicsAtIndex:(unsigned int)theIndex
+- (void)removeObjectFromSubTopicsAtIndex:(NSUInteger)theIndex
 {
     if( _subTopics ) {
 	[_subTopics removeObjectAtIndex:theIndex];

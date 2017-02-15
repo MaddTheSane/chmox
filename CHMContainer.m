@@ -1,6 +1,6 @@
 //
 // Chmox a CHM file viewer for Mac OS X
-// Copyright (c) 2004 Stphane Boisson.
+// Copyright (c) 2004 Stéphane Boisson.
 //
 // Chmox is free software; you can redistribute it and/or modify it
 // under the terms of the GNU Lesser General Public License as published
@@ -19,7 +19,7 @@
 // $Revision: 1.8 $
 //
 
-#include <openssl/sha.h>
+#include <CommonCrypto/CommonDigest.h>
 #import "CHMContainer.h"
 #import "chm_lib.h"
 
@@ -29,7 +29,7 @@
 
 + (id)containerWithContentsOfFile:(NSString *)chmFilePath
 {
-    return [[CHMContainer alloc] initWithContentsOfFile:chmFilePath];
+    return [[[CHMContainer alloc] initWithContentsOfFile:chmFilePath] autorelease];
 }
 
 
@@ -38,18 +38,21 @@
 - (id)initWithContentsOfFile:(NSString *)chmFilePath
 {
     if( self = [super init] ) {
-		_handle = chm_open( [chmFilePath fileSystemRepresentation] );
-		if( !_handle ) return nil;
-		
-		_path = [chmFilePath retain];
-		
-		_uniqueId = nil;
-		_title = nil;
-		_homePath = nil;
-		_tocPath = nil;
-		_indexPath = nil;
-
-		[self loadMetadata];
+        _handle = chm_open( [chmFilePath fileSystemRepresentation] );
+        if( !_handle ) {
+            [self autorelease];
+            return nil;
+        }
+        
+        _path = [chmFilePath retain];
+        
+        _uniqueId = nil;
+        _title = nil;
+        _homePath = nil;
+        _tocPath = nil;
+        _indexPath = nil;
+        
+        [self loadMetadata];
     }
     
     return self;
@@ -75,47 +78,28 @@
 
 
 #pragma mark Accessors
-
-- (NSString *)homePath
-{
-    return _homePath;
-}
-
-- (NSString *)title
-{
-    return _title;
-}
-
-- (NSString *)uniqueId 
-{
-    return _uniqueId;
-}
-
-- (NSString *)tocPath
-{
-    return _tocPath;
-}
-- (NSString *)path
-{
-    return _path;
-}
+@synthesize homePath = _homePath;
+@synthesize title = _title;
+@synthesize uniqueId = _uniqueId;
+@synthesize tocPath = _tocPath;
+@synthesize path = _path;
 
 #pragma mark Basic CHM reading operations
 
-static inline unsigned short readShort( NSData *data, unsigned int offset ) {
+static inline unsigned short readShort( NSData *data, off_t offset ) {
     NSRange valueRange = { offset, 2 };
     unsigned short value;
     
     [data getBytes:(void *)&value range:valueRange];
-    return NSSwapLittleShortToHost( value );
+    return CFSwapInt16LittleToHost( value );
 }
 
-static inline unsigned long readLong( NSData *data, unsigned int offset ) {
+static inline unsigned int readLong( NSData *data, off_t offset ) {
     NSRange valueRange = { offset, 4 };
-    unsigned long value;
+    unsigned int value;
     
     [data getBytes:(void *)&value range:valueRange];
-    return NSSwapLittleLongToHost( value );
+    return CFSwapInt32LittleToHost( value );
 }
 
 static inline NSString * readString( NSData *data, unsigned long offset ) {
@@ -245,8 +229,8 @@ static inline NSString * readTrimmedString( NSData *data, unsigned long offset )
 //This is a helper method for loadMetadata
 - (void)computeIdFrom:(NSData *)systemData
 {
-	unsigned char digest[ SHA_DIGEST_LENGTH ];
-	SHA1( [systemData bytes], [systemData length], digest );
+	unsigned char digest[ CC_SHA1_DIGEST_LENGTH ];
+	CC_SHA1( [systemData bytes], (CC_LONG)[systemData length], digest );
 	unsigned int *ptr = (unsigned int *) digest;
 	_uniqueId = [[NSString alloc] initWithFormat:@"%x%x%x%x%x", ptr[0], ptr[1], ptr[2], ptr[3], ptr[4]];
 	//NSLog( @"UniqueId=%@", _uniqueId );
@@ -289,8 +273,8 @@ static inline NSString * readTrimmedString( NSData *data, unsigned long offset )
 //This is a helper method for loadMetadata
 - (void)readSystemDataFrom:(NSData *)systemData
 {
-    unsigned int maxOffset = [systemData length];
-    for( unsigned int offset = 0; offset < maxOffset; offset += readShort( systemData, offset + 2 ) + 4 ) {
+    NSUInteger maxOffset = [systemData length];
+    for( NSUInteger offset = 0; offset < maxOffset; offset += readShort( systemData, offset + 2 ) + 4 ) {
 		switch( readShort( systemData, offset ) ) {
 			case 0:// Table of contents file
 				if( !_tocPath || ( [_tocPath length] == 0 ) ) {

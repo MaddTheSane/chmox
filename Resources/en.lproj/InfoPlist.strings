@@ -1,0 +1,7 @@
+/* Localized versions of Info.plist keys */
+
+CFBundleName = "Chmox";
+CFBundleShortVersionString = "0.4ß";
+CFBundleGetInfoString = "Chmox version 0.4ß, ©2004 Stéphane Boisson.";
+NSHumanReadableCopyright = "©2004 Stéphane Boisson.";
+"com.microsoft.windows.compiled-html" = "Compiled HTML";

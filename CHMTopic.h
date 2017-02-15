@@ -1,6 +1,6 @@
 //
 // Chmox a CHM file viewer for Mac OS X
-// Copyright (c) 2004 Stéphane Boisson.
+// Copyright (c) 2004 St√©phane Boisson.
 //
 // Chmox is free software; you can redistribute it and/or modify it
 // under the terms of the GNU Lesser General Public License as published
@@ -22,7 +22,7 @@
 #import <Foundation/Foundation.h>
 
 
-@interface CHMTopic : NSObject {
+@interface CHMTopic : NSObject <NSCopying> {
     NSString *_name;
     NSURL *_location;
     NSMutableArray *_subTopics;
@@ -30,16 +30,13 @@
 
 - (id)initWithName:(NSString *)topicName location:(NSURL *)topicLocation;
 
-- (NSString *)name;
-- (NSURL *)location;
-- (unsigned int)countOfSubTopics;
-- (CHMTopic *)objectInSubTopicsAtIndex:(unsigned int)index;
-
-- (void)setName:(NSString *)text;
-- (void)setLocation:(NSURL *)URL;
+@property (copy) NSString *name;
+@property (retain) NSURL *location;
+@property (readonly) NSUInteger countOfSubTopics;
+- (CHMTopic *)objectInSubTopicsAtIndex:(NSUInteger)index;
 
 - (void)addObject:(CHMTopic *)topic;
-- (void)insertObject:(CHMTopic *)topic inSubTopicsAtIndex:(unsigned int)index;
-- (void)removeObjectFromSubTopicsAtIndex:(unsigned int)index;
+- (void)insertObject:(CHMTopic *)topic inSubTopicsAtIndex:(NSUInteger)index;
+- (void)removeObjectFromSubTopicsAtIndex:(NSUInteger)index;
 
 @end

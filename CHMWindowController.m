@@ -1,6 +1,6 @@
 //
 // Chmox a CHM file viewer for Mac OS X
-// Copyright (c) 2004 Stphane Boisson.
+// Copyright (c) 2004 Stéphane Boisson.
 //
 // Chmox is free software; you can redistribute it and/or modify it
 // under the terms of the GNU Lesser General Public License as published
@@ -19,26 +19,27 @@
 // $Revision: 1.10 $
 //
 
-#import "WebKit/WebKit.h"
+#import <WebKit/WebKit.h>
 #import "CHMWindowController.h"
 #import "CHMDocument.h"
 #import "CHMTopic.h"
 #import "CHMURLProtocol.h"
+#import "CHMTableOfContents.h"
 
 
 
 @implementation CHMWindowController
 
 // Tab items
-static NSString *TOC_TAB_ID = @"tocTab";
-static NSString *SEARCH_TAB_ID = @"searchTab";
-static NSString *FAVORITES_TAB_ID = @"favoritesTab";
+static NSString *const TOC_TAB_ID = @"tocTab";
+static NSString *const SEARCH_TAB_ID = @"searchTab";
+static NSString *const FAVORITES_TAB_ID = @"favoritesTab";
 
 // Toolbar items
-static NSString *DRAWER_TOGGLE_TOOL_ID = @"chmox.drawerToggle";
-static NSString *SMALLER_TEXT_TOOL_ID = @"chmox.smallerText";
-static NSString *BIGGER_TEXT_TOOL_ID = @"chmox.biggerText";
-static NSString *HISTORY_TOOL_ID = @"chmox.history";
+static NSString *const DRAWER_TOGGLE_TOOL_ID = @"chmox.drawerToggle";
+static NSString *const SMALLER_TEXT_TOOL_ID = @"chmox.smallerText";
+static NSString *const BIGGER_TEXT_TOOL_ID = @"chmox.biggerText";
+static NSString *const HISTORY_TOOL_ID = @"chmox.history";
 
 
 #pragma mark NSWindowController overridden method
@@ -140,9 +141,8 @@ static NSString *HISTORY_TOOL_ID = @"chmox.history";
     return defaultMenuItems;
 }
 
-- (void)webView:(WebView *)sender 
-	mouseDidMoveOverElement:(NSDictionary *)elementInformation
-	modifierFlags:(unsigned int)modifierFlags
+- (void)webView:(WebView *)sender mouseDidMoveOverElement:(NSDictionary *)elementInformation
+  modifierFlags:(NSUInteger)modifierFlags
 {
     //NSLog( @"mouseDidMoveOverElement: %@", elementInformation );
 }
@@ -155,14 +155,14 @@ static NSString *HISTORY_TOOL_ID = @"chmox.history";
 	  userData:(void *)userData
 {
     if( view == _tocView ) {
-		int row = [_tocView rowAtPoint:point];
+        NSInteger row = [_tocView rowAtPoint:point];
 	
 		if( row >= 0 ) {
 			return [[_tocView itemAtRow:row] name];
 		}
     }
     
-    return nil;
+    return @"";
 }
 
 - (void)updateToolTipRects
@@ -170,8 +170,8 @@ static NSString *HISTORY_TOOL_ID = @"chmox.history";
     [_tocView removeAllToolTips];
     NSRange range = [_tocView rowsInRect:[_tocView visibleRect]];
     
-    for( int i = range.location; i < NSMaxRange( range ); ++i ) {
-		[_tocView addToolTipRect:[_tocView rectOfRow:i] owner:self userData:NULL];
+    for( NSUInteger i = range.location; i < NSMaxRange( range ); ++i ) {
+        [_tocView addToolTipRect:[_tocView rectOfRow:i] owner:self userData:NULL];
     }
 }
 
@@ -256,7 +256,7 @@ static NSString *HISTORY_TOOL_ID = @"chmox.history";
 
 - (IBAction)changeTopicWithSelectedRow:(id)sender
 {
-    int selectedRow = [_tocView selectedRow];
+    NSInteger selectedRow = [_tocView selectedRow];
     
     if( selectedRow >= 0 ) {
 		CHMTopic *topic = [_tocView itemAtRow:selectedRow];
@@ -323,7 +323,7 @@ static NSString *HISTORY_TOOL_ID = @"chmox.history";
 - (IBAction)removeBookmark:(id)sender
 {
 	if([favoritesView selectedRow] > -1){
-		[[self document] removeBookmark: [favoritesView selectedRow]];
+		[(CHMDocument*)[self document] removeBookmark: [favoritesView selectedRow]];
 		[favoritesView reloadData];
 	}
 }
@@ -342,7 +342,7 @@ static NSString *HISTORY_TOOL_ID = @"chmox.history";
     NSPrintOperation *op = [NSPrintOperation printOperationWithView:docView
                                                           printInfo:[[self document] printInfo]];
 				
-    [op setShowPanels:YES];
+    [op setShowsPrintPanel:YES];
 
     // Run operation, which shows the Print panel if showPanels was YES
     [[self document] runModalPrintOperation:op
@@ -365,8 +365,7 @@ static NSString *HISTORY_TOOL_ID = @"chmox.history";
 
 - (NSArray *)toolbarAllowedItemIdentifiers:(NSToolbar*)toolbar
 {
-    return [NSArray arrayWithObjects:
-        DRAWER_TOGGLE_TOOL_ID,
+    return @[DRAWER_TOGGLE_TOOL_ID,
         SMALLER_TEXT_TOOL_ID,
         BIGGER_TEXT_TOOL_ID,
         HISTORY_TOOL_ID,
@@ -375,19 +374,16 @@ static NSString *HISTORY_TOOL_ID = @"chmox.history";
         NSToolbarSpaceItemIdentifier,
         NSToolbarFlexibleSpaceItemIdentifier,
         NSToolbarCustomizeToolbarItemIdentifier,
-        nil
         ];
 }
 
 - (NSArray *)toolbarDefaultItemIdentifiers:(NSToolbar*)toolbar
 {
-    return [NSArray arrayWithObjects:
-        HISTORY_TOOL_ID,
+    return @[HISTORY_TOOL_ID,
         DRAWER_TOGGLE_TOOL_ID,
         SMALLER_TEXT_TOOL_ID,
         BIGGER_TEXT_TOOL_ID,
         NSToolbarFlexibleSpaceItemIdentifier,
-        nil
         ];
 }
 
@@ -420,8 +416,8 @@ static NSString *HISTORY_TOOL_ID = @"chmox.history";
         [item setAction:@selector(makeTextBigger:)];
     }
     else if ( [itemIdentifier isEqualToString:HISTORY_TOOL_ID] ) {
-        [_historyToolbarItemView setLabel:nil forSegment:0];
-        [_historyToolbarItemView setLabel:nil forSegment:1];
+        [_historyToolbarItemView setLabel:@"" forSegment:0];
+        [_historyToolbarItemView setLabel:@"" forSegment:1];
         //[_historyToolbarItemView sizeToFit];
         NSRect frame = [_historyToolbarItemView frame];
         [item setLabel:NSLocalizedString( HISTORY_TOOL_ID, nil )];

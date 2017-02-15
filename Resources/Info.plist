@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>en</string>
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>chm</string>
+				<string>CHM</string>
+			</array>
+			<key>CFBundleTypeIconFile</key>
+			<string>chmdoc</string>
+			<key>CFBundleTypeMIMETypes</key>
+			<array>
+				<string>application/vnd.ms-htmlhelp</string>
+				<string>application/mshelp</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>Compiled HTML</string>
+			<key>CFBundleTypeOSTypes</key>
+			<array>
+				<string>CHM </string>
+			</array>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>com.microsoft.windows.compiled-html</string>
+			</array>
+			<key>LSTypeIsPackage</key>
+			<false/>
+			<key>NSDocumentClass</key>
+			<string>CHMDocument</string>
+		</dict>
+	</array>
+	<key>CFBundleExecutable</key>
+	<string>Chmox</string>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleSignature</key>
+	<string>iCHM</string>
+	<key>CFBundleVersion</key>
+	<string>0.4beta</string>
+	<key>LSMinimumSystemVersion</key>
+	<string>$(MACOSX_DEPLOYMENT_TARGET)</string>
+	<key>NSMainNibFile</key>
+	<string>MainMenu</string>
+	<key>NSPrincipalClass</key>
+	<string>NSApplication</string>
+	<key>UTExportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.data</string>
+				<string>public.composite-content</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>Compiled HTML</string>
+			<key>UTTypeIconFile</key>
+			<string>chmdoc</string>
+			<key>UTTypeIdentifier</key>
+			<string>com.microsoft.windows.compiled-html</string>
+			<key>UTTypeReferenceURL</key>
+			<string>https://en.wikipedia.org/wiki/Microsoft_Compiled_HTML_Help</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>com.apple.ostype</key>
+				<array>
+					<string>CHM </string>
+				</array>
+				<key>public.filename-extension</key>
+				<array>
+					<string>chm</string>
+				</array>
+				<key>public.mime-type</key>
+				<array>
+					<string>application/vnd.ms-htmlhelp</string>
+					<string>application/mshelp</string>
+				</array>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>

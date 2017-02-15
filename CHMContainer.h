@@ -1,6 +1,6 @@
 //
 // Chmox a CHM file viewer for Mac OS X
-// Copyright (c) 2004 Stphane Boisson.
+// Copyright (c) 2004 Stéphane Boisson.
 //
 // Chmox is free software; you can redistribute it and/or modify it
 // under the terms of the GNU Lesser General Public License as published
@@ -34,11 +34,11 @@ struct chmFile;
     NSString *_indexPath;
 }
 
-+ (id)containerWithContentsOfFile:(NSString *)path;
++ (instancetype)containerWithContentsOfFile:(NSString *)path;
 
-- (id)initWithContentsOfFile:(NSString *)path;
+- (instancetype)initWithContentsOfFile:(NSString *)path;
 
-- (bool)hasObjectWithPath: (NSString *)path;
+- (BOOL)hasObjectWithPath: (NSString *)path;
 - (NSData *)dataWithContentsOfObject: (NSString *)objectPath;
 - (NSString *)stringWithContentsOfObject: (NSString *)objectPath;
 - (NSData *)dataWithTableOfContents;
@@ -50,10 +50,10 @@ struct chmFile;
 
 - (NSString *)findHomeForPath: (NSString *)basePath;
 
-- (NSString *)title;
-- (NSString *)uniqueId;
-- (NSString *)tocPath;
-- (NSString *)homePath;
-- (NSString *)path;
+@property (readonly, copy) NSString *title;
+@property (readonly, copy) NSString *uniqueId;
+@property (readonly, copy) NSString *tocPath;
+@property (readonly, copy) NSString *homePath;
+@property (readonly, copy) NSString *path;
 
 @end

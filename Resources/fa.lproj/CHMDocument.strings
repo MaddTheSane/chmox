@@ -1,0 +1,45 @@
+
+/* Class = "NSWindow"; title = "Chmox"; ObjectID = "26"; */
+"26.title" = "Chmox";
+
+/* Class = "NSTabViewItem"; label = "جستجو"; ObjectID = "35"; */
+"35.label" = "جستجو";
+
+/* Class = "NSTabViewItem"; label = "محتوا"; ObjectID = "36"; */
+"36.label" = "محتوا";
+
+/* Class = "NSTabViewItem"; label = "برگزیده ها"; ObjectID = "40"; */
+"40.label" = "برگزیده ها";
+
+/* Class = "NSTableColumn"; headerCell.title = "رتبه"; ObjectID = "50"; */
+"50.headerCell.title" = "رتبه";
+
+/* Class = "NSTableColumn"; headerCell.title = "مکان"; ObjectID = "51"; */
+"51.headerCell.title" = "مکان";
+
+/* Class = "NSTableColumn"; headerCell.title = "عنوان"; ObjectID = "53"; */
+"53.headerCell.title" = "عنوان";
+
+/* Class = "NSButtonCell"; title = "+"; ObjectID = "75"; */
+"75.title" = "+";
+
+/* Class = "NSButtonCell"; title = "-"; ObjectID = "76"; */
+"76.title" = "-";
+
+/* Class = "NSButtonCell"; title = "جستجوی نتایج قبلی"; ObjectID = "80"; */
+"80.title" = "جستجوی نتایج قبلی";
+
+/* Class = "NSButtonCell"; title = "تطبیف با کلمه های مشابه"; ObjectID = "81"; */
+"81.title" = "تطبیف با کلمه های مشابه";
+
+/* Class = "NSButtonCell"; title = "جستجو فقط در عناوین"; ObjectID = "82"; */
+"82.title" = "جستجو فقط در عناوین";
+
+/* Class = "NSSearchFieldCell"; title = "کلمه برای جستجو"; ObjectID = "119"; */
+"119.title" = "کلمه برای جستجو";
+
+/* Class = "NSButtonCell"; title = "Rechercher les résultats précédents."; ObjectID = "121"; */
+"121.title" = "Rechercher les résultats précédents.";
+
+/* Class = "NSButtonCell"; title = "+"; ObjectID = "122"; */
+"122.title" = "+";

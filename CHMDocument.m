@@ -1,6 +1,6 @@
 //
 // Chmox a CHM file viewer for Mac OS X
-// Copyright (c) 2004 Stphane Boisson.
+// Copyright (c) 2004 Stéphane Boisson.
 //
 // Chmox is free software; you can redistribute it and/or modify it
 // under the terms of the GNU Lesser General Public License as published
@@ -45,11 +45,12 @@
 {
     if( _container ) {
 		[CHMURLProtocol unregisterContainer:_container];
-		[_tableOfContents release];
-		[_container release];
     }
+    [_tableOfContents release];
+    [_container release];
 	[self setLastLoadedPage:nil];
     [self setLastLoadedPageName:nil];
+    
     [super dealloc];
 }
 
@@ -83,7 +84,7 @@
 - (BOOL)readFromFile:(NSString *)fileName ofType:(NSString *)docType {
     //NSLog( @"CHMDocument:readFromFile:%@", fileName );
     
-    _container = [CHMContainer containerWithContentsOfFile:fileName];
+    _container = [[CHMContainer alloc] initWithContentsOfFile:fileName];
     if( !_container ) return NO;
 	
     [CHMURLProtocol registerContainer:_container];
@@ -317,10 +318,7 @@
     return [CHMURLProtocol URLWithPath:[_container homePath] inContainer:_container];
 }
 
-- (CHMTableOfContents *)tableOfContents
-{
-    return _tableOfContents;
-}
+@synthesize tableOfContents = _tableOfContents;
 
 - (NSString *)uniqueId
 {

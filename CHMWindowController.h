@@ -1,6 +1,6 @@
 //
 // Chmox a CHM file viewer for Mac OS X
-// Copyright (c) 2004 Stphane Boisson.
+// Copyright (c) 2004 Stéphane Boisson.
 //
 // Chmox is free software; you can redistribute it and/or modify it
 // under the terms of the GNU Lesser General Public License as published
@@ -20,11 +20,13 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <WebKit/WebUIDelegate.h>
+#import <WebKit/WebPolicyDelegate.h>
 #import "CHMDocument.h"
 
 @class WebView;
 
-@interface CHMWindowController : NSWindowController
+@interface CHMWindowController : NSWindowController <NSToolbarDelegate, NSOutlineViewDelegate, WebUIDelegate, WebPolicyDelegate>
 {
     IBOutlet WebView		*_contentsView;
     IBOutlet NSDrawer		*_drawer;

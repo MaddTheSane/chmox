@@ -1,4 +1,4 @@
-/* $Id: lzx.c,v 1.2 2005/09/15 18:17:17 sboisson Exp $ */
+/* $Id: lzx.c,v 1.5 2002/10/09 01:16:33 jedwin Exp $ */
 /***************************************************************************
  *                        lzx.c - LZX decompression routines               *
  *                           -------------------                           *
@@ -35,6 +35,9 @@
 #include <string.h>
 
 #ifdef __GNUC__
+#ifdef memcpy
+#undef memcpy
+#endif
 #define memcpy __builtin_memcpy
 #endif
 
