@@ -47,12 +47,9 @@
 /* Begin PBXFileReference section */
 		1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		2A37F4B0FDCFA73011CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		2A37F4B5FDCFA73011CA2CEA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/CHMDocument.xib; sourceTree = "<group>"; };
-		2A37F4B7FDCFA73011CA2CEA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		2A37F4BAFDCFA73011CA2CEA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		2A37F4C4FDCFA73011CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		2A37F4C5FDCFA73011CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		4410436C07B4F11900B3D4B9 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		442BB9D40653EB340041C2A9 /* CHMURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHMURLProtocol.h; sourceTree = "<group>"; };
 		442BB9D50653EB340041C2A9 /* CHMURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHMURLProtocol.m; sourceTree = "<group>"; };
 		442BBA2F0653ED630041C2A9 /* CHMContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHMContainer.h; sourceTree = "<group>"; };
@@ -64,8 +61,6 @@
 		445DEACA07B4085C0008D692 /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		445DEAD907B409900008D692 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		445DEAEB07B40A9F0008D692 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
-		445DEAF307B427460008D692 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/VersionChecker.xib; sourceTree = "<group>"; };
-		445DEAF907B42BAE0008D692 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		448AF5A0064AA5E100FA37BD /* CHMDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHMDocument.h; sourceTree = "<group>"; };
 		448AF5A1064AA5E100FA37BD /* CHMDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHMDocument.m; sourceTree = "<group>"; };
 		448AF5AA064AE52F00FA37BD /* CHMWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHMWindowController.h; sourceTree = "<group>"; };
@@ -79,29 +74,17 @@
 		44923A78072C57E90070AA26 /* CHMApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHMApplication.h; sourceTree = "<group>"; };
 		44923A79072C57E90070AA26 /* CHMApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHMApplication.m; sourceTree = "<group>"; };
 		4492A06607BF9876007B237D /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = fa; path = fa.lproj/Credits.rtf; sourceTree = "<group>"; };
-		4492A06707BF988B007B237D /* fa */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fa; path = fa.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		4492A06907BF989E007B237D /* fa */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fa; path = fa.lproj/VersionChecker.xib; sourceTree = "<group>"; };
 		4492A06A07BF98B1007B237D /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fa; path = fa.lproj/Localizable.strings; sourceTree = "<group>"; };
 		44949779073D406800D8BC20 /* MacPAD.url */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MacPAD.url; sourceTree = SOURCE_ROOT; };
 		44949839073D56ED00D8BC20 /* MacPAD.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MacPAD.plist; sourceTree = SOURCE_ROOT; };
 		4494984C073D5A1700D8BC20 /* MacPADSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MacPADSocket.h; sourceTree = "<group>"; };
 		4494984D073D5A1700D8BC20 /* MacPADSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MacPADSocket.m; sourceTree = "<group>"; };
 		44A2655E080EEB5800273DC8 /* zh_TW */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = zh_TW; path = zh_TW.lproj/Credits.rtf; sourceTree = "<group>"; };
-		44A2655F080EEB6B00273DC8 /* zh_TW */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = zh_TW; path = zh_TW.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		44A2657E080EEBB000273DC8 /* zh_TW */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = zh_TW; path = zh_TW.lproj/VersionChecker.xib; sourceTree = "<group>"; };
 		44A2657F080EEBBD00273DC8 /* zh_TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh_TW; path = zh_TW.lproj/Localizable.strings; sourceTree = "<group>"; };
-		44A67DE00742A04300D4714F /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/VersionChecker.xib; sourceTree = "<group>"; };
 		44B501B006A587BA00CE0A8E /* CHMVersionChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHMVersionChecker.h; sourceTree = "<group>"; };
 		44B501B106A587BA00CE0A8E /* CHMVersionChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHMVersionChecker.m; sourceTree = "<group>"; usesTabs = 0; };
-		44B501B606A5885E00CE0A8E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/VersionChecker.xib; sourceTree = "<group>"; };
 		44B7AED10675301E00B51920 /* chmdoc.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = chmdoc.icns; sourceTree = "<group>"; };
 		44B8E1B807B8245D002BF574 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
-		44C82C27080EEFAE00D34050 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/CHMDocument.xib; sourceTree = "<group>"; };
-		44C82C2F080EF05700D34050 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/CHMDocument.xib; sourceTree = "<group>"; };
-		44C82C31080EF07F00D34050 /* fa */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fa; path = fa.lproj/CHMDocument.xib; sourceTree = "<group>"; };
-		44C82C32080EF09000D34050 /* it */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = it; path = it.lproj/CHMDocument.xib; sourceTree = "<group>"; };
-		44C8E70E07B825EC00F5DADD /* it */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = it; path = it.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		44C8E71807B8267F00F5DADD /* it */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = it; path = it.lproj/VersionChecker.xib; sourceTree = "<group>"; };
 		44D62F6906D94D5500C6711F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = fr; path = fr.lproj/Credits.rtf; sourceTree = "<group>"; };
 		44D7FFF0065A9C7B00D2B23E /* prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = prefix.pch; sourceTree = "<group>"; };
 		44DA07230694985300777FAE /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = SOURCE_ROOT; };
@@ -112,6 +95,26 @@
 		557859041E54B14B0043CC15 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		557859051E54B14B0043CC15 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		557859061E54B14B0043CC15 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
+		55B009FC1E54D4FD0037EE6E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		55B009FD1E54D4FD0037EE6E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/CHMDocument.xib; sourceTree = "<group>"; };
+		55B009FE1E54D4FE0037EE6E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/VersionChecker.xib; sourceTree = "<group>"; };
+		55B00A001E54D5270037EE6E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainMenu.strings; sourceTree = "<group>"; };
+		55B00A021E54D5360037EE6E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/CHMDocument.strings; sourceTree = "<group>"; };
+		55B00A041E54D5460037EE6E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/VersionChecker.strings; sourceTree = "<group>"; };
+		55B00A051E54D5560037EE6E /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/MainMenu.strings; sourceTree = "<group>"; };
+		55B00A061E54D5660037EE6E /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/MainMenu.strings; sourceTree = "<group>"; };
+		55B00A071E54D5700037EE6E /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/MainMenu.strings; sourceTree = "<group>"; };
+		55B00A081E54D5770037EE6E /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fa; path = fa.lproj/MainMenu.strings; sourceTree = "<group>"; };
+		55B00A091E54D57D0037EE6E /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = zh_TW.lproj/MainMenu.strings; sourceTree = "<group>"; };
+		55B00A0A1E54D5AE0037EE6E /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/CHMDocument.strings; sourceTree = "<group>"; };
+		55B00A0B1E54D5B30037EE6E /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/CHMDocument.strings; sourceTree = "<group>"; };
+		55B00A0C1E54D5B70037EE6E /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/CHMDocument.strings; sourceTree = "<group>"; };
+		55B00A0D1E54D5BB0037EE6E /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fa; path = fa.lproj/CHMDocument.strings; sourceTree = "<group>"; };
+		55B00A0E1E54D5C60037EE6E /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/VersionChecker.strings; sourceTree = "<group>"; };
+		55B00A0F1E54D5D00037EE6E /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/VersionChecker.strings; sourceTree = "<group>"; };
+		55B00A101E54D5D90037EE6E /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/VersionChecker.strings; sourceTree = "<group>"; };
+		55B00A111E54D5E80037EE6E /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fa; path = fa.lproj/VersionChecker.strings; sourceTree = "<group>"; };
+		55B00A121E54D5F10037EE6E /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = zh_TW.lproj/VersionChecker.strings; sourceTree = "<group>"; };
 		55B23B821E54325E009C456D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		55B23B841E543B2C009C456D /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		55D973F21E54B36300355BE3 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
@@ -318,6 +321,7 @@
 				it,
 				fa,
 				zh_TW,
+				Base,
 			);
 			mainGroup = 2A37F4AAFDCFA73011CA2CEA /* Chmox */;
 			projectDirPath = "";
@@ -390,12 +394,13 @@
 		2A37F4B6FDCFA73011CA2CEA /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				2A37F4B7FDCFA73011CA2CEA /* en */,
-				445DEAF907B42BAE0008D692 /* de */,
-				4410436C07B4F11900B3D4B9 /* fr */,
-				44C8E70E07B825EC00F5DADD /* it */,
-				4492A06707BF988B007B237D /* fa */,
-				44A2655F080EEB6B00273DC8 /* zh_TW */,
+				55B009FC1E54D4FD0037EE6E /* Base */,
+				55B00A001E54D5270037EE6E /* en */,
+				55B00A051E54D5560037EE6E /* fr */,
+				55B00A061E54D5660037EE6E /* de */,
+				55B00A071E54D5700037EE6E /* it */,
+				55B00A081E54D5770037EE6E /* fa */,
+				55B00A091E54D57D0037EE6E /* zh-Hant */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
@@ -428,11 +433,12 @@
 		44A2657B080EEB8900273DC8 /* CHMDocument.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				2A37F4B5FDCFA73011CA2CEA /* en */,
-				44C82C27080EEFAE00D34050 /* fr */,
-				44C82C2F080EF05700D34050 /* de */,
-				44C82C31080EF07F00D34050 /* fa */,
-				44C82C32080EF09000D34050 /* it */,
+				55B009FD1E54D4FD0037EE6E /* Base */,
+				55B00A021E54D5360037EE6E /* en */,
+				55B00A0A1E54D5AE0037EE6E /* fr */,
+				55B00A0B1E54D5B30037EE6E /* de */,
+				55B00A0C1E54D5B70037EE6E /* it */,
+				55B00A0D1E54D5BB0037EE6E /* fa */,
 			);
 			name = CHMDocument.xib;
 			sourceTree = "<group>";
@@ -440,12 +446,13 @@
 		44B501C806A58D3300CE0A8E /* VersionChecker.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				44B501B606A5885E00CE0A8E /* en */,
-				44A67DE00742A04300D4714F /* fr */,
-				445DEAF307B427460008D692 /* de */,
-				44C8E71807B8267F00F5DADD /* it */,
-				4492A06907BF989E007B237D /* fa */,
-				44A2657E080EEBB000273DC8 /* zh_TW */,
+				55B009FE1E54D4FE0037EE6E /* Base */,
+				55B00A041E54D5460037EE6E /* en */,
+				55B00A0E1E54D5C60037EE6E /* fr */,
+				55B00A0F1E54D5D00037EE6E /* de */,
+				55B00A101E54D5D90037EE6E /* it */,
+				55B00A111E54D5E80037EE6E /* fa */,
+				55B00A121E54D5F10037EE6E /* zh-Hant */,
 			);
 			name = VersionChecker.xib;
 			sourceTree = "<group>";

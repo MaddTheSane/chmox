@@ -1,0 +1,45 @@
+
+/* Class = "NSWindow"; title = "Chmox"; ObjectID = "26"; */
+"26.title" = "Chmox";
+
+/* Class = "NSTabViewItem"; label = "Suche"; ObjectID = "35"; */
+"35.label" = "Suche";
+
+/* Class = "NSTabViewItem"; label = "Inhalt"; ObjectID = "36"; */
+"36.label" = "Inhalt";
+
+/* Class = "NSTabViewItem"; label = "Favoriten"; ObjectID = "40"; */
+"40.label" = "Favoriten";
+
+/* Class = "NSTableColumn"; headerCell.title = "Rang"; ObjectID = "50"; */
+"50.headerCell.title" = "Rang";
+
+/* Class = "NSTableColumn"; headerCell.title = "Fundort"; ObjectID = "51"; */
+"51.headerCell.title" = "Fundort";
+
+/* Class = "NSTableColumn"; headerCell.title = "Title"; ObjectID = "53"; */
+"53.headerCell.title" = "Title";
+
+/* Class = "NSButtonCell"; title = "+"; ObjectID = "75"; */
+"75.title" = "+";
+
+/* Class = "NSButtonCell"; title = "-"; ObjectID = "76"; */
+"76.title" = "-";
+
+/* Class = "NSButtonCell"; title = "Suche in den vorherigen Ergebnissen."; ObjectID = "80"; */
+"80.title" = "Suche in den vorherigen Ergebnissen.";
+
+/* Class = "NSButtonCell"; title = "Ähnliche Wörter beachten."; ObjectID = "81"; */
+"81.title" = "Ähnliche Wörter beachten.";
+
+/* Class = "NSButtonCell"; title = "Suche nur in den Titeln."; ObjectID = "82"; */
+"82.title" = "Suche nur in den Titeln.";
+
+/* Class = "NSSearchFieldCell"; title = "Gesuchtes Word"; ObjectID = "112"; */
+"112.title" = "Gesuchtes Word";
+
+/* Class = "NSButtonCell"; title = "Rechercher les résultats précédents."; ObjectID = "113"; */
+"113.title" = "Rechercher les résultats précédents.";
+
+/* Class = "NSButtonCell"; title = "+"; ObjectID = "114"; */
+"114.title" = "+";
