@@ -38,7 +38,7 @@ struct chmFile;
 
 - (id)initWithContentsOfFile:(NSString *)path;
 
-- (bool)hasObjectWithPath: (NSString *)path;
+- (BOOL)hasObjectWithPath: (NSString *)path;
 - (NSData *)dataWithContentsOfObject: (NSString *)objectPath;
 - (NSString *)stringWithContentsOfObject: (NSString *)objectPath;
 - (NSData *)dataWithTableOfContents;

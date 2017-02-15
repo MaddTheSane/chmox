@@ -24,8 +24,7 @@
 #import "CHMTopic.h"
 #import "CHMURLProtocol.h"
 
-#import <libxml/HTMLparser.h>
-
+#include <libxml/HTMLparser.h>
 
 @implementation CHMTableOfContents
 
@@ -142,7 +141,7 @@ static void elementDidStart( TOCBuilderContext *context, const xmlChar *name, co
 {
 //    DEBUG_OUTPUT( @"SAX:elementDidStart %s", name );
 
-    if( !strcasecmp( "ul", name ) ) {
+    if( !strcasecmp( "ul", (const char*)name ) ) {
 //        DEBUG_OUTPUT( @"Stack BEFORE %@", context->topicStack );
 
 	if( context->name ) {
@@ -159,33 +158,33 @@ static void elementDidStart( TOCBuilderContext *context, const xmlChar *name, co
         
 //        DEBUG_OUTPUT( @"Stack AFTER %@", context->topicStack );
     }
-    else if( !strcasecmp( "li", name ) ) {
+    else if( !strcasecmp( "li", (const char*)name ) ) {
 	// Opening depth level
 	context->name = nil;
 	context->path = nil;
     }
-    else if( !strcasecmp( "param", name ) && ( atts != NULL )) {
+    else if( !strcasecmp( "param", (const char*)name ) && ( atts != NULL )) {
 	// Topic properties
 	const xmlChar *type = NULL;
 	const xmlChar *value = NULL;
 	
 	for( int i = 0; atts[ i ] != NULL ; i += 2 ) {
-	    if( !strcasecmp( "name", atts[ i ] ) ) {
+	    if( !strcasecmp( "name", (const char*)atts[ i ] ) ) {
 		type = atts[ i + 1 ];
 	    }
-	    else if( !strcasecmp( "value", atts[ i ] ) ) {
+	    else if( !strcasecmp( "value", (const char*)atts[ i ] ) ) {
 		value = atts[ i + 1 ];
 	    }
 	}
 	
 	if( ( type != NULL ) && ( value != NULL ) ) {
-	    if( !strcasecmp( "Name", type ) ) {
+	    if( !strcasecmp( "Name", (const char*)type ) ) {
 		// Name of the topic
-		context->name = [[NSString alloc] initWithUTF8String:value];
+		context->name = [[NSString alloc] initWithUTF8String:(const char*)value];
 	    }
-	    else if( !strcasecmp( "Local", type ) ) {
+	    else if( !strcasecmp( "Local", (const char*)type ) ) {
 		// Path of the topic
-		context->path = [[NSString alloc] initWithUTF8String:value];
+		context->path = [[NSString alloc] initWithUTF8String:(const char*)value];
 	    }
 	    else {
 		// Unsupported topic property
@@ -199,11 +198,11 @@ static void elementDidEnd( TOCBuilderContext *context, const xmlChar *name )
 {
 //    DEBUG_OUTPUT( @"SAX:elementDidEnd %s", name );
     
-    if( !strcasecmp( "li", name ) && context->name ) {
+    if( !strcasecmp( "li", (const char*)name ) && context->name ) {
 	// New complete topic
 	createNewTopic( context );
     }
-    else if( !strcasecmp( "ul", name ) ) {
+    else if( !strcasecmp( "ul", (const char*)name ) ) {
 //        DEBUG_OUTPUT( @"Stack BEFORE %@", context->topicStack );
 
 	// Closing depth level
@@ -237,14 +236,14 @@ static void createNewTopic( TOCBuilderContext *context )
     context->name = nil;
     context->path = nil;
     
-    int level = [context->topicStack count];
+    NSInteger level = [context->topicStack count];
     
     // Add topic to its parent
     while( --level >= 0 ) {
         CHMTopic *parent = [context->topicStack objectAtIndex:level];
 
         if( parent != context->placeholder ) {
-            DEBUG_OUTPUT( @"createNewTopic: %@, %d", context->lastTopic, level );
+            DEBUG_OUTPUT( @"createNewTopic: %@, %ld", context->lastTopic, (long)level );
             [parent addObject:context->lastTopic];
             return;
         }
@@ -257,7 +256,7 @@ static void createNewTopic( TOCBuilderContext *context )
 
 #pragma mark NSOutlineViewDataSource implementation
 
-- (int)outlineView:(NSOutlineView *)outlineView
+- (NSInteger)outlineView:(NSOutlineView *)outlineView
     numberOfChildrenOfItem:(id)item
 {
     return item? [item countOfSubTopics] : [_rootTopics count];
@@ -270,7 +269,7 @@ static void createNewTopic( TOCBuilderContext *context )
 }
 
 - (id)outlineView:(NSOutlineView *)outlineView
-	    child:(int)theIndex
+	    child:(NSInteger)theIndex
 	   ofItem:(id)item
 {
     return item? [item objectInSubTopicsAtIndex:theIndex] : [_rootTopics objectAtIndex:theIndex];

@@ -35,7 +35,7 @@
 #include <string.h>
 
 #ifdef __GNUC__
-#define memcpy __builtin_memcpy
+//#define memcpy __builtin_memcpy
 #endif
 
 /* sized types */

@@ -19,11 +19,12 @@
 // $Revision: 1.10 $
 //
 
-#import "WebKit/WebKit.h"
+#import <WebKit/WebKit.h>
 #import "CHMWindowController.h"
 #import "CHMDocument.h"
 #import "CHMTopic.h"
 #import "CHMURLProtocol.h"
+#import "CHMTableOfContents.h"
 
 
 @implementation CHMWindowController
@@ -56,7 +57,7 @@ static NSString *HISTORY_TOOL_ID = @"chmox.history";
     [self updateToolTipRects];
     [self setupToolbar];
     
-    int tabIndex;
+    NSInteger tabIndex;
     
     // Remove Search tab
     tabIndex = [_drawerView indexOfTabViewItemWithIdentifier:SEARCH_TAB_ID];
@@ -149,7 +150,7 @@ static NSString *HISTORY_TOOL_ID = @"chmox.history";
 	  userData:(void *)userData
 {
     if( view == _tocView ) {
-	int row = [_tocView rowAtPoint:point];
+	NSInteger row = [_tocView rowAtPoint:point];
 	
 	if( row >= 0 ) {
 	    return [[_tocView itemAtRow:row] name];
@@ -164,7 +165,7 @@ static NSString *HISTORY_TOOL_ID = @"chmox.history";
     [_tocView removeAllToolTips];
     NSRange range = [_tocView rowsInRect:[_tocView visibleRect]];
     
-    for( int i = range.location; i < NSMaxRange( range ); ++i ) {
+    for( NSUInteger i = range.location; i < NSMaxRange( range ); ++i ) {
 	[_tocView addToolTipRect:[_tocView rectOfRow:i] owner:self userData:NULL];
     }
 }
@@ -234,7 +235,7 @@ static NSString *HISTORY_TOOL_ID = @"chmox.history";
 
 - (IBAction)changeTopicWithSelectedRow:(id)sender
 {
-    int selectedRow = [_tocView selectedRow];
+    NSInteger selectedRow = [_tocView selectedRow];
     
     if( selectedRow >= 0 ) {
 	CHMTopic *topic = [_tocView itemAtRow:selectedRow];
@@ -353,8 +354,8 @@ static NSString *HISTORY_TOOL_ID = @"chmox.history";
         [item setAction:@selector(makeTextBigger:)];
     }
     else if ( [itemIdentifier isEqualToString:HISTORY_TOOL_ID] ) {
-        [_historyToolbarItemView setLabel:nil forSegment:0];
-        [_historyToolbarItemView setLabel:nil forSegment:1];
+        [_historyToolbarItemView setLabel:@"" forSegment:0];
+        [_historyToolbarItemView setLabel:@"" forSegment:1];
         //[_historyToolbarItemView sizeToFit];
         NSRect frame = [_historyToolbarItemView frame];
         [item setLabel:NSLocalizedString( HISTORY_TOOL_ID, nil )];

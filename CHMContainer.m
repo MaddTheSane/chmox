@@ -19,7 +19,7 @@
 // $Revision: 1.8 $
 //
 
-#include <openssl/sha.h>
+#include <CommonCrypto/CommonDigest.h>
 #import "CHMContainer.h"
 #import "chm_lib.h"
 
@@ -70,6 +70,7 @@
     [_homePath release];
     [_tocPath release];
     [_indexPath release];
+	[super dealloc];
 }
 
 
@@ -105,12 +106,12 @@ static inline unsigned short readShort( NSData *data, unsigned int offset ) {
     return NSSwapLittleShortToHost( value );
 }
 
-static inline unsigned long readLong( NSData *data, unsigned int offset ) {
+static inline unsigned int readLong( NSData *data, off_t offset ) {
     NSRange valueRange = { offset, 4 };
-    unsigned long value;
+    unsigned int value;
     
     [data getBytes:(void *)&value range:valueRange];
-    return NSSwapLittleLongToHost( value );
+    return CFSwapInt32( value );
 }
 
 static inline NSString * readString( NSData *data, unsigned long offset ) {
@@ -204,7 +205,7 @@ static inline NSString * readTrimmedString( NSData *data, unsigned long offset )
     if( windowsData && stringsData ) {
 	const unsigned long entryCount = readLong( windowsData, 0 );
 	const unsigned long entrySize = readLong( windowsData, 4 );
-	NSLog( @"Entries: %u x %u bytes", entryCount, entrySize );
+	NSLog( @"Entries: %lu x %lu bytes", entryCount, entrySize );
 	
 	for( int entryIndex = 0; entryIndex < entryCount; ++entryIndex ) {
 	    unsigned long entryOffset = 8 + ( entryIndex * entrySize );
@@ -237,7 +238,7 @@ static inline NSString * readTrimmedString( NSData *data, unsigned long offset )
 	return NO;
     }
         
-    unsigned int maxOffset = [systemData length];
+    NSUInteger maxOffset = [systemData length];
     for( unsigned int offset = 0; offset < maxOffset; offset += readShort( systemData, offset + 2 ) + 4 ) {
 	switch( readShort( systemData, offset ) ) {
 	    // Table of contents file
@@ -294,8 +295,8 @@ static inline NSString * readTrimmedString( NSData *data, unsigned long offset )
     }
 
     //--- Compute unique id ---
-    unsigned char digest[ SHA_DIGEST_LENGTH ];
-    SHA1( [systemData bytes], [systemData length], digest );
+    unsigned char digest[ CC_SHA1_DIGEST_LENGTH ];
+    CC_SHA1( [systemData bytes], (int)[systemData length], digest );
     unsigned int *ptr = (unsigned int *) digest;
     _uniqueId = [[NSString alloc] initWithFormat:@"%x%x%x%x%x", ptr[0], ptr[1], ptr[2], ptr[3], ptr[4]];
     NSLog( @"UniqueId=%@", _uniqueId );

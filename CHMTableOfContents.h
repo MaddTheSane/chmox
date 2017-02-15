@@ -19,12 +19,12 @@
 // $Revision: 1.2 $
 //
 
-#import <Foundation/Foundation.h>
+#import <Cocoa/Cocoa.h>
 
 @class CHMTopic;
 @class CHMContainer;
 
-@interface CHMTableOfContents : NSObject {
+@interface CHMTableOfContents : NSObject <NSOutlineViewDataSource> {
     NSMutableArray *_rootTopics;
 }
 

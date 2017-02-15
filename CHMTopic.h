@@ -22,7 +22,7 @@
 #import <Foundation/Foundation.h>
 
 
-@interface CHMTopic : NSObject {
+@interface CHMTopic : NSObject <NSCopying> {
     NSString *_name;
     NSURL *_location;
     NSMutableArray *_subTopics;
@@ -30,16 +30,18 @@
 
 - (id)initWithName:(NSString *)topicName location:(NSURL *)topicLocation;
 
+@property (copy) NSString *name;
+@property (retain) NSURL *location;
 - (NSString *)name;
 - (NSURL *)location;
-- (unsigned int)countOfSubTopics;
-- (CHMTopic *)objectInSubTopicsAtIndex:(unsigned int)index;
+- (NSUInteger)countOfSubTopics;
+- (CHMTopic *)objectInSubTopicsAtIndex:(NSUInteger)index;
 
 - (void)setName:(NSString *)text;
 - (void)setLocation:(NSURL *)URL;
 
 - (void)addObject:(CHMTopic *)topic;
-- (void)insertObject:(CHMTopic *)topic inSubTopicsAtIndex:(unsigned int)index;
-- (void)removeObjectFromSubTopicsAtIndex:(unsigned int)index;
+- (void)insertObject:(CHMTopic *)topic inSubTopicsAtIndex:(NSUInteger)index;
+- (void)removeObjectFromSubTopicsAtIndex:(NSUInteger)index;
 
 @end
