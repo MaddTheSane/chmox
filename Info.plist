@@ -13,9 +13,10 @@
 				<string>CHM</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
-			<string>chmdoc.icns</string>
+			<string>chmdoc</string>
 			<key>CFBundleTypeMIMETypes</key>
 			<array>
+				<string>application/vnd.ms-htmlhelp</string>
 				<string>application/mshelp</string>
 			</array>
 			<key>CFBundleTypeName</key>
@@ -26,6 +27,10 @@
 			</array>
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>com.microsoft.windows.compiled-html</string>
+			</array>
 			<key>LSTypeIsPackage</key>
 			<false/>
 			<key>NSDocumentClass</key>
@@ -50,5 +55,39 @@
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>UTExportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.data</string>
+				<string>public.composite-content</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>Compiled HTML</string>
+			<key>UTTypeIconFile</key>
+			<string>chmdoc</string>
+			<key>UTTypeIdentifier</key>
+			<string>com.microsoft.windows.compiled-html</string>
+			<key>UTTypeReferenceURL</key>
+			<string>https://en.wikipedia.org/wiki/Microsoft_Compiled_HTML_Help</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>com.apple.ostype</key>
+				<array>
+					<string>CHM </string>
+				</array>
+				<key>public.filename-extension</key>
+				<array>
+					<string>chm</string>
+				</array>
+				<key>public.mime-type</key>
+				<array>
+					<string>application/vnd.ms-htmlhelp</string>
+					<string>application/mshelp</string>
+				</array>
+			</dict>
+		</dict>
+	</array>
 </dict>
 </plist>
