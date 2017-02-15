@@ -28,15 +28,19 @@
 
 @class NSFileManager;
 
-@implementation CHMDocument
+@implementation CHMDocument {
+    NSMutableOrderedSet<NSString*> *__bookKeys;
+    NSMutableOrderedSet<NSString*> *__searchKeys;
+}
 
 #pragma mark NSObject
 - (id) init
 {
     if( self = [super init] ) {
         _container = nil;
+        KEY_savedBookmarks = @"Chmox:savedBookmarks";
+        __bookKeys = [[NSMutableOrderedSet alloc] init];
     }
-	KEY_savedBookmarks = @"Chmox:savedBookmarks";
     return self;
 }
 
@@ -48,6 +52,8 @@
     }
     [_tableOfContents release];
     [_container release];
+    [__bookKeys release];
+    [__searchKeys release];
 	[self setLastLoadedPage:nil];
     [self setLastLoadedPageName:nil];
     
@@ -63,6 +69,7 @@
 		bookmarks = [[NSMutableDictionary alloc] init];
 	} else{
 		bookmarks = [[NSMutableDictionary alloc] initWithDictionary:savedBookmarks];
+        [__bookKeys addObjectsFromArray:[bookmarks allKeys]];
 	}
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	NSDictionary *appDefaults = [NSDictionary dictionaryWithObject:bookmarks forKey:KEY_savedBookmarks];
@@ -95,8 +102,16 @@
     return YES;
 }
 
-- (NSData *)dataRepresentationOfType:(NSString *)type {
+- (NSData *)dataOfType:(NSString *)typeName error:(NSError * _Nullable *)outError
+{
     // Viewer only
+    //if (outError) {
+    //    *outError = [NSError errorWithDomain:NSOSStatusErrorDomain code:unimpErr userInfo:nil];
+    //}
+    return nil;
+}
+
+- (NSData *)dataRepresentationOfType:(NSString *)type {
     return nil;
 }
 
@@ -104,7 +119,7 @@
 #pragma mark CHM operations
 - (NSURL *)urlForSelectedSearchResult: (NSUInteger)selectedIndex
 {
-	id target = [searchResults objectForKey:[[searchResults allKeys] objectAtIndex:selectedIndex]];
+	id target = [searchResults objectForKey:[__searchKeys objectAtIndex:selectedIndex]];
 	return [NSURL URLWithString:target];
 }
 
@@ -115,14 +130,15 @@
 
 - (id) searchResultAtIndex: (NSUInteger) requestedIndex
 {
-	return [[searchResults allKeys] objectAtIndex:requestedIndex];
+	return [__searchKeys objectAtIndex:requestedIndex];
 }
 
 
 #pragma mark Bookmark operations
 - (void)addBookmark
 {
-	if(lastLoadedPage != nil){	
+	if (lastLoadedPage != nil) {
+        [__bookKeys addObject:lastLoadedPageName];
 		[bookmarks setObject:lastLoadedPage forKey:lastLoadedPageName];
 		[[NSUserDefaults standardUserDefaults] setObject:bookmarks forKey:KEY_savedBookmarks];
 	}
@@ -130,7 +146,9 @@
 
 - (void)removeBookmark: (NSUInteger)bookmarkIndex
 {
-	[bookmarks removeObjectForKey:[[bookmarks allKeys] objectAtIndex:bookmarkIndex]];
+    NSString *toRemove = [__bookKeys objectAtIndex:bookmarkIndex];
+	[bookmarks removeObjectForKey:toRemove];
+    [__bookKeys removeObject:toRemove];
 	[[NSUserDefaults standardUserDefaults] setObject:bookmarks forKey:KEY_savedBookmarks];
 }
 
@@ -141,12 +159,12 @@
 
 - (NSString *) bookmarkURLAtIndex: (NSUInteger) selectedIndex;
 {
-	return [bookmarks objectForKey: [[bookmarks allKeys] objectAtIndex:selectedIndex]];
+	return [bookmarks objectForKey: [__bookKeys objectAtIndex:selectedIndex]];
 }
 
 - (NSString *) bookmarkTitleAtIndex: (NSUInteger) selectedIndex;
 {
-	return [[bookmarks allKeys] objectAtIndex:selectedIndex];
+	return [__bookKeys objectAtIndex:selectedIndex];
 }
 
 
@@ -164,7 +182,9 @@
 - (void) search:(NSString *)query
 {
 	[searchResults release];
+    [__searchKeys release];
 	searchResults = [[NSMutableDictionary alloc] init];
+    __searchKeys = [[NSMutableOrderedSet alloc] init];
 	//..........................................................................
 	// set up search options
     SKSearchOptions options = kSKSearchOptionDefault;
@@ -175,7 +195,6 @@
 	//..........................................................................
 	// create an asynchronous search object 
     SKSearchRef search = SKSearchCreate (skIndex, (CFStringRef) query, options);
-    [(id) search autorelease];
 	
 	//..........................................................................
 	// get matches from a search object
@@ -209,10 +228,11 @@
 											   (SKDocumentRef *) foundDocRefs);
 		
         for (pos = 0; pos < foundCount; pos++) {
-            SKDocumentRef doc = (SKDocumentRef) [(id) foundDocRefs [pos] autorelease];
-            NSURL* url = [(id) SKDocumentCopyURL (doc) autorelease];
+            SKDocumentRef doc = (SKDocumentRef) foundDocRefs [pos];
+            NSURL* url = [(NSURL*) SKDocumentCopyURL(doc) autorelease];
             NSString* urlStr = [url absoluteString];
             NSString* desc;
+            CFRelease(doc);
 			
             if (unranked) {
                 desc = [NSString stringWithFormat: @"---\nDocID: %d, URL: %@", (int) foundDocIDs [pos], urlStr];
@@ -221,9 +241,11 @@
             }
             NSLog(@"%@", desc);
 			NSString* entries = [docTitles objectForKey:urlStr ];
-			[searchResults setValue:urlStr forKey:[docTitles objectForKey:urlStr ] ];
+			[searchResults setValue:urlStr forKey:entries ];
+            [__searchKeys addObject:entries];
         }
     }
+    CFRelease(search);
 	
     NSString * desc = [NSString stringWithFormat: @"\"%@\" - %d matches", query, (int) totalCount];
 	NSLog(@"%@", desc);
@@ -232,17 +254,19 @@
 - (void) addDocWithTextForURL: (NSURL *) aURL
 {
     SKDocumentRef doc = SKDocumentCreateWithURL ( (CFURLRef) aURL );
-    [(id) doc autorelease];
 	
 	NSString* path = [aURL relativePath];
     NSString * contents = [_container stringWithContentsOfObject: path ];
-    SKIndexAddDocumentWithText (skIndex, doc, (CFStringRef) contents, (Boolean) true );
+    SKIndexAddDocumentWithText(skIndex, doc, (CFStringRef) contents, (Boolean) true );
+    CFRelease(doc);
 }
 
 - (void) populateIndexWithSubTopic: (CHMTopic *)aTopic
 {
 	[self addDocWithTextForURL: [aTopic location]];
-	[docTitles setValue:[aTopic name] forKey:[[aTopic location] absoluteString] ];
+    NSString *keyName = [[aTopic location] absoluteString];
+    [__searchKeys addObject:keyName];
+	[docTitles setValue:[aTopic name] forKey:keyName ];
 	for(int topicIndex = 0; topicIndex < [aTopic countOfSubTopics]; topicIndex++){
 		[self populateIndexWithSubTopic: [aTopic objectInSubTopicsAtIndex: topicIndex]];
 	}
@@ -251,10 +275,8 @@
 - (void) populateIndex
 {
 	NSArray* topics = [_tableOfContents rootTopics];
-	NSEnumerator* enumerator = [topics objectEnumerator];
-	
-	CHMTopic* aTopic;
-	while (aTopic = [enumerator nextObject]) {
+    
+    for (CHMTopic* aTopic in topics) {
 		[self populateIndexWithSubTopic: aTopic];
 	}
 	SKIndexFlush(skIndex);
@@ -278,13 +300,13 @@
 {
 	NSString* basePath = [@"~/Library/Application Support/Chmox/" stringByExpandingTildeInPath];
 	NSString* documentName = [[[_container path] stringByDeletingPathExtension] lastPathComponent];
-	NSString* path = [[basePath stringByAppendingString:@"/"] stringByAppendingString: documentName ];
-	path = [path stringByAppendingString:@".idx"];
-	NSString* tocPath = [[path stringByDeletingPathExtension] stringByAppendingString: @".tt"];
-	if([[NSFileManager defaultManager] fileExistsAtPath: path]){
+	NSString* path = [basePath stringByAppendingPathComponent: documentName ];
+    NSString* tocPath = [path stringByAppendingPathExtension: @"tt"];
+	path = [path stringByAppendingPathExtension:@"idx"];
+	if ([[NSFileManager defaultManager] fileExistsAtPath: path]) {
 		NSURL* url = [NSURL fileURLWithPath:path];
 		// open the specified index
-		skIndex = SKIndexOpenWithURL( (CFURLRef) url, (CFStringRef) @"PrimaryIndex", true );
+		skIndex = SKIndexOpenWithURL( (CFURLRef) url, CFSTR("PrimaryIndex"), true );
 		docTitles = [[NSMutableDictionary dictionaryWithContentsOfFile: tocPath] retain];
 	} else {
 		docTitles = [[NSMutableDictionary alloc] init];
@@ -324,42 +346,9 @@
 {
     return [_container uniqueId];
 }
-- (CHMContainer *)container
-{
-    return [[_container retain] autorelease];
-}
 
-//=========================================================== 
-//  lastLoadedPage 
-//=========================================================== 
-- (NSString *)lastLoadedPage
-{
-    return [[lastLoadedPage retain] autorelease]; 
-}
-- (void)setLastLoadedPage:(NSString *)aLastLoadedPage
-{
-    if (lastLoadedPage != aLastLoadedPage) {
-        [lastLoadedPage release];
-        lastLoadedPage = [aLastLoadedPage copy];
-    }
-}
-
-//=========================================================== 
-//  lastLoadedPageName 
-//=========================================================== 
-- (NSString *)lastLoadedPageName
-{
-    return [[lastLoadedPageName retain] autorelease]; 
-}
-- (void)setLastLoadedPageName:(NSString *)aLastLoadedPageName
-{
-    if (lastLoadedPageName != aLastLoadedPageName) {
-        [lastLoadedPageName release];
-        lastLoadedPageName = [aLastLoadedPageName copy];
-    }
-}
-
-
-
+@synthesize container = _container;
+@synthesize lastLoadedPage;
+@synthesize lastLoadedPageName;
 
 @end

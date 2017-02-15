@@ -19,8 +19,7 @@
 // $Revision: 1.5 $
 //
 
-#import <AppKit/AppKit.h>
-#import <Foundation/Foundation.h>
+#import <Cocoa/Cocoa.h>
 
 @class CHMWindowController;
 @class CHMContainer;
@@ -49,6 +48,7 @@
 @property (readonly) NSURL *currentLocation;
 @property (readonly, retain) CHMTableOfContents *tableOfContents;
 @property (readonly) NSString *uniqueId;
+@property (readonly, retain) CHMContainer *container;
 
 - (CHMContainer *)container;
 - (void)search:(NSString *)searchString;

@@ -127,7 +127,7 @@ static htmlSAXHandler saxHandler = {
 
 - (NSArray *)rootTopics
 {
-	return rootTopics;
+    return [NSArray arrayWithArray:rootTopics];
 }
 
 #pragma mark libxml SAX handler implementation
@@ -254,7 +254,7 @@ static void createNewTopic( TOCBuilderContext *context )
 #pragma mark NSOutlineViewDataSource implementation
 
 - (NSInteger)outlineView:(NSOutlineView *)outlineView
-    numberOfChildrenOfItem:(id)item
+  numberOfChildrenOfItem:(id)item
 {
     return item? [item countOfSubTopics] : [rootTopics count];
 }
@@ -266,8 +266,8 @@ static void createNewTopic( TOCBuilderContext *context )
 }
 
 - (id)outlineView:(NSOutlineView *)outlineView
-	    child:(NSInteger)theIndex
-	   ofItem:(id)item
+            child:(NSInteger)theIndex
+           ofItem:(id)item
 {
     return item? [item objectInSubTopicsAtIndex:theIndex] : [rootTopics objectAtIndex:theIndex];
 }
