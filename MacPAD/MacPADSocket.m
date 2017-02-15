@@ -9,19 +9,32 @@
 #import "MacPADSocket.h"
 
 // Constant strings
-NSString *MacPADErrorCode = @"MacPADErrorCode";
-NSString *MacPADErrorMessage = @"MacPADErrorMessage";
-NSString *MacPADNewVersionAvailable = @"MacPADNewVersionAvailable";
+NSString *const MacPADErrorCode = @"MacPADErrorCode";
+NSString *const MacPADErrorMessage = @"MacPADErrorMessage";
+NSString *const MacPADNewVersionAvailable = @"MacPADNewVersionAvailable";
 
 // NSNotifications
-NSString *MacPADErrorOccurredNotification = @"MacPADErrorOccurredNotification";
-NSString *MacPADCheckFinishedNotification = @"MacPADCheckFinishedNotification";
+NSString *const MacPADErrorOccurredNotification = @"MacPADErrorOccurredNotification";
+NSString *const MacPADCheckFinishedNotification = @"MacPADCheckFinishedNotification";
 
-enum {
+typedef NS_ENUM(int, MacPADCharType) {
     kNumberType,
     kStringType,
     kPeriodType
 };
+
+@interface MacPADSocket ()
+// Private methods
+- (void)initiateCheck:(id)sender;
+- (void)returnError:(MacPADResultCode)code message:(NSString *)msg;
+- (void)returnSuccess:(NSDictionary *)userInfo;
+- (void)returnFailure:(NSDictionary *)userInfo;
+- (void)processDictionary:(NSDictionary *)dict;
+- (NSComparisonResult)compareVersion:(NSString *)versionA toVersion:(NSString *)versionB;
+- (NSArray *)splitVersion:(NSString *)version;
+- (MacPADCharType)getCharType:(NSString *)character;
+
+@end
 
 @implementation MacPADSocket
 
@@ -184,7 +197,9 @@ enum {
     [self performCheckWithVersion:version];
 }
 
-- (void)setDelegate:(id)delegate
+@synthesize delegate = _delegate;
+
+- (void)setDelegate:(id<MacPADSocketNotifications>)delegate
 {
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     if (_delegate != nil) {
@@ -359,10 +374,11 @@ enum {
     NSArray *partsB = [self splitVersion:versionB];
     
     NSString *partA, *partB;
-    int i, n, typeA, typeB, intA, intB;
+    int intA, intB;
+	MacPADCharType typeA, typeB;
     
-    n = MIN([partsA count], [partsB count]);
-    for (i = 0; i < n; ++i) {
+    NSInteger n = MIN([partsA count], [partsB count]);
+    for (NSInteger i = 0; i < n; ++i) {
         partA = [partsA objectAtIndex:i];
         partB = [partsB objectAtIndex:i];
         
@@ -441,7 +457,7 @@ enum {
 {
     NSString *character;
     NSMutableString *s;
-    int i, n, oldType, newType;
+    MacPADCharType oldType, newType;
     NSMutableArray *parts = [NSMutableArray array];
     if ([version length] == 0) {
         // Nothing to do here
@@ -449,8 +465,8 @@ enum {
     }
     s = [[[version substringToIndex:1] mutableCopy] autorelease];
     oldType = [self getCharType:s];
-    n = [version length] - 1;
-    for (i = 1; i <= n; ++i) {
+    NSInteger n = [version length] - 1;
+    for (NSInteger i = 1; i <= n; ++i) {
         character = [version substringWithRange:NSMakeRange(i, 1)];
         newType = [self getCharType:character];
         if (oldType != newType || oldType == kPeriodType) {
@@ -469,7 +485,7 @@ enum {
     return parts;
 }
 
-- (int)getCharType:(NSString *)character
+- (MacPADCharType)getCharType:(NSString *)character
 {
     if ([character isEqualToString:@"."]) {
         return kPeriodType;

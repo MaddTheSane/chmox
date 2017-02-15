@@ -39,8 +39,6 @@
 	</array>
 	<key>CFBundleExecutable</key>
 	<string>Chmox</string>
-	<key>CFBundleIconFile</key>
-	<string>application.icns</string>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
