@@ -42,13 +42,13 @@ typedef NS_ENUM(NSInteger, MacPADResultCode) {
 - (void)performCheckWithURL:(NSURL *)url;
 - (void)performCheck;
 @property (nonatomic, strong) id<MacPADSocketNotifications> delegate;
-- (NSString *)currentVersion;
-- (NSString *)newVersion NS_RETURNS_NOT_RETAINED;
-- (NSString *)releaseNotes;
-- (NSDate *)releaseDate;
-- (NSString *)productPageURL;
-- (NSString *)productDownloadURL;
-- (NSArray<NSString*> *)productDownloadURLs;
+@property (readonly, copy) NSString *currentVersion;
+@property (readonly, copy) NSString *newVersion NS_RETURNS_NOT_RETAINED;
+@property (readonly, copy) NSString *releaseNotes;
+@property (readonly, copy) NSDate *releaseDate;
+@property (readonly, copy) NSString *productPageURL;
+@property (readonly, copy) NSString *productDownloadURL;
+@property (readonly, copy) NSArray<NSString*> *productDownloadURLs;
 
 @end
 

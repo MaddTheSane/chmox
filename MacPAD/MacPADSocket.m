@@ -196,6 +196,12 @@ typedef NS_ENUM(int, MacPADCharType) {
 }
 
 @synthesize delegate = _delegate;
+@synthesize releaseNotes = _releaseNotes;
+@synthesize currentVersion = _currentVersion;
+@synthesize newVersion = _newVersion;
+@synthesize productPageURL = _productPageURL;
+@synthesize releaseDate = _releaseDate;
+@synthesize productDownloadURLs = _productDownloadURLs;
 
 - (void)setDelegate:(id<MacPADSocketNotifications>)delegate
 {
@@ -225,10 +231,6 @@ typedef NS_ENUM(int, MacPADCharType) {
     } else {
         return [_releaseNotes copy];
     }
-}
-
-- (NSString *)currentVersion {
-    return [_currentVersion copy];
 }
 
 - (NSString *)newVersion
