@@ -242,11 +242,11 @@
 
 - (void) addDocWithTextForURL: (NSURL *) aURL
 {
-    SKDocumentRef doc = SKDocumentCreateWithURL ( (__bridge CFURLRef) aURL );
+    SKDocumentRef doc = SKDocumentCreateWithURL((__bridge CFURLRef) aURL);
 	
 	NSString* path = [aURL relativePath];
-    NSString * contents = [_container stringWithContentsOfObject: path ];
-    SKIndexAddDocumentWithText(skIndex, doc, (__bridge CFStringRef) contents, (Boolean) true );
+    NSString * contents = [_container stringWithContentsOfObject: path];
+    SKIndexAddDocumentWithText(skIndex, doc, (__bridge CFStringRef)contents, true);
     CFRelease(doc);
 }
 
@@ -256,7 +256,7 @@
     NSString *keyName = [[aTopic location] absoluteString];
     [__searchKeys addObject:keyName];
 	[docTitles setValue:[aTopic name] forKey:keyName ];
-	for(int topicIndex = 0; topicIndex < [aTopic countOfSubTopics]; topicIndex++){
+	for (NSInteger topicIndex = 0; topicIndex < [aTopic countOfSubTopics]; topicIndex++) {
 		[self populateIndexWithSubTopic: [aTopic objectInSubTopicsAtIndex: topicIndex]];
 	}
 }
@@ -280,7 +280,7 @@
 	[[NSFileManager defaultManager] createFileAtPath:path contents:nil attributes:nil];
     NSURL* url = [NSURL fileURLWithPath: path];
     SKIndexType type = kSKIndexInverted;
-    skIndex = SKIndexCreateWithURL( (__bridge CFURLRef) url, CFSTR("PrimaryIndex"), (SKIndexType) type, (CFDictionaryRef) NULL );
+    skIndex = SKIndexCreateWithURL((__bridge CFURLRef)url, CFSTR("PrimaryIndex"), type, NULL);
 	NSLog(@"New index: %@", skIndex);
 	[self populateIndex];
 }
@@ -295,7 +295,7 @@
 	if ([[NSFileManager defaultManager] fileExistsAtPath: path]) {
 		NSURL* url = [NSURL fileURLWithPath:path];
 		// open the specified index
-		skIndex = SKIndexOpenWithURL( (__bridge CFURLRef) url, CFSTR("PrimaryIndex"), true );
+		skIndex = SKIndexOpenWithURL((__bridge CFURLRef)url, CFSTR("PrimaryIndex"), true);
 		docTitles = [NSMutableDictionary dictionaryWithContentsOfFile: tocPath];
 	} else {
 		docTitles = [[NSMutableDictionary alloc] init];

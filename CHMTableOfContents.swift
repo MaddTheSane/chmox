@@ -43,6 +43,8 @@ private func createNewTopic(_ context: UnsafeMutablePointer<TOCBuilderContext>) 
     var location: URL? = nil
     if let path = context.pointee.path {
         location = CHMURLProtocol.url(withPath: path, in: context.pointee.container)
+    } else {
+        location = CHMURLProtocol.url(withPath: "Help mee...", in: context.pointee.container)
     }
     context.pointee.lastTopic = CHMTopic(name: context.pointee.name, location: location)
     context.pointee.name = nil
@@ -80,7 +82,7 @@ private func elementDidStart(_ context: UnsafeMutableRawPointer?, _ name: Unsafe
         //DEBUG_OUTPUT( @"Stack BEFORE %@", context->topicStack );
         
         if context.pointee.name != nil {
-            createNewTopic( context );
+            createNewTopic(context)
         }
         
         if let lastTopic = context.pointee.lastTopic {
@@ -102,7 +104,7 @@ private func elementDidStart(_ context: UnsafeMutableRawPointer?, _ name: Unsafe
         
         var i = 0
         while atts[i] != nil {
-            var attr = UnsafeRawPointer(atts[i]!).assumingMemoryBound(to: Int8.self)
+            let attr = UnsafeRawPointer(atts[i]!).assumingMemoryBound(to: Int8.self)
             if strcasecmp("name", attr) == 0 {
                 type = atts[ i + 1 ];
             } else if strcasecmp("value", attr) == 0 {
@@ -177,16 +179,21 @@ class CHMTableOfContents: NSObject, NSOutlineViewDataSource {
     init(container: CHMContainer) {
         super.init()
         
-        let tocData = container.dataWithTableOfContents()! as NSData
+        guard let tocData = container.dataWithTableOfContents else {
+            return
+        }
         
         var context = TOCBuilderContext(container: container, toc: self)
         
-        // XML_CHAR_ENCODING_NONE / XML_CHAR_ENCODING_UTF8 / XML_CHAR_ENCODING_8859_1
-        let parser = htmlCreatePushParserCtxt(&saxHandler, &context,
-                                              tocData.bytes.assumingMemoryBound(to: Int8.self),
-                                              Int32(tocData.length),
-                                              nil, XML_CHAR_ENCODING_8859_1)
-        htmlParseChunk(parser, tocData.bytes.assumingMemoryBound(to: Int8.self), 0, 1)
+        let parser = tocData.withUnsafeBytes({ (dat: UnsafePointer<Int8>) -> htmlParserCtxtPtr? in
+            // XML_CHAR_ENCODING_NONE / XML_CHAR_ENCODING_UTF8 / XML_CHAR_ENCODING_8859_1
+            let parser1 = htmlCreatePushParserCtxt(&saxHandler, &context,
+                                                  dat,
+                                                  Int32(tocData.count),
+                                                  nil, XML_CHAR_ENCODING_8859_1)
+            htmlParseChunk(parser1, dat, 0, 1)
+            return parser1
+        })
         
         let doc = parser?.pointee.myDoc
         htmlFreeParserCtxt(parser);

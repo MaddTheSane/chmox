@@ -41,7 +41,7 @@ struct chmFile;
 - (BOOL)hasObjectWithPath: (NSString *)path;
 - (NSData *)dataWithContentsOfObject: (NSString *)objectPath;
 - (NSString *)stringWithContentsOfObject: (NSString *)objectPath;
-- (NSData *)dataWithTableOfContents;
+@property (readonly, copy) NSData *dataWithTableOfContents;
 
 - (BOOL)loadMetadata;
 - (void)computeIdFrom:(NSData *)systemData;

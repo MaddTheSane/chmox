@@ -194,21 +194,19 @@ static inline NSString * readTrimmedString( NSData *data, unsigned long offset )
 		[self computeIdFrom:systemData];
 		
 		// Check for empty string titles
-		if( [_title length] == 0 )  {
+		if ([_title length] == 0) {
 			_title = nil;
-		}else {
+		} else {
 		}
 		
 		// Check for lack of index page
-		if( !_homePath ) {
+		if (!_homePath) {
 			_homePath = [self findHomeForPath:@"/"];
 			//NSLog( @"Implicit home: %@", _homePath );
 		}
 		
 		success = YES;
     }
-        
-
     
     return success;
 }
@@ -288,13 +286,13 @@ static inline NSString * readTrimmedString( NSData *data, unsigned long offset )
 				}
 				break;
 			case 6:// Compiled file
-				//NSLog( @"SYSTEM compiled file: %@", readString( systemData, offset + 4 ) );
+				NSLog( @"SYSTEM compiled file: %@", readString( systemData, offset + 4 ) );
 				break;
 			case 9:// Compiler
-				//NSLog( @"SYSTEM Compiler: %@", readString( systemData, offset + 4 ) );
+				NSLog( @"SYSTEM Compiler: %@", readString( systemData, offset + 4 ) );
 				break;
 			case 16:// Default font
-				//NSLog( @"SYSTEM Default font: %@", readString( systemData, offset + 4 ) );
+				NSLog( @"SYSTEM Default font: %@", readString( systemData, offset + 4 ) );
 				break;
 			default:// Other data not handled
 				break;
