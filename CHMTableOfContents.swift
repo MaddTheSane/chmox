@@ -155,9 +155,7 @@ private func elementDidEnd(_ context: UnsafeMutableRawPointer?, _ name: UnsafePo
         
         //DEBUG_OUTPUT( @"Stack AFTER %@", context->topicStack );
     }
-
 }
-
 
 private var saxHandler: htmlSAXHandler = {
     var aHandler = htmlSAXHandler()

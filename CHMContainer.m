@@ -43,7 +43,7 @@
             return nil;
         }
         
-        _path = chmFilePath;
+        _path = [chmFilePath copy];
         
         _uniqueId = nil;
         _title = nil;
@@ -62,7 +62,7 @@
 {
     //NSLog(@"deallocating %@",self);
 
-    if( _handle ) {
+    if (_handle) {
         chm_close( _handle );
     }
 
@@ -196,7 +196,6 @@ static inline NSString * readTrimmedString( NSData *data, unsigned long offset )
 		// Check for empty string titles
 		if ([_title length] == 0) {
 			_title = nil;
-		} else {
 		}
 		
 		// Check for lack of index page
