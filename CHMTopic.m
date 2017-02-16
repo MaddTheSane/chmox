@@ -58,13 +58,13 @@
 }
 
 
-- (NSUInteger)countOfSubTopics
+- (NSInteger)countOfSubTopics
 {
     return _subTopics? [_subTopics count] : 0;
 }
 
 
-- (CHMTopic *)objectInSubTopicsAtIndex:(NSUInteger)theIndex
+- (CHMTopic *)objectInSubTopicsAtIndex:(NSInteger)theIndex
 {
     return _subTopics? [_subTopics objectAtIndex:theIndex] : nil;
 }
@@ -80,7 +80,7 @@
     [_subTopics addObject:topic];
 }
 
-- (void)insertObject:(CHMTopic *)topic inSubTopicsAtIndex:(NSUInteger)theIndex
+- (void)insertObject:(CHMTopic *)topic inSubTopicsAtIndex:(NSInteger)theIndex
 {
     if (!_subTopics) {
         _subTopics = [[NSMutableArray alloc] init];
@@ -89,7 +89,7 @@
     [_subTopics insertObject:topic atIndex:theIndex];
 }
 
-- (void)removeObjectFromSubTopicsAtIndex:(NSUInteger)theIndex
+- (void)removeObjectFromSubTopicsAtIndex:(NSInteger)theIndex
 {
     if (_subTopics) {
         [_subTopics removeObjectAtIndex:theIndex];

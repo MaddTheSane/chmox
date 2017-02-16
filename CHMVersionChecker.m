@@ -191,7 +191,7 @@ static NSString *FIRST_TIME_PREF = @"VersionChecker:firstTime";
     
     if ([prefs boolForKey:AUTOMATIC_CHECK_PREF]) {
         NSInteger daysSinceLastCheck = -[[prefs objectForKey:LAST_CHECK_DATE_PREF] timeIntervalSinceNow] / ( 60 * 60 * 24 );
-        NSLog( @"CHMVersionChecker: %d days since last time", daysSinceLastCheck );
+        NSLog( @"CHMVersionChecker: %ld days since last time", (long)daysSinceLastCheck );
         
         return (daysSinceLastCheck >= [prefs integerForKey:DAYS_BETWEEN_AUTOMATIC_CHECKS_PREF]);
     }

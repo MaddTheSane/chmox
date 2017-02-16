@@ -33,8 +33,7 @@
 		44B7AED20675301E00B51920 /* chmdoc.icns in Resources */ = {isa = PBXBuildFile; fileRef = 44B7AED10675301E00B51920 /* chmdoc.icns */; };
 		44F984BF06576CA60076336E /* CHMTopic.h in Headers */ = {isa = PBXBuildFile; fileRef = 44F984BD06576CA60076336E /* CHMTopic.h */; };
 		44F984C006576CA60076336E /* CHMTopic.m in Sources */ = {isa = PBXBuildFile; fileRef = 44F984BE06576CA60076336E /* CHMTopic.m */; };
-		44F984FA065774580076336E /* CHMTableOfContents.h in Headers */ = {isa = PBXBuildFile; fileRef = 44F984F8065774580076336E /* CHMTableOfContents.h */; };
-		44F984FB065774580076336E /* CHMTableOfContents.m in Sources */ = {isa = PBXBuildFile; fileRef = 44F984F9065774580076336E /* CHMTableOfContents.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		559150AD1E5511540011313A /* CHMTableOfContents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559150AC1E5511540011313A /* CHMTableOfContents.swift */; };
 		55B23B811E54325E009C456D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55B23B831E54325E009C456D /* InfoPlist.strings */; };
 		55B23B851E543B2C009C456D /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55B23B841E543B2C009C456D /* Media.xcassets */; };
 		55D973F31E54B36300355BE3 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 55D973F21E54B36300355BE3 /* libxml2.tbd */; };
@@ -90,11 +89,11 @@
 		44DA07230694985300777FAE /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = SOURCE_ROOT; };
 		44F984BD06576CA60076336E /* CHMTopic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHMTopic.h; sourceTree = "<group>"; };
 		44F984BE06576CA60076336E /* CHMTopic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHMTopic.m; sourceTree = "<group>"; };
-		44F984F8065774580076336E /* CHMTableOfContents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHMTableOfContents.h; sourceTree = "<group>"; };
-		44F984F9065774580076336E /* CHMTableOfContents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHMTableOfContents.m; sourceTree = "<group>"; };
 		557859041E54B14B0043CC15 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		557859051E54B14B0043CC15 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		557859061E54B14B0043CC15 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
+		559150AB1E5511540011313A /* Chmox-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Chmox-Bridging-Header.h"; sourceTree = "<group>"; };
+		559150AC1E5511540011313A /* CHMTableOfContents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHMTableOfContents.swift; sourceTree = "<group>"; };
 		55B009FC1E54D4FD0037EE6E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		55B009FD1E54D4FD0037EE6E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/CHMDocument.xib; sourceTree = "<group>"; };
 		55B009FE1E54D4FE0037EE6E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/VersionChecker.xib; sourceTree = "<group>"; };
@@ -187,8 +186,8 @@
 				442BBA300653ED630041C2A9 /* CHMContainer.m */,
 				44F984BD06576CA60076336E /* CHMTopic.h */,
 				44F984BE06576CA60076336E /* CHMTopic.m */,
-				44F984F8065774580076336E /* CHMTableOfContents.h */,
-				44F984F9065774580076336E /* CHMTableOfContents.m */,
+				559150AC1E5511540011313A /* CHMTableOfContents.swift */,
+				559150AB1E5511540011313A /* Chmox-Bridging-Header.h */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -271,7 +270,6 @@
 				442BB9D60653EB340041C2A9 /* CHMURLProtocol.h in Headers */,
 				442BBA310653ED630041C2A9 /* CHMContainer.h in Headers */,
 				44F984BF06576CA60076336E /* CHMTopic.h in Headers */,
-				44F984FA065774580076336E /* CHMTableOfContents.h in Headers */,
 				44B501B206A587BA00CE0A8E /* CHMVersionChecker.h in Headers */,
 				44923A7A072C57E90070AA26 /* CHMApplication.h in Headers */,
 				4494984E073D5A1700D8BC20 /* MacPADSocket.h in Headers */,
@@ -308,6 +306,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0820;
+				TargetAttributes = {
+					8D15AC270486D014006FF6A4 = {
+						LastSwiftMigration = 0820;
+					};
+				};
 			};
 			buildConfigurationList = 44F062640AF411D000B95F3E /* Build configuration list for PBXProject "chmox" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -374,6 +377,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D15AC320486D014006FF6A4 /* main.m in Sources */,
+				559150AD1E5511540011313A /* CHMTableOfContents.swift in Sources */,
 				448AF5A3064AA5E100FA37BD /* CHMDocument.m in Sources */,
 				448AF5AD064AE52F00FA37BD /* CHMWindowController.m in Sources */,
 				448AF6FD064AFD3500FA37BD /* chm_lib.c in Sources */,
@@ -381,7 +385,6 @@
 				442BB9D70653EB340041C2A9 /* CHMURLProtocol.m in Sources */,
 				442BBA320653ED630041C2A9 /* CHMContainer.m in Sources */,
 				44F984C006576CA60076336E /* CHMTopic.m in Sources */,
-				44F984FB065774580076336E /* CHMTableOfContents.m in Sources */,
 				44B501B306A587BA00CE0A8E /* CHMVersionChecker.m in Sources */,
 				44923A7B072C57E90070AA26 /* CHMApplication.m in Sources */,
 				4494984F073D5A1700D8BC20 /* MacPADSocket.m in Sources */,
@@ -472,6 +475,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = application;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_CPP_EXCEPTIONS = NO;
@@ -491,10 +495,13 @@
 				GCC_WARN_SHADOW = YES;
 				HEADER_SEARCH_PATHS = "$(SDK_DIR)/usr/include/libxml2";
 				INFOPLIST_FILE = Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				OTHER_CFLAGS = "-DDEBUG_MODE";
 				PRODUCT_BUNDLE_IDENTIFIER = net.sourceforge.Chmox;
 				PRODUCT_NAME = Chmox;
 				SKIP_INSTALL = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "Chmox-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -503,6 +510,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = application;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_CPP_EXCEPTIONS = NO;
@@ -520,9 +528,12 @@
 				GCC_WARN_SHADOW = YES;
 				HEADER_SEARCH_PATHS = "$(SDK_DIR)/usr/include/libxml2";
 				INFOPLIST_FILE = Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.sourceforge.Chmox;
 				PRODUCT_NAME = Chmox;
 				SKIP_INSTALL = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "Chmox-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -552,6 +563,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -578,6 +590,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 			};
 			name = Release;
 		};

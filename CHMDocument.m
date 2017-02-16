@@ -23,7 +23,7 @@
 #import "CHMTopic.h"
 #import "CHMWindowController.h"
 #import "CHMContainer.h"
-#import "CHMTableOfContents.h"
+#import "Chmox-Swift.h"
 #import "CHMURLProtocol.h"
 
 @class NSFileManager;

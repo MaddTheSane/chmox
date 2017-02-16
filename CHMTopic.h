@@ -32,11 +32,11 @@
 
 @property (copy) NSString *name;
 @property (strong) NSURL *location;
-@property (readonly) NSUInteger countOfSubTopics;
-- (CHMTopic *)objectInSubTopicsAtIndex:(NSUInteger)index;
+@property (readonly) NSInteger countOfSubTopics;
+- (CHMTopic *)objectInSubTopicsAtIndex:(NSInteger)index;
 
 - (void)addObject:(CHMTopic *)topic;
-- (void)insertObject:(CHMTopic *)topic inSubTopicsAtIndex:(NSUInteger)index;
-- (void)removeObjectFromSubTopicsAtIndex:(NSUInteger)index;
+- (void)insertObject:(CHMTopic *)topic inSubTopicsAtIndex:(NSInteger)index;
+- (void)removeObjectFromSubTopicsAtIndex:(NSInteger)index;
 
 @end

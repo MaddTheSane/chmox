@@ -24,7 +24,7 @@
 #import "CHMDocument.h"
 #import "CHMTopic.h"
 #import "CHMURLProtocol.h"
-#import "CHMTableOfContents.h"
+#import "Chmox-Swift.h"
 
 
 
