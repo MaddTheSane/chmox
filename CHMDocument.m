@@ -102,10 +102,6 @@
     return nil;
 }
 
-- (NSData *)dataRepresentationOfType:(NSString *)type {
-    return nil;
-}
-
 
 #pragma mark CHM operations
 - (NSURL *)urlForSelectedSearchResult: (NSUInteger)selectedIndex
@@ -192,10 +188,10 @@
 	
     while (more) {
         SKDocumentID    foundDocIDs [kSearchMax];
-        float            foundScores [kSearchMax];
-        SKDocumentRef    foundDocRefs [kSearchMax];
+        float           foundScores [kSearchMax];
+        SKDocumentRef   foundDocRefs [kSearchMax];
         float * scores;
-        Boolean unranked = options & kSKSearchOptionNoRelevanceScores;
+        Boolean unranked = (bool)(options & kSKSearchOptionNoRelevanceScores);
 		
         if (unranked) {
             scores = NULL;
@@ -213,12 +209,12 @@
 		// get document locations for matches and display results.
 		//     alternatively, you can collect results over iterations of this loop
 		//     for display later.
-        SKIndexCopyDocumentRefsForDocumentIDs((SKIndexRef)skIndex, (CFIndex)foundCount, (SKDocumentID*)foundDocIDs,
+        SKIndexCopyDocumentRefsForDocumentIDs(skIndex, foundCount, (SKDocumentID*)foundDocIDs,
                                               (SKDocumentRef*)foundDocRefs);
 		
         for (pos = 0; pos < foundCount; pos++) {
             SKDocumentRef doc = (SKDocumentRef) foundDocRefs [pos];
-            NSURL* url = (NSURL*) CFBridgingRelease(SKDocumentCopyURL(doc));
+            NSURL* url = (NSURL*)CFBridgingRelease(SKDocumentCopyURL(doc));
             NSString* urlStr = [url absoluteString];
             NSString* desc;
             CFRelease(doc);
@@ -273,11 +269,12 @@
 
 - (void) createNewIndexAtPath:(NSString *)path
 {
+    NSFileManager *fm = [NSFileManager defaultManager];
 	NSString* parentDirectory = [path stringByDeletingLastPathComponent];
-	if(! [[NSFileManager defaultManager] fileExistsAtPath:parentDirectory]){
-        [[NSFileManager defaultManager] createDirectoryAtPath:parentDirectory attributes:@{}];
+	if (![fm fileExistsAtPath:parentDirectory]) {
+        [fm createDirectoryAtPath:parentDirectory withIntermediateDirectories:YES attributes:nil error:NULL];
 	}
-	[[NSFileManager defaultManager] createFileAtPath:path contents:nil attributes:nil];
+	[fm createFileAtPath:path contents:nil attributes:nil];
     NSURL* url = [NSURL fileURLWithPath: path];
     SKIndexType type = kSKIndexInverted;
     skIndex = SKIndexCreateWithURL((__bridge CFURLRef)url, CFSTR("PrimaryIndex"), type, NULL);
