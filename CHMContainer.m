@@ -123,9 +123,15 @@ typedef NS_ENUM(int, CHMResolveStatus) {
     CHM_RESOLVE_FAILURE
 };
 
-static CHMResolveStatus chm_resolve_object(chm_file *_handle, const char* path, chm_entry *info)
+static CHMResolveStatus chm_resolve_object(chm_file *handle, const char* path, chm_entry *info)
 {
-    
+    for (int i = 0; i < handle->n_entries; i++) {
+        if (strcmp(handle->entries[i]->path, path) == 0) {
+            *info = *handle->entries[i];
+            return CHM_RESOLVE_SUCCESS;
+        }
+    }
+
     return CHM_RESOLVE_FAILURE;
 }
 
