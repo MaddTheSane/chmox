@@ -23,6 +23,8 @@
 
 struct chmFile;
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface CHMContainer : NSObject {
     struct chmFile *_handle;
     NSString *_uniqueId;
@@ -34,14 +36,14 @@ struct chmFile;
     NSString *_indexPath;
 }
 
-+ (instancetype)containerWithContentsOfFile:(NSString *)path;
++ (nullable instancetype)containerWithContentsOfFile:(NSString *)path;
 
-- (instancetype)initWithContentsOfFile:(NSString *)path;
+- (nullable instancetype)initWithContentsOfFile:(NSString *)path;
 
 - (BOOL)hasObjectWithPath: (NSString *)path;
-- (NSData *)dataWithContentsOfObject: (NSString *)objectPath;
-- (NSString *)stringWithContentsOfObject: (NSString *)objectPath;
-@property (readonly, copy) NSData *dataWithTableOfContents;
+- (nullable NSData *)dataWithContentsOfObject: (nullable NSString *)objectPath;
+- (nullable NSString *)stringWithContentsOfObject: (nullable NSString *)objectPath;
+@property (readonly, copy, nullable) NSData *dataWithTableOfContents;
 
 - (BOOL)loadMetadata;
 - (void)computeIdFrom:(NSData *)systemData;
@@ -50,10 +52,12 @@ struct chmFile;
 
 - (NSString *)findHomeForPath: (NSString *)basePath;
 
-@property (readonly, copy) NSString *title;
+@property (nullable, readonly, copy) NSString *title;
 @property (readonly, copy) NSString *uniqueId;
-@property (readonly, copy) NSString *tocPath;
-@property (readonly, copy) NSString *homePath;
+@property (nullable, readonly, copy) NSString *tocPath;
+@property (nullable, readonly, copy) NSString *homePath;
 @property (readonly, copy) NSString *path;
 
 @end
+
+NS_ASSUME_NONNULL_END

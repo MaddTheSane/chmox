@@ -22,13 +22,17 @@
 #import <Foundation/Foundation.h>
 @class CHMContainer;
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface CHMURLProtocol : NSURLProtocol
 
 + (void)registerContainer:(CHMContainer *)container;
 + (void)unregisterContainer:(CHMContainer *)container;
 
 + (BOOL)canHandleURL:(NSURL *)anURL;
-+ (CHMContainer *)containerForUniqueId:(NSString *)uniqueId;
++ (nullable CHMContainer *)containerForUniqueId:(NSString *)uniqueId;
 + (NSURL *)URLWithPath:(NSString *)path inContainer:(CHMContainer *)container;
 
 @end
+
+NS_ASSUME_NONNULL_END

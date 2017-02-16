@@ -21,6 +21,7 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
 
 @interface CHMTopic : NSObject <NSCopying> {
     NSString *_name;
@@ -28,15 +29,17 @@
     NSMutableArray<CHMTopic*> *_subTopics;
 }
 
-- (id)initWithName:(NSString *)topicName location:(NSURL *)topicLocation;
+- (instancetype)initWithName:(NSString *)topicName location:(nullable NSURL *)topicLocation;
 
 @property (copy) NSString *name;
-@property (strong) NSURL *location;
+@property (nullable, strong) NSURL *location;
 @property (readonly) NSInteger countOfSubTopics;
-- (CHMTopic *)objectInSubTopicsAtIndex:(NSInteger)index;
+- (nullable CHMTopic *)objectInSubTopicsAtIndex:(NSInteger)index;
 
 - (void)addObject:(CHMTopic *)topic;
 - (void)insertObject:(CHMTopic *)topic inSubTopicsAtIndex:(NSInteger)index;
 - (void)removeObjectFromSubTopicsAtIndex:(NSInteger)index;
 
 @end
+
+NS_ASSUME_NONNULL_END

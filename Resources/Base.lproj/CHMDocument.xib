@@ -69,7 +69,7 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <clipView key="contentView" id="FYL-rp-MUD">
                                             <rect key="frame" x="1" y="1" width="248" height="162"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <outlineView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnReordering="NO" multipleSelection="NO" emptySelection="NO" autosaveName="contentsOutline" rowHeight="14" indentationPerLevel="16" autoresizesOutlineColumn="YES" outlineTableColumn="44" id="45">
                                                     <rect key="frame" x="0.0" y="0.0" width="248" height="162"/>
@@ -133,7 +133,7 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <clipView key="contentView" id="aoH-MV-qd0">
                                             <rect key="frame" x="0.0" y="0.0" width="250" height="76"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveColumns="NO" headerView="140" id="49">
                                                     <rect key="frame" x="0.0" y="0.0" width="252.5" height="53"/>
@@ -217,7 +217,7 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <clipView key="contentView" id="8Uf-8P-zwx">
                                             <rect key="frame" x="1" y="1" width="248" height="136"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveName="bookmarksList" id="64">
                                                     <rect key="frame" x="0.0" y="0.0" width="248" height="136"/>
@@ -298,12 +298,12 @@
                 <outlet property="parentWindow" destination="26" id="29"/>
             </connections>
         </drawer>
-        <customView id="111" userLabel="History toolbar item">
-            <rect key="frame" x="0.0" y="0.0" width="182" height="80"/>
+        <customView misplaced="YES" id="111" userLabel="History toolbar item">
+            <rect key="frame" x="0.0" y="0.0" width="45" height="18"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
-                <segmentedControl verticalHuggingPriority="750" id="113">
-                    <rect key="frame" x="11" y="56" width="45" height="19"/>
+                <segmentedControl verticalHuggingPriority="750" misplaced="YES" id="113">
+                    <rect key="frame" x="0.0" y="-1" width="45" height="19"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <segmentedCell key="cell" controlSize="small" borderStyle="border" alignment="left" style="automatic" trackingMode="momentary" id="134">
                         <segments>
@@ -313,6 +313,7 @@
                     </segmentedCell>
                 </segmentedControl>
             </subviews>
+            <point key="canvasLocation" x="94.5" y="612"/>
         </customView>
     </objects>
     <resources>

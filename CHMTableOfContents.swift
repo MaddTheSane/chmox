@@ -46,7 +46,7 @@ private func createNewTopic(_ context: UnsafeMutablePointer<TOCBuilderContext>) 
     } else {
         location = CHMURLProtocol.url(withPath: "Help mee...", in: context.pointee.container)
     }
-    context.pointee.lastTopic = CHMTopic(name: context.pointee.name, location: location)
+    context.pointee.lastTopic = CHMTopic(name: context.pointee.name!, location: location)
     context.pointee.name = nil
     context.pointee.path = nil
     
@@ -55,7 +55,7 @@ private func createNewTopic(_ context: UnsafeMutablePointer<TOCBuilderContext>) 
     // Add topic to its parent
     for parent in context.pointee.topicStack.reversed() {
         if parent !== context.pointee.placeholder {
-            parent.addObject(context.pointee.lastTopic)
+            parent.addObject(context.pointee.lastTopic!)
             return
         }
     }
@@ -225,7 +225,7 @@ class CHMTableOfContents: NSObject, NSOutlineViewDataSource {
     
     func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
         if let anItem = item as? CHMTopic {
-            return anItem.objectInSubTopics(at: index)
+            return anItem.objectInSubTopics(at: index)!
         }
         return rootTopics[index]
     }

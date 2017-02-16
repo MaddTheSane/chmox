@@ -30,10 +30,10 @@
 
 - (id)initWithName:(NSString *)topicName location:(NSURL *)topicLocation
 {
-    if( self = [super init] ) {
+    if (self = [super init]) {
         _name = [topicName copy];
         _location = topicLocation;
-		_subTopics = nil;
+        _subTopics = nil;
     }
     
     return self;
