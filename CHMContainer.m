@@ -23,7 +23,10 @@
 #import "CHMContainer.h"
 #import "chm_lib.h"
 
-@implementation CHMContainer
+@implementation CHMContainer {
+    struct chm_file *_handle;
+    fd_reader_ctx readerCtx;
+}
 
 #pragma mark Factory
 
@@ -38,10 +41,17 @@
 - (id)initWithContentsOfFile:(NSString *)chmFilePath
 {
     if( self = [super init] ) {
-        _handle = chm_open( [chmFilePath fileSystemRepresentation] );
-        if( !_handle ) {
+        if (!fd_reader_init(&readerCtx, [chmFilePath fileSystemRepresentation])) {
             return nil;
         }
+        _handle = calloc(1, sizeof(*_handle));
+        if (!chm_parse(_handle, fd_reader, &readerCtx)) {
+            return nil;
+        }
+        //_handle = chm_open( [chmFilePath fileSystemRepresentation] );
+        //if( !_handle ) {
+        //    return nil;
+        //}
         
         _path = chmFilePath;
         
@@ -64,8 +74,10 @@
 
     if( _handle ) {
         chm_close( _handle );
+        free(_handle);
     }
 
+    fd_reader_close(&readerCtx);
 }
 
 
@@ -106,9 +118,20 @@ static inline NSString * readTrimmedString( NSData *data, unsigned long offset )
 
 #pragma mark CHM Object loading
 
+typedef NS_ENUM(int, CHMResolveStatus) {
+    CHM_RESOLVE_SUCCESS,
+    CHM_RESOLVE_FAILURE
+};
+
+static CHMResolveStatus chm_resolve_object(chm_file *_handle, const char* path, chm_entry *info)
+{
+    
+    return CHM_RESOLVE_FAILURE;
+}
+
 - (BOOL)hasObjectWithPath: (NSString *)path
 {
-    struct chmUnitInfo info;
+    chm_entry info;
     if( chm_resolve_object( _handle, [path UTF8String], &info ) != CHM_RESOLVE_SUCCESS ) {
         return NO;
     }
@@ -133,7 +156,7 @@ static inline NSString * readTrimmedString( NSData *data, unsigned long offset )
 		path = [NSString stringWithFormat:@"/%@", path];
     }
     
-    struct chmUnitInfo info;
+    chm_entry info;
     if( chm_resolve_object( _handle, [path UTF8String], &info ) != CHM_RESOLVE_SUCCESS ) {
         //NSLog( @"Unable to find %@", path );
         return nil;
@@ -149,7 +172,7 @@ static inline NSString * readTrimmedString( NSData *data, unsigned long offset )
 		return nil;
     }
     
-    if( !chm_retrieve_object( _handle, &info, buffer, 0, info.length ) ) {
+    if( !chm_retrieve_entry( _handle, &info, buffer, 0, info.length ) ) {
 		//NSLog( @"Failed to load %qu bytes for %@", (long long)info.length, path );
 		free( buffer );
 		return nil;

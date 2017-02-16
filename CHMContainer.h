@@ -26,7 +26,6 @@ struct chmFile;
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CHMContainer : NSObject {
-    struct chmFile *_handle;
     NSString *_uniqueId;
     
     NSString *_path;
