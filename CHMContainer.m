@@ -53,7 +53,7 @@
         //    return nil;
         //}
         
-        _path = chmFilePath;
+        _path = [chmFilePath copy];
         
         _uniqueId = nil;
         _title = nil;
@@ -72,7 +72,7 @@
 {
     //NSLog(@"deallocating %@",self);
 
-    if( _handle ) {
+    if (_handle) {
         chm_close( _handle );
         free(_handle);
     }
@@ -219,7 +219,6 @@ static CHMResolveStatus chm_resolve_object(chm_file *_handle, const char* path, 
 		// Check for empty string titles
 		if ([_title length] == 0) {
 			_title = nil;
-		} else {
 		}
 		
 		// Check for lack of index page
