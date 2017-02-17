@@ -50,7 +50,6 @@
 @property (weak, readonly) NSString *uniqueId;
 @property (readonly, strong) CHMContainer *container;
 
-- (CHMContainer *)container;
 - (void)search:(NSString *)searchString;
 
 @property (readonly) NSUInteger searchResultsCount;
@@ -65,11 +64,6 @@
 
 @property (copy) NSString *lastLoadedPage;
 @property (copy) NSString *lastLoadedPageName;
-- (NSString *)lastLoadedPage;
-- (void)setLastLoadedPage:(NSString *)aLastLoadedPage;
-
-- (NSString *)lastLoadedPageName;
-- (void)setLastLoadedPageName:(NSString *)aLastLoadedPageName;
 
 - (void) addDocWithTextForURL: (NSURL *) aURL;
 - (void) populateIndexWithSubTopic: (CHMTopic *)aTopic;
@@ -77,6 +71,5 @@
 - (void) createNewIndexAtPath:(NSString *)path;
 - (void) openIndex;
 - (void) closeIndex;
-
 
 @end

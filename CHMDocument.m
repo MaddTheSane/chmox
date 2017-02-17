@@ -284,9 +284,10 @@
 
 - (void) openIndex
 {
-	NSString* basePath = [@"~/Library/Application Support/Chmox/" stringByExpandingTildeInPath];
+    NSString* basePath = [[[NSFileManager defaultManager] URLForDirectory:NSApplicationSupportDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:NULL] path];
+    basePath = [basePath stringByAppendingPathComponent:@"Chmox"];
 	NSString* documentName = [[[_container path] stringByDeletingPathExtension] lastPathComponent];
-	NSString* path = [basePath stringByAppendingPathComponent: documentName ];
+	NSString* path = [basePath stringByAppendingPathComponent: documentName];
     NSString* tocPath = [path stringByAppendingPathExtension: @"tt"];
 	path = [path stringByAppendingPathExtension:@"idx"];
 	if ([[NSFileManager defaultManager] fileExistsAtPath: path]) {
@@ -299,10 +300,6 @@
 		[self createNewIndexAtPath: path];
 		[docTitles writeToFile:tocPath atomically:TRUE];
 	}
-	
-//	[basePath autorelease];
-//	[documentName autorelease];
-//	[path autorelease];
 }
 
 -(void) closeIndex
