@@ -26,11 +26,5 @@
 /* Class = "NSSearchFieldCell"; placeholderString = "Parola da cercare"; ObjectID = "131"; */
 "131.placeholderString" = "Parola da cercare";
 
-/* Class = "NSButtonCell"; title = "+"; ObjectID = "132"; */
-"132.title" = "+";
-
-/* Class = "NSButtonCell"; title = "-"; ObjectID = "133"; */
-"133.title" = "-";
-
 /* Class = "NSButtonCell"; title = "Rechercher les résultats précédents."; ObjectID = "135"; */
 "135.title" = "Rechercher les résultats précédents.";

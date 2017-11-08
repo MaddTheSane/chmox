@@ -1,5 +1,5 @@
-chmox.drawerToggle = "Cassetto";
-chmox.smallerText = "Più piccolo";
-chmox.biggerText = "Più grande";
-chmox.history = "Indietro/Avanti";
+"chmox.drawerToggle" = "Cassetto";
+"chmox.smallerText" = "Più piccolo";
+"chmox.biggerText" = "Più grande";
+"chmox.history" = "Indietro/Avanti";
 
