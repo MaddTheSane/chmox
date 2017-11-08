@@ -30,6 +30,7 @@
 		44F984BF06576CA60076336E /* CHMTopic.h in Headers */ = {isa = PBXBuildFile; fileRef = 44F984BD06576CA60076336E /* CHMTopic.h */; };
 		44F984C006576CA60076336E /* CHMTopic.m in Sources */ = {isa = PBXBuildFile; fileRef = 44F984BE06576CA60076336E /* CHMTopic.m */; };
 		556D137A1FB284FB00A73608 /* CHM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 556D136F1FB284E900A73608 /* CHM.framework */; };
+		556D13811FB28D8700A73608 /* CHM.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 556D136F1FB284E900A73608 /* CHM.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		559150AD1E5511540011313A /* CHMTableOfContents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559150AC1E5511540011313A /* CHMTableOfContents.swift */; };
 		55B23B811E54325E009C456D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55B23B831E54325E009C456D /* InfoPlist.strings */; };
 		55B23B851E543B2C009C456D /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55B23B841E543B2C009C456D /* Media.xcassets */; };
@@ -83,7 +84,28 @@
 			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
 			remoteInfo = CHM.framework;
 		};
+		556D13821FB28D8700A73608 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 556D13661FB284E900A73608 /* CHM Framework.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
+			remoteInfo = CHM.framework;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		556D13841FB28D8700A73608 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				556D13811FB28D8700A73608 /* CHM.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -153,7 +175,7 @@
 		55B00A101E54D5D90037EE6E /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/VersionChecker.strings; sourceTree = "<group>"; };
 		55B00A111E54D5E80037EE6E /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fa; path = fa.lproj/VersionChecker.strings; sourceTree = "<group>"; };
 		55B00A121E54D5F10037EE6E /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = zh_TW.lproj/VersionChecker.strings; sourceTree = "<group>"; };
-		55B23B821E54325E009C456D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		55B23B821E54325E009C456D /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		55B23B841E543B2C009C456D /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		55D973F21E54B36300355BE3 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		8D15AC360486D014006FF6A4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -336,11 +358,13 @@
 				8D15AC300486D014006FF6A4 /* Sources */,
 				8D15AC330486D014006FF6A4 /* Frameworks */,
 				448CC7FD068A319600F9B0DB /* ShellScript */,
+				556D13841FB28D8700A73608 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				556D13791FB284F500A73608 /* PBXTargetDependency */,
+				556D13831FB28D8700A73608 /* PBXTargetDependency */,
 			);
 			name = Chmox;
 			productInstallPath = "$(HOME)/Applications";
@@ -357,7 +381,7 @@
 				LastUpgradeCheck = 0910;
 				TargetAttributes = {
 					8D15AC270486D014006FF6A4 = {
-						LastSwiftMigration = 0820;
+						LastSwiftMigration = 0910;
 					};
 				};
 			};
@@ -490,6 +514,11 @@
 			name = CHM.framework;
 			targetProxy = 556D13781FB284F500A73608 /* PBXContainerItemProxy */;
 		};
+		556D13831FB28D8700A73608 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CHM.framework;
+			targetProxy = 556D13821FB28D8700A73608 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -601,7 +630,8 @@
 				PRODUCT_NAME = Chmox;
 				SKIP_INSTALL = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "Chmox-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -634,7 +664,8 @@
 				PRODUCT_NAME = Chmox;
 				SKIP_INSTALL = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "Chmox-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -163,18 +163,16 @@ private var saxHandler: htmlSAXHandler = {
     aHandler.endDocument = documentDidEnd
     // This is needed because we can't pass elementDidStart directly
     // for some stupid-odd reason.
-    aHandler.startElement = {context,name,atts in
-        elementDidStart(context, name, atts)
-    }
+    aHandler.startElement = elementDidStart
     aHandler.endElement = elementDidEnd
     
     return aHandler
 }()
 
 class CHMTableOfContents: NSObject, NSOutlineViewDataSource {
-    fileprivate(set) var rootTopics = [CHMTopic]()
+    @objc fileprivate(set) var rootTopics = [CHMTopic]()
     
-    init(container: CHMContainer) {
+    @objc init(container: CHMContainer) {
         super.init()
         
         guard let tocData = container.dataWithTableOfContents else {
@@ -200,7 +198,7 @@ class CHMTableOfContents: NSObject, NSOutlineViewDataSource {
         }
     }
     
-    func addRootTopic(_ topic: CHMTopic?) {
+    fileprivate func addRootTopic(_ topic: CHMTopic?) {
         rootTopics.append(topic!)
     }
 //}
