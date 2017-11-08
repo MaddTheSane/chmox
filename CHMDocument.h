@@ -25,7 +25,6 @@
 @class CHMContainer;
 @class CHMTableOfContents;
 @class CHMTopic;
-@class NSURL;
 
 @interface CHMDocument : NSDocument {
     @private
