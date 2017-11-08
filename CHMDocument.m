@@ -79,18 +79,24 @@
 }
 
 
-- (BOOL)readFromFile:(NSString *)fileName ofType:(NSString *)docType {
-    //NSLog( @"CHMDocument:readFromFile:%@", fileName );
-    
-    _container = [[CHMContainer alloc] initWithContentsOfFile:fileName];
-    if( !_container ) return NO;
+- (BOOL)readFromURL:(NSURL *)url ofType:(NSString *)typeName error:(NSError * _Nullable __autoreleasing *)outError
+{
+	//NSLog( @"CHMDocument:readFromFile:%@", fileName );
 	
-    [CHMURLProtocol registerContainer:_container];
-    _tableOfContents = [[CHMTableOfContents alloc] initWithContainer:_container];
+	_container = [[CHMContainer alloc] initWithContentsOfURL:url];
+	if( !_container ) {
+		if (outError) {
+			*outError = [NSError errorWithDomain:NSCocoaErrorDomain code:NSFileReadCorruptFileError userInfo:NULL];
+		}
+		return NO;
+	}
+
+	[CHMURLProtocol registerContainer:_container];
+	_tableOfContents = [[CHMTableOfContents alloc] initWithContainer:_container];
 
 	[self readPreferences];
 	[self openIndex];
-    return YES;
+	return YES;
 }
 
 - (NSData *)dataOfType:(NSString *)typeName error:(NSError * _Nullable *)outError

@@ -28,7 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface CHMContainer : NSObject {
     NSString *_uniqueId;
     
-    NSString *_path;
+    NSURL *_url;
     NSString *_title;
     NSString *_homePath;
     NSString *_tocPath;
@@ -37,7 +37,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (nullable instancetype)containerWithContentsOfFile:(NSString *)path;
 
+- (instancetype)init NS_UNAVAILABLE;
 - (nullable instancetype)initWithContentsOfFile:(NSString *)path;
+- (nullable instancetype)initWithContentsOfURL:(NSURL *)chmFileURL NS_DESIGNATED_INITIALIZER;
 
 - (BOOL)hasObjectWithPath: (NSString *)path;
 - (nullable NSData *)dataWithContentsOfObject: (nullable NSString *)objectPath;
@@ -55,6 +57,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (readonly, copy) NSString *uniqueId;
 @property (nullable, readonly, copy) NSString *tocPath;
 @property (nullable, readonly, copy) NSString *homePath;
+@property (readonly, copy) NSURL *url;
 @property (readonly, copy) NSString *path;
 
 @end

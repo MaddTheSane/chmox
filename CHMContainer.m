@@ -40,8 +40,13 @@
 
 - (id)initWithContentsOfFile:(NSString *)chmFilePath
 {
+    return self = [self initWithContentsOfURL:[NSURL fileURLWithPath:chmFilePath]];
+}
+
+- (id)initWithContentsOfURL:(NSURL *)chmFileURL
+{
     if( self = [super init] ) {
-        if (!fd_reader_init(&readerCtx, [chmFilePath fileSystemRepresentation])) {
+        if (!fd_reader_init(&readerCtx, [chmFileURL fileSystemRepresentation])) {
             return nil;
         }
         _handle = calloc(1, sizeof(*_handle));
@@ -53,7 +58,7 @@
         //    return nil;
         //}
         
-        _path = [chmFilePath copy];
+        _url = [chmFileURL copy];
         
         _uniqueId = nil;
         _title = nil;
@@ -86,7 +91,12 @@
 @synthesize title = _title;
 @synthesize uniqueId = _uniqueId;
 @synthesize tocPath = _tocPath;
-@synthesize path = _path;
+@synthesize url = _url;
+
+- (NSString *)path
+{
+    return [_url path];
+}
 
 #pragma mark Basic CHM reading operations
 
