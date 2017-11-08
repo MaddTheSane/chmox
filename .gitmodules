@@ -1,0 +1,3 @@
+[submodule "Vendor/chmlib"]
+	path = Vendor/chmlib
+	url = https://github.com/MaddTheSane/chmlib.git

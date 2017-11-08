@@ -21,7 +21,7 @@
 
 #include <CommonCrypto/CommonDigest.h>
 #import "CHMContainer.h"
-#import "chm_lib.h"
+#include <CHM/chm_lib.h>
 
 @implementation CHMContainer {
     struct chm_file *_handle;

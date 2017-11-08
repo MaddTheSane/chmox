@@ -17,10 +17,6 @@
 		448AF5A3064AA5E100FA37BD /* CHMDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 448AF5A1064AA5E100FA37BD /* CHMDocument.m */; };
 		448AF5AC064AE52F00FA37BD /* CHMWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = 448AF5AA064AE52F00FA37BD /* CHMWindowController.h */; };
 		448AF5AD064AE52F00FA37BD /* CHMWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 448AF5AB064AE52F00FA37BD /* CHMWindowController.m */; };
-		448AF6FD064AFD3500FA37BD /* chm_lib.c in Sources */ = {isa = PBXBuildFile; fileRef = 448AF6F9064AFD3500FA37BD /* chm_lib.c */; };
-		448AF6FE064AFD3500FA37BD /* chm_lib.h in Headers */ = {isa = PBXBuildFile; fileRef = 448AF6FA064AFD3500FA37BD /* chm_lib.h */; };
-		448AF6FF064AFD3500FA37BD /* lzx.c in Sources */ = {isa = PBXBuildFile; fileRef = 448AF6FB064AFD3500FA37BD /* lzx.c */; };
-		448AF700064AFD3500FA37BD /* lzx.h in Headers */ = {isa = PBXBuildFile; fileRef = 448AF6FC064AFD3500FA37BD /* lzx.h */; };
 		44923A7A072C57E90070AA26 /* CHMApplication.h in Headers */ = {isa = PBXBuildFile; fileRef = 44923A78072C57E90070AA26 /* CHMApplication.h */; };
 		44923A7B072C57E90070AA26 /* CHMApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 44923A79072C57E90070AA26 /* CHMApplication.m */; };
 		4494977A073D406800D8BC20 /* MacPAD.url in Resources */ = {isa = PBXBuildFile; fileRef = 44949779073D406800D8BC20 /* MacPAD.url */; };
@@ -33,6 +29,7 @@
 		44B7AED20675301E00B51920 /* chmdoc.icns in Resources */ = {isa = PBXBuildFile; fileRef = 44B7AED10675301E00B51920 /* chmdoc.icns */; };
 		44F984BF06576CA60076336E /* CHMTopic.h in Headers */ = {isa = PBXBuildFile; fileRef = 44F984BD06576CA60076336E /* CHMTopic.h */; };
 		44F984C006576CA60076336E /* CHMTopic.m in Sources */ = {isa = PBXBuildFile; fileRef = 44F984BE06576CA60076336E /* CHMTopic.m */; };
+		556D137A1FB284FB00A73608 /* CHM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 556D136F1FB284E900A73608 /* CHM.framework */; };
 		559150AD1E5511540011313A /* CHMTableOfContents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559150AC1E5511540011313A /* CHMTableOfContents.swift */; };
 		55B23B811E54325E009C456D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55B23B831E54325E009C456D /* InfoPlist.strings */; };
 		55B23B851E543B2C009C456D /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55B23B841E543B2C009C456D /* Media.xcassets */; };
@@ -42,6 +39,51 @@
 		8D15AC320486D014006FF6A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A37F4B0FDCFA73011CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		556D136E1FB284E900A73608 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 556D13661FB284E900A73608 /* CHM Framework.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8DC2EF5B0486A6940098B216;
+			remoteInfo = CHM.framework;
+		};
+		556D13701FB284E900A73608 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 556D13661FB284E900A73608 /* CHM Framework.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C1083EFC1C934DEF00129D9C;
+			remoteInfo = test;
+		};
+		556D13721FB284E900A73608 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 556D13661FB284E900A73608 /* CHM Framework.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C1083F151C934EEA00129D9C;
+			remoteInfo = enum_chmLib;
+		};
+		556D13741FB284E900A73608 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 556D13661FB284E900A73608 /* CHM Framework.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C1083F221C934F9000129D9C;
+			remoteInfo = extract_chmLib;
+		};
+		556D13761FB284E900A73608 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 556D13661FB284E900A73608 /* CHM Framework.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C1083F2E1C934FB100129D9C;
+			remoteInfo = chm_http;
+		};
+		556D13781FB284F500A73608 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 556D13661FB284E900A73608 /* CHM Framework.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
+			remoteInfo = CHM.framework;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -64,10 +106,6 @@
 		448AF5A1064AA5E100FA37BD /* CHMDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHMDocument.m; sourceTree = "<group>"; };
 		448AF5AA064AE52F00FA37BD /* CHMWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHMWindowController.h; sourceTree = "<group>"; };
 		448AF5AB064AE52F00FA37BD /* CHMWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHMWindowController.m; sourceTree = "<group>"; };
-		448AF6F9064AFD3500FA37BD /* chm_lib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = chm_lib.c; sourceTree = "<group>"; };
-		448AF6FA064AFD3500FA37BD /* chm_lib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = chm_lib.h; sourceTree = "<group>"; };
-		448AF6FB064AFD3500FA37BD /* lzx.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lzx.c; sourceTree = "<group>"; };
-		448AF6FC064AFD3500FA37BD /* lzx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lzx.h; sourceTree = "<group>"; };
 		448CC7E5068A2ED200F9B0DB /* LGPL.r */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; path = LGPL.r; sourceTree = "<group>"; };
 		44916E9C07B97CED0095F0CE /* it */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = it; path = it.lproj/Credits.rtf; sourceTree = "<group>"; };
 		44923A78072C57E90070AA26 /* CHMApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHMApplication.h; sourceTree = "<group>"; };
@@ -89,6 +127,7 @@
 		44DA07230694985300777FAE /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = SOURCE_ROOT; };
 		44F984BD06576CA60076336E /* CHMTopic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHMTopic.h; sourceTree = "<group>"; };
 		44F984BE06576CA60076336E /* CHMTopic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHMTopic.m; sourceTree = "<group>"; };
+		556D13661FB284E900A73608 /* CHM Framework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "CHM Framework.xcodeproj"; path = "chmlib/osx/CHMFramework/CHM Framework.xcodeproj"; sourceTree = "<group>"; };
 		557859041E54B14B0043CC15 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		557859051E54B14B0043CC15 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		557859061E54B14B0043CC15 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
@@ -126,6 +165,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				556D137A1FB284FB00A73608 /* CHM.framework in Frameworks */,
 				8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */,
 				442BBB310653F73E0041C2A9 /* WebKit.framework in Frameworks */,
 				55D973F31E54B36300355BE3 /* libxml2.tbd in Frameworks */,
@@ -158,6 +198,7 @@
 		2A37F4AAFDCFA73011CA2CEA /* Chmox */ = {
 			isa = PBXGroup;
 			children = (
+				556D13651FB284C200A73608 /* Third-Party */,
 				2A37F4ABFDCFA73011CA2CEA /* Classes */,
 				2A37F4AFFDCFA73011CA2CEA /* Other Sources */,
 				2A37F4B8FDCFA73011CA2CEA /* Resources */,
@@ -198,7 +239,6 @@
 			children = (
 				4494984B073D5A1700D8BC20 /* MacPAD */,
 				44D7FFF0065A9C7B00D2B23E /* prefix.pch */,
-				448AF6EF064AFCD900FA37BD /* chmlib */,
 				2A37F4B0FDCFA73011CA2CEA /* main.m */,
 			);
 			name = "Other Sources";
@@ -236,17 +276,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		448AF6EF064AFCD900FA37BD /* chmlib */ = {
-			isa = PBXGroup;
-			children = (
-				448AF6F9064AFD3500FA37BD /* chm_lib.c */,
-				448AF6FA064AFD3500FA37BD /* chm_lib.h */,
-				448AF6FB064AFD3500FA37BD /* lzx.c */,
-				448AF6FC064AFD3500FA37BD /* lzx.h */,
-			);
-			path = chmlib;
-			sourceTree = "<group>";
-		};
 		4494984B073D5A1700D8BC20 /* MacPAD */ = {
 			isa = PBXGroup;
 			children = (
@@ -255,6 +284,27 @@
 			);
 			path = MacPAD;
 			sourceTree = SOURCE_ROOT;
+		};
+		556D13651FB284C200A73608 /* Third-Party */ = {
+			isa = PBXGroup;
+			children = (
+				556D13661FB284E900A73608 /* CHM Framework.xcodeproj */,
+			);
+			name = "Third-Party";
+			path = Vendor;
+			sourceTree = "<group>";
+		};
+		556D13671FB284E900A73608 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				556D136F1FB284E900A73608 /* CHM.framework */,
+				556D13711FB284E900A73608 /* test */,
+				556D13731FB284E900A73608 /* enum_chmLib */,
+				556D13751FB284E900A73608 /* extract_chmLib */,
+				556D13771FB284E900A73608 /* chm_http */,
+			);
+			name = Products;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -265,8 +315,6 @@
 			files = (
 				448AF5A2064AA5E100FA37BD /* CHMDocument.h in Headers */,
 				448AF5AC064AE52F00FA37BD /* CHMWindowController.h in Headers */,
-				448AF6FE064AFD3500FA37BD /* chm_lib.h in Headers */,
-				448AF700064AFD3500FA37BD /* lzx.h in Headers */,
 				442BB9D60653EB340041C2A9 /* CHMURLProtocol.h in Headers */,
 				442BBA310653ED630041C2A9 /* CHMContainer.h in Headers */,
 				44F984BF06576CA60076336E /* CHMTopic.h in Headers */,
@@ -292,6 +340,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				556D13791FB284F500A73608 /* PBXTargetDependency */,
 			);
 			name = Chmox;
 			productInstallPath = "$(HOME)/Applications";
@@ -328,12 +377,56 @@
 			);
 			mainGroup = 2A37F4AAFDCFA73011CA2CEA /* Chmox */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 556D13671FB284E900A73608 /* Products */;
+					ProjectRef = 556D13661FB284E900A73608 /* CHM Framework.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				8D15AC270486D014006FF6A4 /* Chmox */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		556D136F1FB284E900A73608 /* CHM.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CHM.framework;
+			remoteRef = 556D136E1FB284E900A73608 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		556D13711FB284E900A73608 /* test */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = test;
+			remoteRef = 556D13701FB284E900A73608 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		556D13731FB284E900A73608 /* enum_chmLib */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = enum_chmLib;
+			remoteRef = 556D13721FB284E900A73608 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		556D13751FB284E900A73608 /* extract_chmLib */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = extract_chmLib;
+			remoteRef = 556D13741FB284E900A73608 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		556D13771FB284E900A73608 /* chm_http */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = chm_http;
+			remoteRef = 556D13761FB284E900A73608 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		8D15AC2B0486D014006FF6A4 /* Resources */ = {
@@ -380,8 +473,6 @@
 				559150AD1E5511540011313A /* CHMTableOfContents.swift in Sources */,
 				448AF5A3064AA5E100FA37BD /* CHMDocument.m in Sources */,
 				448AF5AD064AE52F00FA37BD /* CHMWindowController.m in Sources */,
-				448AF6FD064AFD3500FA37BD /* chm_lib.c in Sources */,
-				448AF6FF064AFD3500FA37BD /* lzx.c in Sources */,
 				442BB9D70653EB340041C2A9 /* CHMURLProtocol.m in Sources */,
 				442BBA320653ED630041C2A9 /* CHMContainer.m in Sources */,
 				44F984C006576CA60076336E /* CHMTopic.m in Sources */,
@@ -392,6 +483,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		556D13791FB284F500A73608 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CHM.framework;
+			targetProxy = 556D13781FB284F500A73608 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		2A37F4B6FDCFA73011CA2CEA /* MainMenu.xib */ = {
@@ -543,6 +642,7 @@
 		44F062650AF411D000B95F3E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -578,6 +678,7 @@
 		44F062660AF411D000B95F3E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
