@@ -33,14 +33,14 @@
     CHMContainer*			_container;
     CHMTableOfContents*		_tableOfContents;
 
-    NSDictionary*			searchResults;
+    NSDictionary<NSString*,NSString*>*	searchResults;
 	NSString*				KEY_savedBookmarks;
-	NSMutableDictionary*	bookmarks;
+	NSMutableDictionary<NSString*,id>*	bookmarks;
 	NSString*				lastLoadedPage;
 	NSString*				lastLoadedPageName;
 	
 	SKIndexRef				skIndex;
-	NSMutableDictionary*	docTitles;
+	NSMutableDictionary<NSString*,NSString*>*	docTitles;
 }
 
 @property (copy, readonly) NSString *title;

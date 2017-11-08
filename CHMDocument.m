@@ -50,6 +50,7 @@
     if (_container) {
 		[CHMURLProtocol unregisterContainer:_container];
     }
+	[self closeIndex];
 }
 
 #pragma mark Preferences
@@ -291,7 +292,7 @@
 {
     NSURL* basePath = [[NSFileManager defaultManager] URLForDirectory:NSApplicationSupportDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:NULL];
     basePath = [basePath URLByAppendingPathComponent:@"Chmox"];
-	NSString* documentName = [[[_container path] stringByDeletingPathExtension] lastPathComponent];
+	NSString* documentName = [[[_container url] URLByDeletingPathExtension] lastPathComponent];
 	NSURL* path = [basePath URLByAppendingPathComponent: documentName];
     NSURL* tocPath = [path URLByAppendingPathExtension: @"tt"];
 	path = [path URLByAppendingPathExtension:@"idx"];
