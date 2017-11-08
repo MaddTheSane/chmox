@@ -11,7 +11,7 @@
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public License
 // along with Foobar; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
@@ -26,13 +26,13 @@ struct chmFile;
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CHMContainer : NSObject {
-    NSString *_uniqueId;
-    
-    NSURL *_url;
-    NSString *_title;
-    NSString *_homePath;
-    NSString *_tocPath;
-    NSString *_indexPath;
+	NSString *_uniqueId;
+
+	NSURL *_url;
+	NSString *_title;
+	NSString *_homePath;
+	NSString *_tocPath;
+	NSString *_indexPath;
 }
 
 + (nullable instancetype)containerWithContentsOfFile:(NSString *)path;
@@ -41,9 +41,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (nullable instancetype)initWithContentsOfFile:(NSString *)path;
 - (nullable instancetype)initWithContentsOfURL:(NSURL *)chmFileURL NS_DESIGNATED_INITIALIZER;
 
-- (BOOL)hasObjectWithPath: (NSString *)path;
-- (nullable NSData *)dataWithContentsOfObject: (nullable NSString *)objectPath;
-- (nullable NSString *)stringWithContentsOfObject: (nullable NSString *)objectPath;
+- (BOOL)hasObjectWithPath:(NSString *)path;
+- (nullable NSData *)dataWithContentsOfObject:(nullable NSString *)objectPath;
+- (nullable NSString *)stringWithContentsOfObject:(nullable NSString *)objectPath;
 @property (readonly, copy, nullable) NSData *dataWithTableOfContents;
 
 - (BOOL)loadMetadata;
@@ -51,7 +51,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)readWindowsDataFrom:(NSData *)windowsData readStringsDataFrom:(NSData *)stringsData;
 - (void)readSystemDataFrom:(NSData *)systemData;
 
-- (NSString *)findHomeForPath: (NSString *)basePath;
+- (NSString *)findHomeForPath:(NSString *)basePath;
 
 @property (nullable, readonly, copy) NSString *title;
 @property (readonly, copy) NSString *uniqueId;

@@ -11,7 +11,7 @@
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public License
 // along with Foobar; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
@@ -26,8 +26,8 @@ extern NSString *const AUTOMATIC_CHECK_PREF; // Key for user defaults.
 @class MacPADSocket;
 
 @interface CHMVersionChecker : NSWindowController {
-    MacPADSocket *_macPAD;
-    bool _isAutomaticCheck;
+	MacPADSocket *_macPAD;
+	bool _isAutomaticCheck;
 }
 @property (weak) IBOutlet NSPanel *updateAvailableWindow;
 @property (weak) IBOutlet NSPanel *upToDateWindow;

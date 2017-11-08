@@ -11,7 +11,7 @@
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public License
 // along with Foobar; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
@@ -21,7 +21,6 @@
 
 #import "CHMTopic.h"
 
-
 @implementation CHMTopic
 @synthesize name = _name;
 @synthesize location = _location;
@@ -30,71 +29,68 @@
 
 - (id)initWithName:(NSString *)topicName location:(NSURL *)topicLocation
 {
-    if (self = [super init]) {
-        _name = [topicName copy];
-        _location = topicLocation;
-        _subTopics = nil;
-    }
-    
-    return self;
+	if (self = [super init]) {
+		_name = [topicName copy];
+		_location = topicLocation;
+		_subTopics = nil;
+	}
+
+	return self;
 }
 
-- (id)copyWithZone:(NSZone *)zone {
-    CHMTopic *other = [[CHMTopic allocWithZone: zone] initWithName:_name location:_location];
+- (id)copyWithZone:(NSZone *)zone
+{
+	CHMTopic *other = [[CHMTopic allocWithZone:zone] initWithName:_name location:_location];
 
-    if (_subTopics) {
-        other->_subTopics = [_subTopics mutableCopy];
-    }
-    
-    return other;
+	if (_subTopics) {
+		other->_subTopics = [_subTopics mutableCopy];
+	}
+
+	return other;
 }
-
 
 #pragma mark Accessors
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"<CHMTopic:'%@',%@>", _name, _location];
+	return [NSString stringWithFormat:@"<CHMTopic:'%@',%@>", _name, _location];
 }
-
 
 - (NSInteger)countOfSubTopics
 {
-    return _subTopics? [_subTopics count] : 0;
+	return _subTopics ? [_subTopics count] : 0;
 }
-
 
 - (CHMTopic *)objectInSubTopicsAtIndex:(NSInteger)theIndex
 {
-    return _subTopics? [_subTopics objectAtIndex:theIndex] : nil;
+	return _subTopics ? [_subTopics objectAtIndex:theIndex] : nil;
 }
 
 #pragma mark Mutators
 
 - (void)addObject:(CHMTopic *)topic
 {
-    if (!_subTopics) {
-        _subTopics = [[NSMutableArray alloc] init];
-    }
-    
-    [_subTopics addObject:topic];
+	if (!_subTopics) {
+		_subTopics = [[NSMutableArray alloc] init];
+	}
+
+	[_subTopics addObject:topic];
 }
 
 - (void)insertObject:(CHMTopic *)topic inSubTopicsAtIndex:(NSInteger)theIndex
 {
-    if (!_subTopics) {
-        _subTopics = [[NSMutableArray alloc] init];
-    }
-    
-    [_subTopics insertObject:topic atIndex:theIndex];
+	if (!_subTopics) {
+		_subTopics = [[NSMutableArray alloc] init];
+	}
+
+	[_subTopics insertObject:topic atIndex:theIndex];
 }
 
 - (void)removeObjectFromSubTopicsAtIndex:(NSInteger)theIndex
 {
-    if (_subTopics) {
-        [_subTopics removeObjectAtIndex:theIndex];
-    }
+	if (_subTopics) {
+		[_subTopics removeObjectAtIndex:theIndex];
+	}
 }
-
 
 @end

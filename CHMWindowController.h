@@ -11,7 +11,7 @@
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public License
 // along with Foobar; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
@@ -22,41 +22,43 @@
 #import <Cocoa/Cocoa.h>
 #import <WebKit/WebUIDelegate.h>
 #import <WebKit/WebPolicyDelegate.h>
+#import <WebKit/WebView.h>
 #import "CHMDocument.h"
 
-@class WebView;
+NS_ASSUME_NONNULL_BEGIN
 
 @interface CHMWindowController : NSWindowController <NSToolbarDelegate, NSOutlineViewDelegate, WebUIDelegate, WebPolicyDelegate, NSTableViewDataSource>
 
-@property (weak) IBOutlet WebView				*contentsView;
-@property (weak) IBOutlet NSDrawer				*drawer;
-@property (weak) IBOutlet NSOutlineView			*tocView;
-@property (weak) IBOutlet NSTableView			*favoritesView;
-@property (weak) IBOutlet NSTabView				*drawerView;
-@property (weak) IBOutlet NSSegmentedControl	*historyToolbarItemView;
-@property (weak) IBOutlet NSTableView			*searchResultsView;
-@property (weak) IBOutlet NSSearchField			*searchField;
+@property (weak) IBOutlet WebView *contentsView;
+@property (weak) IBOutlet NSDrawer *drawer;
+@property (weak) IBOutlet NSOutlineView *tocView;
+@property (weak) IBOutlet NSTableView *favoritesView;
+@property (weak) IBOutlet NSTabView *drawerView;
+@property (weak) IBOutlet NSSegmentedControl *historyToolbarItemView;
+@property (weak) IBOutlet NSTableView *searchResultsView;
+@property (weak) IBOutlet NSSearchField *searchField;
 
 - (void)setupToolbar;
 - (void)updateToolTipRects;
 
-- (IBAction)toggleDrawer:(id)sender;
-- (IBAction)changeTopicWithSelectedRow:(id)sender;
-- (IBAction)changeTopicToPreviousInHistory:(id)sender;
-- (IBAction)changeTopicToNextInHistory:(id)sender;
-- (IBAction)makeTextSmaller:(id)sender;
-- (IBAction)makeTextBigger:(id)sender;
-- (IBAction)search:(id)sender;
-- (IBAction)searchResultSelected:(id)sender;
-- (IBAction)addBookmark:(id)sender;
-- (IBAction)removeBookmark:(id)sender;
-- (IBAction)loadBookmark:(id)sender;
+- (IBAction)toggleDrawer:(id _Nullable)sender;
+- (IBAction)changeTopicWithSelectedRow:(id _Nullable)sender;
+- (IBAction)changeTopicToPreviousInHistory:(id _Nullable)sender;
+- (IBAction)changeTopicToNextInHistory:(id _Nullable)sender;
+- (IBAction)makeTextSmaller:(id _Nullable)sender;
+- (IBAction)makeTextBigger:(id _Nullable)sender;
+- (IBAction)search:(id _Nullable)sender;
+- (IBAction)searchResultSelected:(id _Nullable)sender;
+- (IBAction)addBookmark:(id _Nullable)sender;
+- (IBAction)removeBookmark:(id _Nullable)sender;
+- (IBAction)loadBookmark:(id _Nullable)sender;
 
-- (NSArray *)toolbarAllowedItemIdentifiers:(NSToolbar *)toolbar;
-- (NSArray *)toolbarDefaultItemIdentifiers:(NSToolbar *)toolbar;
-- (NSToolbarItem *)toolbar:(NSToolbar *)toolbar itemForItemIdentifier:(NSString *)itemIdentifier willBeInsertedIntoToolbar:(BOOL)flag;
+- (NSArray<NSToolbarItemIdentifier> *)toolbarAllowedItemIdentifiers:(NSToolbar *)toolbar;
+- (NSArray<NSToolbarItemIdentifier> *)toolbarDefaultItemIdentifiers:(NSToolbar *)toolbar;
+- (nullable NSToolbarItem *)toolbar:(NSToolbar *)toolbar itemForItemIdentifier:(NSToolbarItemIdentifier)itemIdentifier willBeInsertedIntoToolbar:(BOOL)flag;
 
-- (BOOL)validateMenuItem:(NSMenuItem*)anItem;
-
+- (BOOL)validateMenuItem:(NSMenuItem *)anItem;
 
 @end
+
+NS_ASSUME_NONNULL_END

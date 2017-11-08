@@ -11,7 +11,7 @@
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public License
 // along with Foobar; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
@@ -27,20 +27,20 @@
 @class CHMTopic;
 
 @interface CHMDocument : NSDocument {
-    @private
-    CHMWindowController*	_windowController;
+  @private
+	CHMWindowController *_windowController;
 
-    CHMContainer*			_container;
-    CHMTableOfContents*		_tableOfContents;
+	CHMContainer *_container;
+	CHMTableOfContents *_tableOfContents;
 
-    NSDictionary<NSString*,NSString*>*	searchResults;
-	NSString*				KEY_savedBookmarks;
-	NSMutableDictionary<NSString*,id>*	bookmarks;
-	NSString*				lastLoadedPage;
-	NSString*				lastLoadedPageName;
-	
-	SKIndexRef				skIndex;
-	NSMutableDictionary<NSString*,NSString*>*	docTitles;
+	NSDictionary<NSString *, NSString *> *searchResults;
+	NSString *KEY_savedBookmarks;
+	NSMutableDictionary<NSString *, id> *bookmarks;
+	NSString *lastLoadedPage;
+	NSString *lastLoadedPageName;
+
+	SKIndexRef skIndex;
+	NSMutableDictionary<NSString *, NSString *> *docTitles;
 }
 
 @property (copy, readonly) NSString *title;
@@ -52,23 +52,23 @@
 - (void)search:(NSString *)searchString;
 
 @property (readonly) NSUInteger searchResultsCount;
-- (id) searchResultAtIndex: (NSUInteger) index;
-- (NSURL *)urlForSelectedSearchResult: (NSUInteger)selectedIndex;
+- (id)searchResultAtIndex:(NSUInteger)index;
+- (NSURL *)urlForSelectedSearchResult:(NSUInteger)selectedIndex;
 
 - (void)addBookmark;
-- (void)removeBookmark: (NSUInteger)bookmarkIndex;
+- (void)removeBookmark:(NSUInteger)bookmarkIndex;
 @property (readonly) NSUInteger bookmarkCount;
-- (NSString *) bookmarkURLAtIndex: (NSUInteger) index;
-- (NSString *) bookmarkTitleAtIndex: (NSUInteger) index;
+- (NSString *)bookmarkURLAtIndex:(NSUInteger)index;
+- (NSString *)bookmarkTitleAtIndex:(NSUInteger)index;
 
 @property (copy) NSString *lastLoadedPage;
 @property (copy) NSString *lastLoadedPageName;
 
-- (void) addDocWithTextForURL: (NSURL *) aURL;
-- (void) populateIndexWithSubTopic: (CHMTopic *)aTopic;
-- (void) populateIndex;
-- (void) createNewIndexAtURL:(NSURL *)path;
-- (void) openIndex;
-- (void) closeIndex;
+- (void)addDocWithTextForURL:(NSURL *)aURL;
+- (void)populateIndexWithSubTopic:(CHMTopic *)aTopic;
+- (void)populateIndex;
+- (void)createNewIndexAtURL:(NSURL *)path;
+- (void)openIndex;
+- (void)closeIndex;
 
 @end
