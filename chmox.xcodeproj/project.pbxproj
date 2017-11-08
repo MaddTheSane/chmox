@@ -19,7 +19,6 @@
 		44A2657C080EEB8900273DC8 /* CHMDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44A2657B080EEB8900273DC8 /* CHMDocument.xib */; };
 		44B501B306A587BA00CE0A8E /* CHMVersionChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B501B106A587BA00CE0A8E /* CHMVersionChecker.m */; };
 		44B501C906A58D3300CE0A8E /* VersionChecker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44B501C806A58D3300CE0A8E /* VersionChecker.xib */; };
-		44B7AED20675301E00B51920 /* chmdoc.icns in Resources */ = {isa = PBXBuildFile; fileRef = 44B7AED10675301E00B51920 /* chmdoc.icns */; };
 		44F984C006576CA60076336E /* CHMTopic.m in Sources */ = {isa = PBXBuildFile; fileRef = 44F984BE06576CA60076336E /* CHMTopic.m */; };
 		556D137A1FB284FB00A73608 /* CHM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 556D136F1FB284E900A73608 /* CHM.framework */; };
 		556D13811FB28D8700A73608 /* CHM.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 556D136F1FB284E900A73608 /* CHM.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -434,7 +433,6 @@
 				8D15AC2D0486D014006FF6A4 /* MainMenu.xib in Resources */,
 				44A2657C080EEB8900273DC8 /* CHMDocument.xib in Resources */,
 				55B23B811E54325E009C456D /* InfoPlist.strings in Resources */,
-				44B7AED20675301E00B51920 /* chmdoc.icns in Resources */,
 				55B23B851E543B2C009C456D /* Media.xcassets in Resources */,
 				44B501C906A58D3300CE0A8E /* VersionChecker.xib in Resources */,
 				4494977A073D406800D8BC20 /* MacPAD.url in Resources */,
