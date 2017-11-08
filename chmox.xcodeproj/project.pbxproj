@@ -297,6 +297,7 @@
 			);
 			path = MacPAD;
 			sourceTree = SOURCE_ROOT;
+			usesTabs = 0;
 		};
 		556D13651FB284C200A73608 /* Third-Party */ = {
 			isa = PBXGroup;
