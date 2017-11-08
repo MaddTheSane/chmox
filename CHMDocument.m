@@ -267,38 +267,36 @@
 	SKIndexFlush(skIndex);
 }
 
-- (void) createNewIndexAtPath:(NSString *)path
+- (void) createNewIndexAtURL:(NSURL *)path
 {
     NSFileManager *fm = [NSFileManager defaultManager];
-	NSString* parentDirectory = [path stringByDeletingLastPathComponent];
-	if (![fm fileExistsAtPath:parentDirectory]) {
-        [fm createDirectoryAtPath:parentDirectory withIntermediateDirectories:YES attributes:nil error:NULL];
+	NSURL* parentDirectory = [path URLByDeletingLastPathComponent];
+	if (![parentDirectory checkResourceIsReachableAndReturnError:NULL]) {
+        [fm createDirectoryAtURL:parentDirectory withIntermediateDirectories:YES attributes:nil error:NULL];
 	}
-	[fm createFileAtPath:path contents:nil attributes:nil];
-    NSURL* url = [NSURL fileURLWithPath: path];
+	[fm createFileAtPath:[path path] contents:nil attributes:nil];
     SKIndexType type = kSKIndexInverted;
-    skIndex = SKIndexCreateWithURL((__bridge CFURLRef)url, CFSTR("PrimaryIndex"), type, NULL);
+    skIndex = SKIndexCreateWithURL((__bridge CFURLRef)path, CFSTR("PrimaryIndex"), type, NULL);
 	NSLog(@"New index: %@", skIndex);
 	[self populateIndex];
 }
 
 - (void) openIndex
 {
-    NSString* basePath = [[[NSFileManager defaultManager] URLForDirectory:NSApplicationSupportDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:NULL] path];
-    basePath = [basePath stringByAppendingPathComponent:@"Chmox"];
+    NSURL* basePath = [[NSFileManager defaultManager] URLForDirectory:NSApplicationSupportDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:NULL];
+    basePath = [basePath URLByAppendingPathComponent:@"Chmox"];
 	NSString* documentName = [[[_container path] stringByDeletingPathExtension] lastPathComponent];
-	NSString* path = [basePath stringByAppendingPathComponent: documentName];
-    NSString* tocPath = [path stringByAppendingPathExtension: @"tt"];
-	path = [path stringByAppendingPathExtension:@"idx"];
-	if ([[NSFileManager defaultManager] fileExistsAtPath: path]) {
-		NSURL* url = [NSURL fileURLWithPath:path];
+	NSURL* path = [basePath URLByAppendingPathComponent: documentName];
+    NSURL* tocPath = [path URLByAppendingPathExtension: @"tt"];
+	path = [path URLByAppendingPathExtension:@"idx"];
+	if ([path checkResourceIsReachableAndReturnError:NULL]) {
 		// open the specified index
-		skIndex = SKIndexOpenWithURL((__bridge CFURLRef)url, CFSTR("PrimaryIndex"), true);
-		docTitles = [NSMutableDictionary dictionaryWithContentsOfFile: tocPath];
+		skIndex = SKIndexOpenWithURL((__bridge CFURLRef)path, CFSTR("PrimaryIndex"), true);
+		docTitles = [NSMutableDictionary dictionaryWithContentsOfURL: tocPath];
 	} else {
 		docTitles = [[NSMutableDictionary alloc] init];
-		[self createNewIndexAtPath: path];
-		[docTitles writeToFile:tocPath atomically:TRUE];
+		[self createNewIndexAtURL: path];
+		[docTitles writeToURL:tocPath atomically:YES];
 	}
 }
 

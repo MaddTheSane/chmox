@@ -27,17 +27,15 @@
 @class WebView;
 
 @interface CHMWindowController : NSWindowController <NSToolbarDelegate, NSOutlineViewDelegate, WebUIDelegate, WebPolicyDelegate, NSTableViewDataSource>
-{
-    IBOutlet WebView		*_contentsView;
-    IBOutlet NSDrawer		*_drawer;
-    IBOutlet NSOutlineView	*_tocView;
-    IBOutlet NSTableView	*_favoritesView;
-    IBOutlet NSTabView		*_drawerView;
-    IBOutlet id				_historyToolbarItemView;
-    IBOutlet NSTableView	*searchResultsView;
-    IBOutlet NSTableView	*favoritesView;
-    IBOutlet NSSearchField	*searchField;
-}
+
+@property (weak) IBOutlet WebView				*contentsView;
+@property (weak) IBOutlet NSDrawer				*drawer;
+@property (weak) IBOutlet NSOutlineView			*tocView;
+@property (weak) IBOutlet NSTableView			*favoritesView;
+@property (weak) IBOutlet NSTabView				*drawerView;
+@property (weak) IBOutlet NSSegmentedControl	*historyToolbarItemView;
+@property (weak) IBOutlet NSTableView			*searchResultsView;
+@property (weak) IBOutlet NSSearchField			*searchField;
 
 - (void)setupToolbar;
 - (void)updateToolTipRects;

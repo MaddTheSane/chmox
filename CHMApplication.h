@@ -23,7 +23,7 @@
 
 @class CHMVersionChecker;
 
-@interface CHMApplication : NSObject {
+@interface CHMApplication : NSObject <NSApplicationDelegate> {
     CHMVersionChecker *_versionChecker;
 }
 

@@ -29,6 +29,9 @@
 
 
 @implementation CHMWindowController
+@synthesize searchResultsView;
+@synthesize favoritesView;
+@synthesize searchField;
 
 // Tab items
 static NSString *const TOC_TAB_ID = @"tocTab";

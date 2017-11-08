@@ -44,10 +44,10 @@
 	NSMutableDictionary*	docTitles;
 }
 
-@property (weak, readonly) NSString *title;
-@property (weak, readonly) NSURL *currentLocation;
+@property (copy, readonly) NSString *title;
+@property (copy, readonly) NSURL *currentLocation;
 @property (readonly, strong) CHMTableOfContents *tableOfContents;
-@property (weak, readonly) NSString *uniqueId;
+@property (copy, readonly) NSString *uniqueId;
 @property (readonly, strong) CHMContainer *container;
 
 - (void)search:(NSString *)searchString;
@@ -68,7 +68,7 @@
 - (void) addDocWithTextForURL: (NSURL *) aURL;
 - (void) populateIndexWithSubTopic: (CHMTopic *)aTopic;
 - (void) populateIndex;
-- (void) createNewIndexAtPath:(NSString *)path;
+- (void) createNewIndexAtURL:(NSURL *)path;
 - (void) openIndex;
 - (void) closeIndex;
 

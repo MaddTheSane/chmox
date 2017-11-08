@@ -7,27 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		442BB9D60653EB340041C2A9 /* CHMURLProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 442BB9D40653EB340041C2A9 /* CHMURLProtocol.h */; };
 		442BB9D70653EB340041C2A9 /* CHMURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 442BB9D50653EB340041C2A9 /* CHMURLProtocol.m */; };
-		442BBA310653ED630041C2A9 /* CHMContainer.h in Headers */ = {isa = PBXBuildFile; fileRef = 442BBA2F0653ED630041C2A9 /* CHMContainer.h */; };
 		442BBA320653ED630041C2A9 /* CHMContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 442BBA300653ED630041C2A9 /* CHMContainer.m */; };
 		442BBB310653F73E0041C2A9 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 442BBB300653F73E0041C2A9 /* WebKit.framework */; };
 		445DEACD07B4086C0008D692 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 445DEACC07B4086C0008D692 /* Localizable.strings */; };
-		448AF5A2064AA5E100FA37BD /* CHMDocument.h in Headers */ = {isa = PBXBuildFile; fileRef = 448AF5A0064AA5E100FA37BD /* CHMDocument.h */; };
 		448AF5A3064AA5E100FA37BD /* CHMDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 448AF5A1064AA5E100FA37BD /* CHMDocument.m */; };
-		448AF5AC064AE52F00FA37BD /* CHMWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = 448AF5AA064AE52F00FA37BD /* CHMWindowController.h */; };
 		448AF5AD064AE52F00FA37BD /* CHMWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 448AF5AB064AE52F00FA37BD /* CHMWindowController.m */; };
-		44923A7A072C57E90070AA26 /* CHMApplication.h in Headers */ = {isa = PBXBuildFile; fileRef = 44923A78072C57E90070AA26 /* CHMApplication.h */; };
 		44923A7B072C57E90070AA26 /* CHMApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 44923A79072C57E90070AA26 /* CHMApplication.m */; };
 		4494977A073D406800D8BC20 /* MacPAD.url in Resources */ = {isa = PBXBuildFile; fileRef = 44949779073D406800D8BC20 /* MacPAD.url */; };
-		4494984E073D5A1700D8BC20 /* MacPADSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 4494984C073D5A1700D8BC20 /* MacPADSocket.h */; };
 		4494984F073D5A1700D8BC20 /* MacPADSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 4494984D073D5A1700D8BC20 /* MacPADSocket.m */; };
 		44A2657C080EEB8900273DC8 /* CHMDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44A2657B080EEB8900273DC8 /* CHMDocument.xib */; };
-		44B501B206A587BA00CE0A8E /* CHMVersionChecker.h in Headers */ = {isa = PBXBuildFile; fileRef = 44B501B006A587BA00CE0A8E /* CHMVersionChecker.h */; };
 		44B501B306A587BA00CE0A8E /* CHMVersionChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B501B106A587BA00CE0A8E /* CHMVersionChecker.m */; };
 		44B501C906A58D3300CE0A8E /* VersionChecker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44B501C806A58D3300CE0A8E /* VersionChecker.xib */; };
 		44B7AED20675301E00B51920 /* chmdoc.icns in Resources */ = {isa = PBXBuildFile; fileRef = 44B7AED10675301E00B51920 /* chmdoc.icns */; };
-		44F984BF06576CA60076336E /* CHMTopic.h in Headers */ = {isa = PBXBuildFile; fileRef = 44F984BD06576CA60076336E /* CHMTopic.h */; };
 		44F984C006576CA60076336E /* CHMTopic.m in Sources */ = {isa = PBXBuildFile; fileRef = 44F984BE06576CA60076336E /* CHMTopic.m */; };
 		556D137A1FB284FB00A73608 /* CHM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 556D136F1FB284E900A73608 /* CHM.framework */; };
 		556D13811FB28D8700A73608 /* CHM.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 556D136F1FB284E900A73608 /* CHM.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -254,7 +246,7 @@
 			);
 			name = Classes;
 			sourceTree = "<group>";
-			usesTabs = 0;
+			usesTabs = 1;
 		};
 		2A37F4AFFDCFA73011CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
@@ -330,30 +322,11 @@
 		};
 /* End PBXGroup section */
 
-/* Begin PBXHeadersBuildPhase section */
-		8D15AC280486D014006FF6A4 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				448AF5A2064AA5E100FA37BD /* CHMDocument.h in Headers */,
-				448AF5AC064AE52F00FA37BD /* CHMWindowController.h in Headers */,
-				442BB9D60653EB340041C2A9 /* CHMURLProtocol.h in Headers */,
-				442BBA310653ED630041C2A9 /* CHMContainer.h in Headers */,
-				44F984BF06576CA60076336E /* CHMTopic.h in Headers */,
-				44B501B206A587BA00CE0A8E /* CHMVersionChecker.h in Headers */,
-				44923A7A072C57E90070AA26 /* CHMApplication.h in Headers */,
-				4494984E073D5A1700D8BC20 /* MacPADSocket.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
 /* Begin PBXNativeTarget section */
 		8D15AC270486D014006FF6A4 /* Chmox */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 44F062600AF411D000B95F3E /* Build configuration list for PBXNativeTarget "Chmox" */;
 			buildPhases = (
-				8D15AC280486D014006FF6A4 /* Headers */,
 				8D15AC2B0486D014006FF6A4 /* Resources */,
 				8D15AC300486D014006FF6A4 /* Sources */,
 				8D15AC330486D014006FF6A4 /* Frameworks */,
@@ -630,7 +603,6 @@
 				PRODUCT_NAME = Chmox;
 				SKIP_INSTALL = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "Chmox-Bridging-Header.h";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 				WRAPPER_EXTENSION = app;
 			};
@@ -664,7 +636,6 @@
 				PRODUCT_NAME = Chmox;
 				SKIP_INSTALL = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "Chmox-Bridging-Header.h";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 				WRAPPER_EXTENSION = app;
 			};
@@ -679,6 +650,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
@@ -715,6 +687,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
