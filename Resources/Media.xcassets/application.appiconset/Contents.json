@@ -15,12 +15,13 @@
     {
       "size" : "32x32",
       "idiom" : "mac",
-      "filename" : "32-1.png",
+      "filename" : "32.png",
       "scale" : "1x"
     },
     {
-      "idiom" : "mac",
       "size" : "32x32",
+      "idiom" : "mac",
+      "filename" : "64.png",
       "scale" : "2x"
     },
     {
