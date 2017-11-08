@@ -47,7 +47,6 @@
             </view>
             <connections>
                 <outlet property="delegate" destination="-2" id="86"/>
-                <outlet property="initialFirstResponder" destination="-2" id="110"/>
             </connections>
         </window>
         <customView id="27" userLabel="DrawContentView">
@@ -68,7 +67,7 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <clipView key="contentView" id="FYL-rp-MUD">
                                             <rect key="frame" x="1" y="1" width="248" height="162"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <outlineView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnReordering="NO" multipleSelection="NO" emptySelection="NO" autosaveName="contentsOutline" rowHeight="14" indentationPerLevel="16" autoresizesOutlineColumn="YES" outlineTableColumn="44" id="45">
                                                     <rect key="frame" x="0.0" y="0.0" width="248" height="162"/>

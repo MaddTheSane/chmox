@@ -161,8 +161,6 @@ private var saxHandler: htmlSAXHandler = {
     var aHandler = htmlSAXHandler()
     aHandler.startDocument = documentDidStart
     aHandler.endDocument = documentDidEnd
-    // This is needed because we can't pass elementDidStart directly
-    // for some stupid-odd reason.
     aHandler.startElement = elementDidStart
     aHandler.endElement = elementDidEnd
     
@@ -184,9 +182,9 @@ class CHMTableOfContents: NSObject, NSOutlineViewDataSource {
         let parser = tocData.withUnsafeBytes({ (dat: UnsafePointer<Int8>) -> htmlParserCtxtPtr? in
             // XML_CHAR_ENCODING_NONE / XML_CHAR_ENCODING_UTF8 / XML_CHAR_ENCODING_8859_1
             let parser1 = htmlCreatePushParserCtxt(&saxHandler, &context,
-                                                  dat,
-                                                  Int32(tocData.count),
-                                                  nil, XML_CHAR_ENCODING_8859_1)
+												   dat,
+												   Int32(tocData.count),
+												   nil, XML_CHAR_ENCODING_8859_1)
             htmlParseChunk(parser1, dat, 0, 1)
             return parser1
         })
