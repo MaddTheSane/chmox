@@ -167,7 +167,7 @@ private var saxHandler: htmlSAXHandler = {
     return aHandler
 }()
 
-class CHMTableOfContents: NSObject, NSOutlineViewDataSource {
+class CHMTableOfContents: NSObject {
     @objc fileprivate(set) var rootTopics = [CHMTopic]()
     
     @objc init(container: CHMContainer) {
@@ -199,9 +199,9 @@ class CHMTableOfContents: NSObject, NSOutlineViewDataSource {
     fileprivate func addRootTopic(_ topic: CHMTopic?) {
         rootTopics.append(topic!)
     }
-//}
+}
 
-//extension CHMTableOfContents: NSOutlineViewDataSource {
+extension CHMTableOfContents: NSOutlineViewDataSource {
     func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
         if let anItem = item as? CHMTopic {
             return anItem.countOfSubTopics
