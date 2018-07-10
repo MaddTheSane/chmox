@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
-        <plugIn identifier="com.apple.WebKitIBPlugin" version="13771"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
+        <plugIn identifier="com.apple.WebKitIBPlugin" version="14113"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -67,7 +67,7 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <clipView key="contentView" id="FYL-rp-MUD">
                                             <rect key="frame" x="1" y="1" width="248" height="162"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <outlineView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnReordering="NO" multipleSelection="NO" emptySelection="NO" autosaveName="contentsOutline" rowHeight="14" indentationPerLevel="16" autoresizesOutlineColumn="YES" outlineTableColumn="44" id="45">
                                                     <rect key="frame" x="0.0" y="0.0" width="248" height="162"/>
@@ -131,7 +131,7 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <clipView key="contentView" id="aoH-MV-qd0">
                                             <rect key="frame" x="0.0" y="0.0" width="250" height="76"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveColumns="NO" headerView="140" id="49">
                                                     <rect key="frame" x="0.0" y="0.0" width="252.5" height="53"/>
@@ -181,21 +181,21 @@
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         <size key="cellSize" width="287" height="18"/>
                                         <size key="intercellSpacing" width="4" height="2"/>
-                                        <buttonCell key="prototype" type="check" title="Rechercher les résultats précédents." bezelStyle="regularSquare" imagePosition="leading" alignment="left" controlSize="small" inset="2" id="135">
+                                        <buttonCell key="prototype" type="check" title="Rechercher les résultats précédents." bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="135">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="smallSystem"/>
                                         </buttonCell>
                                         <cells>
                                             <column>
-                                                <buttonCell type="check" title="Search previous results" bezelStyle="regularSquare" imagePosition="leading" alignment="left" controlSize="small" state="on" inset="2" id="80">
+                                                <buttonCell type="check" title="Search previous results" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="80">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="smallSystem"/>
                                                 </buttonCell>
-                                                <buttonCell type="check" title="Match similar words" bezelStyle="regularSquare" imagePosition="leading" alignment="left" controlSize="small" tag="1" inset="2" id="81">
+                                                <buttonCell type="check" title="Match similar words" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" tag="1" inset="2" id="81">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="smallSystem"/>
                                                 </buttonCell>
-                                                <buttonCell type="check" title="Search titles only" bezelStyle="regularSquare" imagePosition="leading" alignment="left" controlSize="small" inset="2" id="82">
+                                                <buttonCell type="check" title="Search titles only" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="82">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="smallSystem"/>
                                                 </buttonCell>
@@ -306,8 +306,8 @@
                     <segmentedCell key="cell" controlSize="small" borderStyle="border" alignment="left" style="automatic" trackingMode="momentary" id="134">
                         <font key="font" metaFont="smallSystem"/>
                         <segments>
-                            <segment image="NSGoBackTemplate"/>
-                            <segment image="NSGoForwardTemplate" tag="1"/>
+                            <segment image="NSLeftFacingTriangleTemplate"/>
+                            <segment image="NSRightFacingTriangleTemplate" tag="1"/>
                         </segments>
                     </segmentedCell>
                 </segmentedControl>
@@ -317,8 +317,8 @@
     </objects>
     <resources>
         <image name="NSAddTemplate" width="11" height="11"/>
-        <image name="NSGoBackTemplate" width="9" height="12"/>
-        <image name="NSGoForwardTemplate" width="9" height="12"/>
+        <image name="NSLeftFacingTriangleTemplate" width="9" height="12"/>
         <image name="NSRemoveTemplate" width="11" height="11"/>
+        <image name="NSRightFacingTriangleTemplate" width="9" height="12"/>
     </resources>
 </document>
