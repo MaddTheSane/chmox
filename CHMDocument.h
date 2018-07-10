@@ -35,7 +35,7 @@
 
 	NSDictionary<NSString *, NSString *> *searchResults;
 	NSString *KEY_savedBookmarks;
-	NSMutableDictionary<NSString *, id> *bookmarks;
+	NSMutableDictionary<NSString *, NSString*> *bookmarks;
 	NSString *lastLoadedPage;
 	NSString *lastLoadedPageName;
 

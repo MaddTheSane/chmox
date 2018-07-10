@@ -29,11 +29,11 @@
 @implementation CHMVersionChecker
 
 NSString *const AUTOMATIC_CHECK_PREF = @"VersionChecker:automaticCheck";
-static NSString *DAYS_BETWEEN_AUTOMATIC_CHECKS_PREF = @"VersionChecker:daysBetweenAutomaticChecks";
-static NSString *DAYS_BETWEEN_AUTOMATIC_NORMAL_CHECKS_PREF = @"VersionChecker:daysBetweenAutomaticNormalChecks";
-static NSString *DAYS_BETWEEN_AUTOMATIC_ALERT_CHECKS_PREF = @"VersionChecker:daysBetweenAutomaticAlertChecks";
-static NSString *LAST_CHECK_DATE_PREF = @"VersionChecker:lastCheckDate";
-static NSString *FIRST_TIME_PREF = @"VersionChecker:firstTime";
+static NSString *const DAYS_BETWEEN_AUTOMATIC_CHECKS_PREF = @"VersionChecker:daysBetweenAutomaticChecks";
+static NSString *const DAYS_BETWEEN_AUTOMATIC_NORMAL_CHECKS_PREF = @"VersionChecker:daysBetweenAutomaticNormalChecks";
+static NSString *const DAYS_BETWEEN_AUTOMATIC_ALERT_CHECKS_PREF = @"VersionChecker:daysBetweenAutomaticAlertChecks";
+static NSString *const LAST_CHECK_DATE_PREF = @"VersionChecker:lastCheckDate";
+static NSString *const FIRST_TIME_PREF = @"VersionChecker:firstTime";
 
 #pragma mark Lifecycle
 

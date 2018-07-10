@@ -37,10 +37,10 @@ static NSString *const SEARCH_TAB_ID = @"searchTab";
 static NSString *const FAVORITES_TAB_ID = @"favoritesTab";
 
 // Toolbar items
-static NSString *const DRAWER_TOGGLE_TOOL_ID = @"chmox.drawerToggle";
-static NSString *const SMALLER_TEXT_TOOL_ID = @"chmox.smallerText";
-static NSString *const BIGGER_TEXT_TOOL_ID = @"chmox.biggerText";
-static NSString *const HISTORY_TOOL_ID = @"chmox.history";
+static NSToolbarItemIdentifier const DRAWER_TOGGLE_TOOL_ID = @"chmox.drawerToggle";
+static NSToolbarItemIdentifier const SMALLER_TEXT_TOOL_ID = @"chmox.smallerText";
+static NSToolbarItemIdentifier const BIGGER_TEXT_TOOL_ID = @"chmox.biggerText";
+static NSToolbarItemIdentifier const HISTORY_TOOL_ID = @"chmox.history";
 
 #pragma mark NSWindowController overridden method
 
@@ -390,8 +390,8 @@ static NSString *const HISTORY_TOOL_ID = @"chmox.history";
 }
 
 - (NSToolbarItem *)toolbar:(NSToolbar *)toolbar
-		itemForItemIdentifier:(NSString *)itemIdentifier
-	willBeInsertedIntoToolbar:(BOOL)flag
+	 itemForItemIdentifier:(NSString *)itemIdentifier
+ willBeInsertedIntoToolbar:(BOOL)flag
 {
 	NSToolbarItem *item = [[NSToolbarItem alloc] initWithItemIdentifier:itemIdentifier];
 
