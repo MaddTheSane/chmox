@@ -99,7 +99,7 @@
 
 static inline unsigned short readShort(NSData *data, off_t offset)
 {
-	NSRange valueRange = {offset, 2};
+	NSRange valueRange = NSMakeRange(offset, 2);
 	unsigned short value;
 
 	[data getBytes:(void *)&value range:valueRange];
@@ -108,7 +108,7 @@ static inline unsigned short readShort(NSData *data, off_t offset)
 
 static inline unsigned int readLong(NSData *data, off_t offset)
 {
-	NSRange valueRange = {offset, 4};
+	NSRange valueRange = NSMakeRange(offset, 4);
 	unsigned int value;
 
 	[data getBytes:(void *)&value range:valueRange];
@@ -253,7 +253,12 @@ static CHMResolveStatus chm_resolve_object(chm_file *handle, const char *path, c
 - (void)computeIdFrom:(NSData *)systemData
 {
 	unsigned char digest[CC_SHA1_DIGEST_LENGTH];
-	CC_SHA1([systemData bytes], (CC_LONG)[systemData length], digest);
+	__block CC_SHA1_CTX ctx;
+	CC_SHA1_Init(&ctx);
+	[systemData enumerateByteRangesUsingBlock:^(const void * _Nonnull bytes, NSRange byteRange, BOOL * _Nonnull stop) {
+		CC_SHA1_Update(&ctx, bytes, (CC_LONG)byteRange.length);
+	}];
+	CC_SHA1_Final(digest, &ctx);
 	unsigned int *ptr = (unsigned int *)digest;
 	_uniqueId = [[NSString alloc] initWithFormat:@"%x%x%x%x%x", ptr[0], ptr[1], ptr[2], ptr[3], ptr[4]];
 	//NSLog( @"UniqueId=%@", _uniqueId );

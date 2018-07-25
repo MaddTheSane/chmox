@@ -84,7 +84,7 @@
 	_container = [[CHMContainer alloc] initWithContentsOfURL:url];
 	if (!_container) {
 		if (outError) {
-			*outError = [NSError errorWithDomain:NSCocoaErrorDomain code:NSFileReadCorruptFileError userInfo:NULL];
+			*outError = [NSError errorWithDomain:NSCocoaErrorDomain code:NSFileReadCorruptFileError userInfo:@{NSURLErrorKey: url}];
 		}
 		return NO;
 	}
@@ -185,7 +185,7 @@
 	//..........................................................................
 	// get matches from a search object
 	Boolean more = true;
-	UInt32 totalCount = 0;
+	CFIndex totalCount = 0;
 
 	while (more) {
 		SKDocumentID foundDocIDs[kSearchMax];
@@ -221,9 +221,9 @@
 			CFRelease(doc);
 
 			if (unranked) {
-				desc = [NSString stringWithFormat:@"---\nDocID: %d, URL: %@", (int)foundDocIDs[pos], urlStr];
+				desc = [NSString stringWithFormat:@"---\nDocID: %ld, URL: %@", (long)foundDocIDs[pos], urlStr];
 			} else {
-				desc = [NSString stringWithFormat:@"---\nDocID: %d, Score: %f, URL: %@", (int)foundDocIDs[pos], foundScores[pos], urlStr];
+				desc = [NSString stringWithFormat:@"---\nDocID: %ld, Score: %f, URL: %@", (long)foundDocIDs[pos], foundScores[pos], urlStr];
 			}
 			NSLog(@"%@", desc);
 			NSString *entries = [docTitles objectForKey:urlStr];

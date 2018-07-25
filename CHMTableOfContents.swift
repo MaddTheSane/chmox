@@ -168,7 +168,7 @@ private var saxHandler: htmlSAXHandler = {
 }()
 
 class CHMTableOfContents: NSObject {
-    @objc fileprivate(set) var rootTopics = [CHMTopic]()
+    @objc private(set) var rootTopics = [CHMTopic]()
     
     @objc init(container: CHMContainer) {
         super.init()
