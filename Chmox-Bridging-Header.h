@@ -6,6 +6,3 @@
 #import "CHMContainer.h"
 #import "CHMTopic.h"
 #import "CHMURLProtocol.h"
-
-#include <libxml/parser.h>
-#include <libxml/HTMLparser.h>

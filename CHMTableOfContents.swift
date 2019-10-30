@@ -20,6 +20,9 @@
 //
 
 import Cocoa
+import libxml2.parser
+import libxml2.HTMLparser
+import libxml2.encoding
 
 private struct TOCBuilderContext {
     // Context
@@ -179,13 +182,13 @@ class CHMTableOfContents: NSObject {
         
         var context = TOCBuilderContext(container: container, toc: self)
         
-        let parser = tocData.withUnsafeBytes({ (dat: UnsafePointer<Int8>) -> htmlParserCtxtPtr? in
+        let parser = tocData.withUnsafeBytes({ (dat: UnsafeRawBufferPointer) -> htmlParserCtxtPtr? in
             // XML_CHAR_ENCODING_NONE / XML_CHAR_ENCODING_UTF8 / XML_CHAR_ENCODING_8859_1
             let parser1 = htmlCreatePushParserCtxt(&saxHandler, &context,
-												   dat,
-												   Int32(tocData.count),
+												   dat.bindMemory(to: Int8.self).baseAddress,
+												   Int32(dat.count),
 												   nil, XML_CHAR_ENCODING_8859_1)
-            htmlParseChunk(parser1, dat, 0, 1)
+            htmlParseChunk(parser1, dat.bindMemory(to: Int8.self).baseAddress, 0, 1)
             return parser1
         })
         
