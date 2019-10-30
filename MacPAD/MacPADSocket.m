@@ -280,7 +280,7 @@ typedef NS_ENUM(int, MacPADCharType) {
 - (void)returnError:(MacPADResultCode)code message:(NSString *)msg
 {
     NSNumber *yesno = [NSNumber numberWithBool:(code == kMacPADResultNewVersion)];
-    NSNumber *errorCode = [NSNumber numberWithInt:code];
+    NSNumber *errorCode = @(code);
     NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:yesno, MacPADNewVersionAvailable,
                                                 msg, MacPADErrorMessage, errorCode, MacPADErrorCode, nil];
     if (code == 0 || code == 5) {
