@@ -27,7 +27,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CHMWindowController : NSWindowController <NSToolbarDelegate, NSOutlineViewDelegate, WebUIDelegate, WebPolicyDelegate, NSTableViewDataSource>
+@interface CHMWindowController : NSWindowController <NSToolbarDelegate, NSOutlineViewDelegate, WebUIDelegate, WebPolicyDelegate, NSTableViewDataSource, NSMenuItemValidation>
 
 @property (weak) IBOutlet WebView *contentsView;
 @property (weak) IBOutlet NSDrawer *drawer;
@@ -56,8 +56,6 @@ NS_ASSUME_NONNULL_BEGIN
 //- (NSArray<NSToolbarItemIdentifier> *)toolbarAllowedItemIdentifiers:(NSToolbar *)toolbar;
 //- (NSArray<NSToolbarItemIdentifier> *)toolbarDefaultItemIdentifiers:(NSToolbar *)toolbar;
 //- (nullable NSToolbarItem *)toolbar:(NSToolbar *)toolbar itemForItemIdentifier:(NSToolbarItemIdentifier)itemIdentifier willBeInsertedIntoToolbar:(BOOL)flag;
-
-- (BOOL)validateMenuItem:(NSMenuItem *)anItem;
 
 @end
 

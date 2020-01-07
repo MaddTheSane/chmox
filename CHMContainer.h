@@ -21,8 +21,6 @@
 
 #import <Foundation/Foundation.h>
 
-struct chmFile;
-
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CHMContainer : NSObject {

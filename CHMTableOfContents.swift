@@ -170,10 +170,10 @@ private var saxHandler: htmlSAXHandler = {
     return aHandler
 }()
 
-class CHMTableOfContents: NSObject {
-    @objc private(set) var rootTopics = [CHMTopic]()
+@objcMembers class CHMTableOfContents: NSObject {
+	private(set) var rootTopics = [CHMTopic]()
     
-    @objc init(container: CHMContainer) {
+	init(container: CHMContainer) {
         super.init()
         
         guard let tocData = container.dataWithTableOfContents else {
