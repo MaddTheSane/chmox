@@ -118,13 +118,16 @@ static inline unsigned int readLong(NSData *data, off_t offset)
 static inline NSString *readString(NSData *data, unsigned long offset)
 {
 	const char *stringData = (const char *)[data bytes] + offset;
-	return @(stringData);
+	NSString *toRet = @(stringData);
+	if (!toRet) {
+		toRet = [NSString stringWithCString:stringData encoding:NSISOLatin1StringEncoding];
+	}
+	return toRet;
 }
 
 static inline NSString *readTrimmedString(NSData *data, unsigned long offset)
 {
-	const char *stringData = (const char *)[data bytes] + offset;
-	return [@(stringData) stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+	return [readString(data, offset) stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }
 
 #pragma mark CHM Object loading
@@ -202,7 +205,11 @@ static CHMResolveStatus chm_resolve_object(chm_file *handle, const char *path, c
 	NSData *data = [self dataWithContentsOfObject:objectPath];
 	if (data) {
 		// NSUTF8StringEncoding / NSISOLatin1StringEncoding / NSUnicodeStringEncoding
-		return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+		NSString *toRet = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+		if (!toRet) {
+			toRet = [[NSString alloc] initWithData:data encoding:NSISOLatin1StringEncoding];
+		}
+		return toRet;
 	}
 
 	return nil;

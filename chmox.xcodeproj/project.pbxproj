@@ -120,7 +120,7 @@
 		448AF5A1064AA5E100FA37BD /* CHMDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHMDocument.m; sourceTree = "<group>"; };
 		448AF5AA064AE52F00FA37BD /* CHMWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHMWindowController.h; sourceTree = "<group>"; };
 		448AF5AB064AE52F00FA37BD /* CHMWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHMWindowController.m; sourceTree = "<group>"; };
-		448CC7E5068A2ED200F9B0DB /* LGPL.r */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; path = LGPL.r; sourceTree = "<group>"; };
+		448CC7E5068A2ED200F9B0DB /* LGPL.r */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.rez; path = LGPL.r; sourceTree = "<group>"; };
 		44916E9C07B97CED0095F0CE /* it */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = it; path = it.lproj/Credits.rtf; sourceTree = "<group>"; };
 		44923A78072C57E90070AA26 /* CHMApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHMApplication.h; sourceTree = "<group>"; };
 		44923A79072C57E90070AA26 /* CHMApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHMApplication.m; sourceTree = "<group>"; };
