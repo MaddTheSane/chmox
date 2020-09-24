@@ -118,7 +118,7 @@ static NSMutableDictionary *_baseURLs = nil;
 	CHMContainer *container = [CHMURLProtocol containerForUniqueId:[url host]];
 
 	if (!container) {
-		[[self client] URLProtocol:self didFailWithError:[NSError errorWithDomain:NSURLErrorDomain code:0 userInfo:nil]];
+		[[self client] URLProtocol:self didFailWithError:[NSError errorWithDomain:NSURLErrorDomain code:NSURLErrorNetworkConnectionLost userInfo:@{NSURLErrorFailingURLErrorKey: url}]];
 		return;
 	}
 
@@ -131,12 +131,24 @@ static NSMutableDictionary *_baseURLs = nil;
 	}
 
 	if (!data) {
-		[[self client] URLProtocol:self didFailWithError:[NSError errorWithDomain:NSURLErrorDomain code:0 userInfo:nil]];
+		[[self client] URLProtocol:self didFailWithError:[NSError errorWithDomain:NSURLErrorDomain code:NSURLErrorZeroByteResource userInfo:@{NSURLErrorFailingURLErrorKey: url}]];
 		return;
+	}
+	NSString *mimeTypes = nil;
+	NSString *pathExt = url.pathExtension;
+	CFStringRef theUTI = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, (__bridge CFStringRef _Nonnull)(pathExt), kUTTypeData);
+	if (theUTI) {
+		mimeTypes = CFBridgingRelease(UTTypeCopyPreferredTagWithClass(theUTI, kUTTagClassMIMEType));
+		CFRelease(theUTI);
+		theUTI = NULL;
+	}
+	
+	if (!mimeTypes) {
+		mimeTypes = @"application/octet-stream";
 	}
 
 	NSURLResponse *response = [[NSURLResponse alloc] initWithURL:[[self request] URL]
-														MIMEType:@"application/octet-stream"
+														MIMEType:mimeTypes
 										   expectedContentLength:[data length]
 												textEncodingName:nil];
 	[[self client] URLProtocol:self
