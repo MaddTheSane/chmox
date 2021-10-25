@@ -69,14 +69,7 @@
 			remoteGlobalIDString = C1083F2E1C934FB100129D9C;
 			remoteInfo = chm_http;
 		};
-		556D13781FB284F500A73608 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 556D13661FB284E900A73608 /* CHM Framework.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
-			remoteInfo = CHM.framework;
-		};
-		556D13821FB28D8700A73608 /* PBXContainerItemProxy */ = {
+		55BA3C4127275438007F6C82 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 556D13661FB284E900A73608 /* CHM Framework.xcodeproj */;
 			proxyType = 1;
@@ -337,8 +330,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				556D13791FB284F500A73608 /* PBXTargetDependency */,
-				556D13831FB28D8700A73608 /* PBXTargetDependency */,
+				55BA3C4227275438007F6C82 /* PBXTargetDependency */,
 			);
 			name = Chmox;
 			productInstallPath = "$(HOME)/Applications";
@@ -483,15 +475,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		556D13791FB284F500A73608 /* PBXTargetDependency */ = {
+		55BA3C4227275438007F6C82 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = CHM.framework;
-			targetProxy = 556D13781FB284F500A73608 /* PBXContainerItemProxy */;
-		};
-		556D13831FB28D8700A73608 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = CHM.framework;
-			targetProxy = 556D13821FB28D8700A73608 /* PBXContainerItemProxy */;
+			targetProxy = 55BA3C4127275438007F6C82 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

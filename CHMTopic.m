@@ -40,7 +40,7 @@
 
 - (id)copyWithZone:(NSZone *)zone
 {
-	CHMTopic *other = [[CHMTopic allocWithZone:zone] initWithName:_name location:_location];
+	CHMTopic *other = [[CHMTopic alloc] initWithName:_name location:_location];
 
 	if (_subTopics) {
 		other->_subTopics = [_subTopics mutableCopy];
